@@ -11,6 +11,9 @@ import com.example.enterpriseclient.R
 
 class UserFragment : Fragment() {
 
+    companion object {
+        fun newInstance(): UserFragment = UserFragment()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

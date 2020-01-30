@@ -14,6 +14,9 @@ class SearchFragment : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
 
+    companion object {
+        fun newInstance(): SearchFragment = SearchFragment()
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
