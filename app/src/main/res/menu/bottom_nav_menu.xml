@@ -6,12 +6,12 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_reservation"
-        android:icon="@drawable/ic_reservation"
-        android:title="@string/title_my_flight" />
-
-    <item
         android:id="@+id/navigation_user"
         android:icon="@drawable/ic_user"
         android:title="@string/title_profile" />
+
+    <item
+        android:id="@+id/navigation_reservation"
+        android:icon="@drawable/ic_reservation"
+        android:title="@string/title_my_flight" />
 </menu>
