@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EnterpriseClient</string>
+
+    <string name="title_search">Search</string>
+    <string name="title_my_flight">My Flight</string>
+    <string name="title_profile">Profile</string>
+    <string name="tab_1">Search</string>
+    <string name="tab_2">My Flight</string>
+    <string name="tab_3">Profile</string>
 </resources>
