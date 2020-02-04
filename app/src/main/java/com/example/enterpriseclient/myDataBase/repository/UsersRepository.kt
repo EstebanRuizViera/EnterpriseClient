@@ -1,13 +1,13 @@
-package com.example.appreservas.myDataBase.repository
+package com.example.enterpriseclient.myDataBase.repository
 
 import android.app.Application
 import android.os.AsyncTask
-import com.example.appreservas.myDataBase.dao.UserDao
-import com.example.appreservas.myDataBase.database.FlightDatabase
-import com.example.appreservas.myDataBase.model.User
+import com.example.enterpriseclient.myDataBase.dao.UserDao
+import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
+import com.example.enterpriseclient.myDataBase.model.User
 
 class UsersRepository(application: Application) {
-    private val userDao: UserDao? = FlightDatabase.getInstance(application)?.userDao()
+    private val userDao: UserDao? = ReservationDatabase.getInstance(application)?.userDao()
 
     fun insert(user: User) {
         if (userDao != null)

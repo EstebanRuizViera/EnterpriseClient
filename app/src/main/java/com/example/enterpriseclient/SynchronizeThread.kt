@@ -1,4 +1,4 @@
-package com.example.appreservas
+package com.example.enterpriseclient
 
 class SynchronizeThread: Runnable {
 

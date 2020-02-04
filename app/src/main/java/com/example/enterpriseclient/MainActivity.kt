@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.R.*
 import com.example.enterpriseclient.tabMenu.myFlight.MyFlightFragment
 import com.example.enterpriseclient.tabMenu.search.SearchFragment
-import com.example.flight.tabMenu.user.UserFragment
+import com.example.enterpriseclient.tabMenu.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

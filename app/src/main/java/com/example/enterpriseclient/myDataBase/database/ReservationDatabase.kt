@@ -1,27 +1,27 @@
-package com.example.appreservas.myDataBase.database
+package com.example.enterpriseclient.myDataBase.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.appreservas.myDataBase.dao.UserDao
-import com.example.appreservas.myDataBase.model.User
+import com.example.enterpriseclient.myDataBase.dao.UserDao
+import com.example.enterpriseclient.myDataBase.model.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
-abstract class FlightDatabase : RoomDatabase() {
+abstract class ReservationDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
 
     companion object {
-        private const val DATABASE_NAME = "flight_ddbb"
+        private const val DATABASE_NAME = "reservation"
         @Volatile
-        private var INSTANCE: FlightDatabase? = null
+        private var INSTANCE: ReservationDatabase? = null
 
-        fun getInstance(context: Context): FlightDatabase? {
+        fun getInstance(context: Context): ReservationDatabase? {
             INSTANCE ?: synchronized(this) {
                 INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
-                    FlightDatabase::class.java,
+                    ReservationDatabase::class.java,
                     DATABASE_NAME
                 ).build()
             }

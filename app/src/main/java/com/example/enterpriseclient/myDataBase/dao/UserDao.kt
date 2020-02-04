@@ -2,7 +2,7 @@ package com.example.enterpriseclient.myDataBase.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.appreservas.myDataBase.model.User
+import com.example.enterpriseclient.myDataBase.model.User
 
 @Dao
 interface UserDao {

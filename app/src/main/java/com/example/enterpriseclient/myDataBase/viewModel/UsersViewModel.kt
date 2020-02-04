@@ -1,9 +1,9 @@
-package com.example.appreservas.myDataBase.viewModel
+package com.example.enterpriseclient.myDataBase.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.appreservas.myDataBase.model.User
-import com.example.appreservas.myDataBase.repository.UsersRepository
+import com.example.enterpriseclient.myDataBase.model.User
+import com.example.enterpriseclient.myDataBase.repository.UsersRepository
 
 class UsersViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = UsersRepository(application)
