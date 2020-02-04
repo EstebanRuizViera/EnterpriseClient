@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                     openFragment(fragment)
                     true
                 }
-                id.navigation_reservation -> {
+                id.navigation_settings -> {
                     val fragment = MyFlightFragment.newInstance()
                     openFragment(fragment)
                     true
