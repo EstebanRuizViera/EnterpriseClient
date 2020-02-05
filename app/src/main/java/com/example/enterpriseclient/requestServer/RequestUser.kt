@@ -12,6 +12,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
+import com.example.enterpriseclient.LoginActivity
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
@@ -75,30 +76,27 @@ class RequestUser {
         }
 
 
-        @JvmStatic fun registerUser(context: Context,name_editText:EditText,lastname_editText:EditText,dni_editText:EditText,telephone: EditText,email_editText:EditText,password_editText:EditText) {
+        @JvmStatic fun registerUser(context: Context,rg_name:EditText,rg_email:EditText,rg_password:EditText) {
 
             val loginJsonobj = JSONObject()
 
-            loginJsonobj.put("name", name_editText.text)
-            loginJsonobj.put("lastname", lastname_editText.text)
-            loginJsonobj.put("dni", dni_editText.text)
-            loginJsonobj.put("phone", telephone.text)
-            loginJsonobj.put("email", email_editText.text)
-            loginJsonobj.put("password", password_editText.text)
+            loginJsonobj.put("name", rg_name.text)
+            loginJsonobj.put("email", rg_email.text)
+            loginJsonobj.put("password", rg_password.text)
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/auth/register"
+            val url = RequestUser.URL +"/api/register"
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, loginJsonobj,
                 Response.Listener {
 
-                    Toast.makeText(context, "Registro realizado ! ", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Registro realizado !", Toast.LENGTH_LONG).show()
 
-//                    val intent = Intent(context, LoginActivity::class.java)
-//                    context.startActivity(intent)
+                    val intent = Intent(context, LoginActivity::class.java)
+                    context.startActivity(intent)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO,null,"ERROR "+it.networkResponse)
+                    Log.println(Log.INFO,null,"Error al registrar: "+it.networkResponse)
                 })
             {}
 

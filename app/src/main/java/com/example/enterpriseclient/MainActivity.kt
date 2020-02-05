@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(layout.activity_main)
 
 
-       // val intent = Intent(baseContext, LoginActivity::class.java)
-       // startActivity(intent)
+       val intent = Intent(baseContext, RegisterActivity::class.java)
+       startActivity(intent)
 
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
