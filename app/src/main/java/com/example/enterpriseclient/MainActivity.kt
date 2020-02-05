@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.R.*
-import com.example.enterpriseclient.tabMenu.myFlight.MyFlightFragment
-import com.example.enterpriseclient.tabMenu.search.SearchFragment
-import com.example.flight.tabMenu.user.UserFragment
+import com.example.enterpriseclient.bottomNavigationView.search.SearchFragment
+import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
+import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -15,9 +15,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
 
-        val bottom_navigation_view: BottomNavigationView = findViewById(id.bottom_navigation_view)
 
-        bottom_navigation_view.setOnNavigationItemSelectedListener  { menuItem ->
+        val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener  { menuItem ->
             when (menuItem.itemId) {
                 id.navigation_search -> {
                     val fragment = SearchFragment.newInstance()
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottom_navigation_view.selectedItemId = id.navigation_search
+        bottomNavigationView.selectedItemId = id.navigation_search
     }
 
     private fun openFragment(fragment: Fragment) {

@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.tabMenu.search
+package com.example.enterpriseclient.bottomNavigationView.search
 
 import android.os.Bundle
 import android.view.LayoutInflater

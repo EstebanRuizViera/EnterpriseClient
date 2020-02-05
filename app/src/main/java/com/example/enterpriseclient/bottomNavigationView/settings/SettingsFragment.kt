@@ -1,14 +1,10 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.bottomNavigationView.settings
 
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.preference.PreferenceFragmentCompat
-import com.example.flight.tabMenu.user.UserFragment
+import com.example.enterpriseclient.R
 
 /**
  * A simple [Fragment] subclass.
@@ -19,7 +15,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     companion object {
-        fun newInstance(): SettingsFragment = SettingsFragment()
+        fun newInstance(): SettingsFragment =
+            SettingsFragment()
     }
 
 
