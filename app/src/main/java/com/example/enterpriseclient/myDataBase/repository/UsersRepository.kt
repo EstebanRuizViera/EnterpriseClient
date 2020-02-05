@@ -9,36 +9,36 @@ import com.example.enterpriseclient.myDataBase.model.User
 class UsersRepository(application: Application) {
     private val userDao: UserDao? = ReservationDatabase.getInstance(application)?.userDao()
 
-    fun insert(user: User) {
+    fun insertUser(user: User) {
         if (userDao != null)
-            InsertAsyncTask(userDao).execute(user)
+            InsertUserAsyncTask(userDao).execute(user)
     }
 
     fun getUserId(id:Int):String {
 
         if (userDao != null)
-            return IdUserAsyncTask(userDao).execute(id).get()
+            return GetUserIdAsyncTask(userDao).execute(id).get()
         return ""
     }
 
     fun getUserIdLocal(id:Int):Int {
 
         if (userDao != null)
-            return IdUserLocalAsyncTask(userDao).execute(id).get()
+            return GetUserIdLocalAsyncTask(userDao).execute(id).get()
         return 0
     }
 
-    fun getToken(id:Int):String {
+    fun getUserToken(id:Int):String {
 
         if (userDao != null)
-            return GetTokenAsyncTask(userDao).execute(id).get()
+            return GetUserTokenAsyncTask(userDao).execute(id).get()
         return ""
     }
 
 
-    fun updateToken(user: User) {
+    fun updateUserToken(user: User) {
         if (userDao != null)
-            UpdateTokenAsyncTask(userDao).execute(user)
+            UpdateUserTokenAsyncTask(userDao).execute(user)
     }
 
     fun updateUser(user: User) {
@@ -47,7 +47,7 @@ class UsersRepository(application: Application) {
     }
 
 
-    private class InsertAsyncTask(private val userDao: UserDao) :
+    private class InsertUserAsyncTask(private val userDao: UserDao) :
         AsyncTask<User, Void, Void>() {
         override fun doInBackground(vararg users: User?): Void? {
             for (user in users) {
@@ -60,7 +60,7 @@ class UsersRepository(application: Application) {
         }
     }
 
-    private class GetTokenAsyncTask(private val userDao: UserDao) :
+    private class GetUserTokenAsyncTask(private val userDao: UserDao) :
         AsyncTask<Int, Void, String>() {
         override fun doInBackground(vararg ids: Int?): String {
             for (id in ids) {
@@ -75,7 +75,7 @@ class UsersRepository(application: Application) {
         }
     }
 
-    private class IdUserAsyncTask(private val userDao: UserDao) :
+    private class GetUserIdAsyncTask(private val userDao: UserDao) :
         AsyncTask<Int, Void, String>() {
         override fun doInBackground(vararg ids: Int?): String {
             for (id in ids) {
@@ -90,7 +90,7 @@ class UsersRepository(application: Application) {
         }
     }
 
-    private class IdUserLocalAsyncTask(private val userDao: UserDao) :
+    private class GetUserIdLocalAsyncTask(private val userDao: UserDao) :
         AsyncTask<Int, Void, Int>() {
         override fun doInBackground(vararg ids: Int?): Int {
             for (id in ids) {
@@ -105,7 +105,7 @@ class UsersRepository(application: Application) {
         }
     }
 
-    private class UpdateTokenAsyncTask(private val userDao: UserDao) :
+    private class UpdateUserTokenAsyncTask(private val userDao: UserDao) :
         AsyncTask<User, Void, Void>() {
         override fun doInBackground(vararg users: User?): Void? {
             for (user in users) {
