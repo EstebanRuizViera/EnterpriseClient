@@ -1,14 +1,7 @@
 <resources>
     <string name="app_name">EnterpriseClient</string>
 
-<<<<<<< HEAD
-    <string name="title_search">Search</string>
-    <string name="title_my_flight">My Flight</string>
-    <string name="title_profile">Profile</string>
-    <string name="tab_1">Search</string>
-    <string name="tab_2">My Flight</string>
-    <string name="tab_3">Profile</string>
-=======
+
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_settings">Settings</string>
@@ -16,8 +9,5 @@
     <string name="tab_3">Profile</string>
     <string name="tab_2">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
->>>>>>> NavigationView
 </resources>

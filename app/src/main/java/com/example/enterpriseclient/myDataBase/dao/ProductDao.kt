@@ -17,7 +17,7 @@ interface ProductDao {
     @Delete
     fun deleteProduct(vararg product: Product)
 
-    @Query("SELECT id_remoto FROM " + Product.TABLE_NAME + " WHERE id=:id")
+    @Query("SELECT * FROM " + Product.TABLE_NAME + " WHERE id=:id")
     fun getProduct(id: Int): List<Product>
 
     @Query("SELECT * FROM "+ Product.TABLE_NAME )

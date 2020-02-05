@@ -13,8 +13,8 @@ data class Distribution(
     @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "unit") @NotNull val unit: String,
     @ColumnInfo(name = "duration") @NotNull val duration: Int,
-    @ColumnInfo(name = "time_start") @NotNull val time_start: Time,
-    @ColumnInfo(name = "time_finish") @NotNull val time_finish: Time,
+    @ColumnInfo(name = "time_start") @NotNull val time_start: Int,
+    @ColumnInfo(name = "time_finish") @NotNull val time_finish: Int,
     @ColumnInfo(name = "block") @NotNull val block: Int
 ) {
     companion object {
