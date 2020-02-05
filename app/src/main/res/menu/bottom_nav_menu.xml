@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_search"
+<<<<<<< HEAD
         android:icon="@drawable/ic_search"
         android:title="@string/title_search" />
+=======
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+>>>>>>> NavigationView
 
     <item
         android:id="@+id/navigation_user"
@@ -11,7 +16,13 @@
         android:title="@string/title_profile" />
 
     <item
+<<<<<<< HEAD
         android:id="@+id/navigation_reservation"
         android:icon="@drawable/ic_reservation"
         android:title="@string/title_my_flight" />
+=======
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_settings" />
+>>>>>>> NavigationView
 </menu>

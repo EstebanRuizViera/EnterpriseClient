@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="darkMode"
+            android:title="Dark mode"
+            android:summary="Change application theme"/>
+
+
+    <ListPreference
+        android:defaultValue="1"
+        android:dialogTitle="Select language"
+        android:entries="@array/pref_language"
+        android:entryValues="@array/pref_language"
+        android:key="Language"
+        android:title="Language" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+
+
+        <Preference
+            android:summary="3.5"
+            android:title="Version" />
+
+        <Preference
+            android:key="key_send_feedback"
+            android:summary="Got any queries? We are happy to help!"
+            android:title="Send feedback" />
+
+        <!-- preference opens url in browser -->
+        <Preference
+            android:summary="View frequently asked questions"
+            android:title="FAQ">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://kotlinlang.org/docs/reference/faq.html" />
+        </Preference>
+
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
