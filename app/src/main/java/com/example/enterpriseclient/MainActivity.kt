@@ -1,5 +1,6 @@
 package com.example.enterpriseclient
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
+
+       // val intent = Intent(baseContext, LoginActivity::class.java)
+       // startActivity(intent)
 
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
