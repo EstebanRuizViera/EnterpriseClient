@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameHome"
     android:padding="25dp">
 
     <androidx.cardview.widget.CardView
@@ -16,18 +16,19 @@
         android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/image_view"
+                android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="154dp"
-                android:src="@drawable/restaurnt" />
+                android:src="@drawable/restaurnt"
+                android:background="@drawable/loading_shape"/>
 
 
             <TextView
+                android:id="@+id/productName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="bottom"
-                android:layout_below="@+id/image_view"
                 android:text="Hall of gourmet"
                 android:textAlignment="center"
                 android:textSize="25sp" />
@@ -35,36 +36,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="156dp"
-                android:src="@drawable/spa" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="bottom"
-                android:text="Spa"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
 
 </FrameLayout>
