@@ -13,6 +13,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
 import com.example.enterpriseclient.LoginActivity
+import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.bottomNavigationView.search.SearchFragment
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
@@ -37,7 +39,7 @@ class RequestUser {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/auth/login"
+            val url = URL +"/api/login"
             val req = object : JsonObjectRequest(Request.Method.POST, url, loginJsonobj,
                 Response.Listener {
                     updateToken(context,email_text,usersViewModel,it.getString("token"))
@@ -59,19 +61,20 @@ class RequestUser {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/auth/user"
+            val url = URL +"/api/user"
             val req = object : JsonObjectRequest(Request.Method.POST, url, jsonObject,
                 Response.Listener {
                     usersViewModel.updateUser(User(1, it.getString("id"), token))
 
-//                    val intent = Intent(context,SearchActivity::class.java)
-//                    context.startActivity(intent)
+                    val intent = Intent(context,MainActivity::class.java)
+                    context.startActivity(intent)
 
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO,null,"ERROR "+it.message)
                 }
             ){}
+
             queue.add(req)
         }
 
@@ -107,7 +110,7 @@ class RequestUser {
 
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/user/"+usersViewModel.getUserId(1)
+            val url = URL +"/api/users/"+usersViewModel.getUserId(1)
             val req = object : JsonObjectRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
@@ -148,7 +151,7 @@ class RequestUser {
             updateJsonobj.put("email", email_editText.text)
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/user/"+usersViewModel.getUserId(1)
+            val url = URL +"/api/users/"+usersViewModel.getUserId(1)
             val req = object : JsonObjectRequest(
                 Request.Method.PUT, url, updateJsonobj,
                 Response.Listener {
@@ -179,7 +182,7 @@ class RequestUser {
         @JvmStatic fun deleteUser(context: Context,usersViewModel: UsersViewModel) {
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/user/"+usersViewModel.getUserId(1)
+            val url = URL +"/api/users/"+usersViewModel.getUserId(1)
             val req = object : StringRequest(
                 Request.Method.DELETE, url,
                 Response.Listener {

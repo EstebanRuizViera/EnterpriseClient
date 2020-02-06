@@ -19,6 +19,6 @@ class SynchronizeThread: Runnable {
     }
 
     private fun sincronizedProduct(){
-        var productList = RequestProduct.selectAllProducts(activity.applicationContext)
+        //var productList = RequestProduct.selectAllProducts(activity.applicationContext)
     }
 }

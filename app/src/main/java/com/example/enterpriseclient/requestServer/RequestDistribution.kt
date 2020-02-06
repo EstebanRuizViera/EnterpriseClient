@@ -3,6 +3,7 @@ package com.example.enterpriseclient.requestServer
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -10,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
+import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 
 class RequestDistribution {
     companion object {
@@ -20,7 +22,7 @@ class RequestDistribution {
         //------------- DISTRIBUTION --------------------
 
         @JvmStatic
-        fun createDistribution(context: Context) {
+        fun createDistribution(context: Context, usersViewModel: UsersViewModel) {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
@@ -33,7 +35,18 @@ class RequestDistribution {
                 Response.ErrorListener {
                     Toast.makeText(context, "Error al crear la reserva", Toast.LENGTH_SHORT).show()
                 }
-            ) {}
+            )
+            {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer "+token
+                    return headers
+                }
+            }
 
             queue.add(updateReq)
 
@@ -41,7 +54,7 @@ class RequestDistribution {
 
 
         @JvmStatic
-        fun selectDistribution(context: Context) {
+        fun selectDistribution(context: Context, usersViewModel: UsersViewModel) {
 
 
             val queue = Volley.newRequestQueue(context)
@@ -53,12 +66,23 @@ class RequestDistribution {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.message)
-                }) {}
+                })
+            {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer "+token
+                    return headers
+                }
+            }
 
             queue.add(req)
         }
 
-        fun selectAllDistribution(context: Context) {
+        fun selectAllDistribution(context: Context, usersViewModel: UsersViewModel) {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
@@ -72,14 +96,25 @@ class RequestDistribution {
                     Toast.makeText(context, "Error al devolver los vuelos", Toast.LENGTH_SHORT)
                         .show()
                 }
-            ) {}
+            )
+            {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer "+token
+                    return headers
+                }
+            }
 
             queue.add(updateReq)
 
         }
 
         @JvmStatic
-        fun updateDistribution(context: Context) {
+        fun updateDistribution(context: Context, usersViewModel: UsersViewModel) {
 
             val queue = Volley.newRequestQueue(context)
             val url = URL + "/api/distribution/"
@@ -89,13 +124,24 @@ class RequestDistribution {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.message)
-                }) {}
+                })
+            {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer "+token
+                    return headers
+                }
+            }
 
             queue.add(req)
         }
 
         @JvmStatic
-        fun deleteDistribution(context: Context) {
+        fun deleteDistribution(context: Context, usersViewModel: UsersViewModel) {
 
             val queue = Volley.newRequestQueue(context)
             val url = URL + "/api/distribution/"
@@ -106,7 +152,18 @@ class RequestDistribution {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.toString())
-                }) {}
+                })
+            {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer "+token
+                    return headers
+                }
+            }
 
             queue.add(req)
         }

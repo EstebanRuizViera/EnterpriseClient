@@ -17,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
 
-
-       val intent = Intent(baseContext, RegisterActivity::class.java)
-       startActivity(intent)
-
+//        val intent = Intent(baseContext, RegisterActivity::class.java)
+//        startActivity(intent)
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
 
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         bottomNavigationView.selectedItemId = id.navigation_search
 
     }
@@ -59,4 +56,7 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
+    override fun onBackPressed() {
+        //super.onBackPressed()
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.enterpriseclient
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
@@ -20,6 +21,11 @@ class RegisterActivity : AppCompatActivity() {
         }
         rg_register.setOnClickListener(){
             RequestUser.registerUser(this,rg_name,rg_email,rg_password)
+        }
+
+        rg_registerText.setOnClickListener {
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }
