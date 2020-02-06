@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.enterpriseclient.R
 
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
@@ -20,8 +21,12 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         val inflater = LayoutInflater.from(mContext)
         view = inflater.inflate(R.layout.fragment_search, parent, false)
         val viewHolder =
-            MyViewHolder(view)
-        return MyViewHolder(view)
+            MyViewHolder(
+                view
+            )
+        return MyViewHolder(
+            view
+        )
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
