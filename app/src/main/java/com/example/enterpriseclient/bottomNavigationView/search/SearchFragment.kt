@@ -1,5 +1,6 @@
 package com.example.enterpriseclient.bottomNavigationView.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.Product
 import com.example.enterpriseclient.ProductAdapter
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.RegisterActivity
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment() {
 
