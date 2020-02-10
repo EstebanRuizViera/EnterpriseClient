@@ -6,5 +6,6 @@
     <color name="white">#ffffff</color>
     <color name="blue_login_register">#55C0EE</color>
     <color name="underlineActive">#FD7155</color>
+    <color name="book_color_circle">#D8D8D8</color>
 
 </resources>
