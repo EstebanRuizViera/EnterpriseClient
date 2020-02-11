@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
-import com.example.enterpriseclient.requestServer.RequestProduct
 import com.example.enterpriseclient.requestServer.RequestUser
 import kotlinx.android.synthetic.main.activity_login.*
 
