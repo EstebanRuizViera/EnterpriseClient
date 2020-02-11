@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">EnterpriseClient</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="tab_1">Home</string>
+    <string name="tab_3">Perfil</string>
+    <string name="tab_2">Ajustes</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_name">Nombre</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="dont_have_an_account">¿No tienes una cuenta?</string>
+    <string name="register">Registrarse</string>
+    <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+
+
+</resources>
