@@ -22,7 +22,7 @@
 
 
         <Preference
-            android:summary="3.5"
+            android:summary="1.0"
             android:title="Version" />
 
         <Preference
@@ -38,7 +38,6 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://kotlinlang.org/docs/reference/faq.html" />
         </Preference>
-
 
 
     </PreferenceCategory>

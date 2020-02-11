@@ -16,9 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".AvailabilityActivity"></activity>
+        <activity android:name=".ReservationActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity" />
-
-        <activity android:name=".MainActivity"></activity>
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
