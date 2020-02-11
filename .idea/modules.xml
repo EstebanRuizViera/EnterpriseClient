@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CLIENTE-EnterpriseClient.iml" filepath="$PROJECT_DIR$/CLIENTE-EnterpriseClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/EnterpriseClient.iml" filepath="$PROJECT_DIR$/.idea/EnterpriseClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/EnterpriseClient-app.iml" filepath="$PROJECT_DIR$/app/EnterpriseClient-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

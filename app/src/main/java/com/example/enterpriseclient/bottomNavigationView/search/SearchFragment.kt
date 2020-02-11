@@ -1,5 +1,6 @@
 package com.example.enterpriseclient.bottomNavigationView.search
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +15,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.Product
 import com.example.enterpriseclient.ProductAdapter
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.SharePreferenceDarkMode
 import com.example.enterpriseclient.requestServer.RequestProduct
 
 class SearchFragment : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
 
+    internal lateinit var sharedpref: SharePreferenceDarkMode
 
     companion object {
         fun newInstance(): SearchFragment = SearchFragment()
@@ -33,6 +36,12 @@ class SearchFragment : Fragment() {
             ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
         val root = inflater.inflate(R.layout.recyclerview_home, container, false)
+
+        sharedpref = SharePreferenceDarkMode(this.activity as Activity)
+        if (sharedpref.loadNightModeState() == true) {
+            root.context.setTheme(R.style.darkTheme)
+        } else
+            root.context.setTheme(R.style.AppTheme)
 
         var productsList=arrayListOf<Product>()
 
