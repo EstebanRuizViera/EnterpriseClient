@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
 import com.example.enterpriseclient.LoginActivity
 import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.search.SearchFragment
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.model.User
@@ -66,7 +67,7 @@ class RequestUser {
                 Response.Listener {
                     usersViewModel.updateUser(User(1, it.getString("id"), token))
 
-                    val intent = Intent(context,MainActivity::class.java)
+                    val intent = Intent(context,ReservationActivity::class.java)
                     context.startActivity(intent)
 
                 },
