@@ -27,4 +27,8 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         return repository.getProduct(id)
     }
 
+    fun getCountProduct(id: Int):Int? {
+
+        return repository.getCountProduct()
+    }
 }

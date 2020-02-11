@@ -16,10 +16,17 @@ class ProductRepository(application: Application) {
             InsertProductAsyncTask(productDao).execute(product)
     }
 
-    fun getProduct(id:Int): List<Product>? {
+    fun getProduct(id: Int): List<Product>? {
 
         if (productDao != null)
             return GetProductAsyncTask(productDao).execute(id).get()
+        return null
+    }
+
+    fun getCountProduct(): Int? {
+
+        if (productDao != null)
+            return CountProductAsyncTask(productDao).execute().get()
         return null
     }
 
@@ -40,12 +47,12 @@ class ProductRepository(application: Application) {
     }
 
     private class GetProductAsyncTask(private val productDao: ProductDao) :
-        AsyncTask<Int, Void,  List<Product>>() {
-        override fun doInBackground(vararg ids: Int?):  List<Product>? {
+        AsyncTask<Int, Void, List<Product>>() {
+        override fun doInBackground(vararg ids: Int?): List<Product>? {
             for (id in ids) {
-                if (id != null){
-                    var product=productDao.getProduct(id)
-                    if(product !=null){
+                if (id != null) {
+                    var product = productDao.getProduct(id)
+                    if (product != null) {
                         return product
                     }
                 }
@@ -58,10 +65,21 @@ class ProductRepository(application: Application) {
         AsyncTask<Product, Void, Void>() {
         override fun doInBackground(vararg products: Product?): Void? {
             for (product in products) {
-                if(product != null)
+                if (product != null)
                     productDao.updateProduct(product)
             }
             return null
+        }
+    }
+
+    private class CountProductAsyncTask(private val productDao: ProductDao) :
+        AsyncTask<Void, Void, Int>() {
+        override fun doInBackground(vararg values: Void?): Int? {
+            var product = productDao.countRow()
+            if (product != null) {
+                return product
+            }
+            return 0
         }
     }
 }

@@ -1,25 +1,43 @@
 package com.example.enterpriseclient
 
 import android.app.Activity
-import android.widget.TextView
-import android.widget.Toast
-import com.example.enterpriseclient.myDataBase.model.Product
+import android.os.AsyncTask
+import android.util.Log
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.requestServer.RequestProduct
+import kotlinx.coroutines.awaitAll
 
 
-class SynchronizeThread: Runnable {
+class SynchronizeThread: AsyncTask<String,String,String> {
 
     private var activity: Activity
-    private lateinit var productViewModel: ProductViewModel
+    private var productViewModel: ProductViewModel
+    private var totalRowServer:Int = 0
+    private var totalRowClient:Int = 0
+
 
     constructor(activity: Activity, productViewModel: ProductViewModel) {
         this.activity = activity
         this.productViewModel = productViewModel
     }
 
-    override fun run() {
+    override fun onProgressUpdate(vararg values: String?) {
+    }
 
+    override fun onPreExecute() {
+
+
+        suspend {
+            RequestProduct.countProducts(activity.applicationContext, this)
+        }
+        Log.println(Log.INFO, null, "TOTAL: ")
+    }
+
+    override fun doInBackground(vararg params: String?): String {
+        return ""
+    }
+
+    override fun onPostExecute(result: String?) {
     }
 
     private fun sincronizedProduct(){
@@ -29,4 +47,5 @@ class SynchronizeThread: Runnable {
 //            Toast.makeText(activity, "id: "+product.id+" ,name: "+product.name+" ,descripcion: "+product.description+" ,image: "+product.image_url, Toast.LENGTH_SHORT).show()
 //        }
     }
+
 }

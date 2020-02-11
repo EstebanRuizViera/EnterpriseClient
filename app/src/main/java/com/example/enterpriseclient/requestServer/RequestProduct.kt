@@ -1,6 +1,7 @@
 package com.example.enterpriseclient.requestServer
 
 import android.content.Context
+import android.os.AsyncTask
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +14,11 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Product
 import com.example.enterpriseclient.ProductAdapter
+import com.example.enterpriseclient.SynchronizeThread
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
+import kotlinx.coroutines.awaitAll
 
 class RequestProduct {
 
@@ -26,11 +29,11 @@ class RequestProduct {
         //------------- PRODUCTOS --------------------
 
         @JvmStatic
-        fun createProduct(context: Context,productViewModel: ProductViewModel) {
+        fun createProduct(context: Context, productViewModel: ProductViewModel) {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
-            val url =URL + "/auth/products"
+            val url = URL + "/auth/products"
             val updateReq = object : StringRequest(
                 Request.Method.POST, url,
                 Response.Listener {
@@ -39,8 +42,7 @@ class RequestProduct {
                 Response.ErrorListener {
                     Toast.makeText(context, "Error al crear la reserva", Toast.LENGTH_SHORT).show()
                 }
-            )
-            {}
+            ) {}
 
             queue.add(updateReq)
 
@@ -48,7 +50,7 @@ class RequestProduct {
 
 
         @JvmStatic
-        fun selectProduct(context: Context,productViewModel: ProductViewModel) {
+        fun selectProduct(context: Context, productViewModel: ProductViewModel) {
 
 
             val queue = Volley.newRequestQueue(context)
@@ -56,17 +58,24 @@ class RequestProduct {
             val req = object : JsonObjectRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    Log.println(Log.INFO, null, "Name: " + it.getString("name")+" description: "+it.getString("description"))
+                    Log.println(
+                        Log.INFO,
+                        null,
+                        "Name: " + it.getString("name") + " description: " + it.getString("description")
+                    )
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.message)
-                })
-            {}
+                }) {}
 
             queue.add(req)
         }
 
-        fun selectAllProducts(context: Context,productList: ArrayList<Product>, recyclerView: RecyclerView) {
+        fun selectAllProducts(
+            context: Context,
+            productList: ArrayList<Product>,
+            recyclerView: RecyclerView
+        ) {
 
             var listProduct = arrayListOf<Product>()
 
@@ -76,7 +85,7 @@ class RequestProduct {
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    var array=it
+                    var array = it
                     for (i in 0 until array.length()) {
                         val product = array.getJSONObject(i)
                         productList.add(
@@ -99,16 +108,17 @@ class RequestProduct {
                     recyclerView.setAdapter(productAdapter)
                 },
                 Response.ErrorListener {
-                    Toast.makeText(context, "Error al devolver los productos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Error al devolver los productos", Toast.LENGTH_SHORT)
+                        .show()
                 }
-            ){}
+            ) {}
 
             queue.add(updateReq)
 
         }
 
         @JvmStatic
-        fun updateProduct(context: Context,productViewModel: ProductViewModel) {
+        fun updateProduct(context: Context, productViewModel: ProductViewModel) {
 
             val queue = Volley.newRequestQueue(context)
             val url = URL + "/auth/products/"
@@ -118,14 +128,13 @@ class RequestProduct {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.message)
-                })
-            {}
+                }) {}
 
             queue.add(req)
         }
 
         @JvmStatic
-        fun deleteProduct(context: Context,productViewModel: ProductViewModel) {
+        fun deleteProduct(context: Context, productViewModel: ProductViewModel) {
 
             val queue = Volley.newRequestQueue(context)
             val url = URL + "/auth/products/"
@@ -136,10 +145,30 @@ class RequestProduct {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.toString())
-                })
-            {}
+                }) {}
 
             queue.add(req)
+        }
+
+        @JvmStatic
+        fun countProducts(context: Context,sn: SynchronizeThread) {
+
+
+            // new Volley newRequestQueue
+            val queue = Volley.newRequestQueue(context)
+            val url = URL + "/api/countProducts"
+            val updateReq = object : StringRequest(
+                Request.Method.GET, url,
+                Response.Listener {
+                    Log.println(Log.INFO, null, "Total volley: " + it)
+                },
+                Response.ErrorListener {
+                    Toast.makeText(context, "Error al contar las filas", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            ) {}
+
+            queue.add(updateReq)
         }
     }
 }
