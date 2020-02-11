@@ -23,4 +23,7 @@ interface ProductDao {
     @Query("SELECT * FROM "+ Product.TABLE_NAME )
     fun getAllProduct(): List<Product>
 
+    @Query("SELECT COUNT(id) FROM "+ Product.TABLE_NAME )
+    fun countRow(): Int
+
 }

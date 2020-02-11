@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.myDataBase.model.User
+import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestProduct
 import com.example.enterpriseclient.requestServer.RequestUser
@@ -14,14 +15,27 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
+    private lateinit var productViewModel: ProductViewModel
+    private lateinit var hilo: SynchronizeThread
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val intent = Intent(baseContext, MainActivity::class.java)
+        startActivity(intent)
+
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
+
+        productViewModel = run {
+            ViewModelProviders.of(this).get(ProductViewModel::class.java)
+        }
+
+        hilo=SynchronizeThread(this,productViewModel)
+
+        hilo.execute()
 
         if(usersViewModel.getUserIdLocal(1)==0){
             usersViewModel.saveUser(User(1,"",""))
