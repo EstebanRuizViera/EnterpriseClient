@@ -1,6 +1,7 @@
 package com.example.enterpriseclient
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +14,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
 
