@@ -1,61 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
-
-    <RelativeLayout
-        android:id="@+id/rellay"
-        android:layout_marginTop="50dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-
-        <RelativeLayout
-            android:id="@+id/imgUser"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-
+            android:background="@drawable/profile_rounded_corners"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:padding="3dp"
+                android:id="@+id/profile_pencil"
+                android:padding="25dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_black_24dp"/>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="30dp"
                 android:src="@drawable/profile" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sheldon Cooper"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-        </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="30dp"
+                android:text="sheldoncooper@bigbang.com"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/profileTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgUser"
-            android:layout_centerHorizontal="true"
-            android:text="Jack Ryan"
-            android:textStyle="bold"
-            android:textSize="22dp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/headerEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/imgUser"
-            android:layout_centerHorizontal="true"
-            android:text="jackyryan@jack.com"
-            android:textSize="18dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/book_button_circle"
+                    android:src="@drawable/teror2" />
 
 
-    </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/clickserie"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
 
-</RelativeLayout>
+                    <TextView
+                        android:id="@+id/profile_product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caminata a Teror"
+                        android:textColor="?attr/textColor"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profile_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="12 febrero 2020"
+                        android:textColor="?attr/textColor" />
+
+
+                    <TextView
+                        android:id="@+id/studio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Status: pending"
+                        android:textColor="?attr/textColor" />
+
+
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingRight="5dp"
+                        android:text="150,00€"
+                        android:textColor="?attr/textColor"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
