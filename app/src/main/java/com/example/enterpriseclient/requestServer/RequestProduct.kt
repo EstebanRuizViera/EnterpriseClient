@@ -92,7 +92,7 @@ class RequestProduct {
                             Product(
                                 0,
                                 product.getString("name"),
-                                "",
+                                product.getString("description"),
                                 product.getString("img"),
                                 0
                             )

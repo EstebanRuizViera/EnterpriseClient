@@ -31,6 +31,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.Name.text = mData[position].name
+        holder.Description.text = mData[position].description
 
 
         //holder.frameHome.setOnClickListener{
@@ -49,10 +50,12 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var Name: TextView
+        var Description: TextView
         var imgThumbnail: ImageView
 
         init {
             Name = itemView.findViewById(R.id.productName)
+            Description = itemView.findViewById(R.id.productDescription)
             imgThumbnail = itemView.findViewById(R.id.thumbnail)
 
         }
