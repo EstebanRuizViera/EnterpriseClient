@@ -17,7 +17,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
+            <TextView
                 android:id="@+id/profile_pencil"
                 android:padding="25dp"
                 android:clickable="true"
@@ -25,11 +25,11 @@
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"/>
+                android:drawableEnd="@drawable/ic_edit_black_24dp"/>
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_marginBottom="30dp"
                 android:src="@drawable/profile" />
 
@@ -58,69 +58,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewProfile"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:padding="15dp">
+                android:layout_height="match_parent" />
 
-                <ImageView
-                    android:id="@+id/thumbnail"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/book_button_circle"
-                    android:src="@drawable/teror2" />
-
-
-                <LinearLayout
-                    android:id="@+id/clickserie"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_margin="8dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/profile_product"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Caminata a Teror"
-                        android:textColor="?attr/textColor"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/profile_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="12 febrero 2020"
-                        android:textColor="?attr/textColor" />
-
-
-                    <TextView
-                        android:id="@+id/studio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Status: pending"
-                        android:textColor="?attr/textColor" />
-
-
-                    <TextView
-                        android:id="@+id/rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:paddingRight="5dp"
-                        android:text="150,00€"
-                        android:textColor="?attr/textColor"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
 

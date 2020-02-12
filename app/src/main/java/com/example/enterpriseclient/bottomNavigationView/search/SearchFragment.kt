@@ -73,16 +73,6 @@ class SearchFragment : Fragment() {
 
         RequestProduct.selectAllProducts(root.context,productsList,recyclerView)
 
-        //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-        val productAdapter =
-            ProductAdapter(
-                root.context,
-                productsList
-            )
-        recyclerView.setAdapter(productAdapter)
-
-
-
         return root
     }
 }

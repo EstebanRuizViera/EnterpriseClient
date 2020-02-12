@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/book_button_circle"
+            android:src="@drawable/teror2" />
+
+
+        <LinearLayout
+            android:id="@+id/clickserie"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/profile_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Caminata a Teror"
+                android:textColor="?attr/textColor"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profile_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="sep 12 2020"
+                android:textColor="?attr/textColor" />
+
+
+            <TextView
+                android:id="@+id/profile_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Status: pending"
+                android:textColor="?attr/textColor" />
+
+
+            <TextView
+                android:id="@+id/profile_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingRight="5dp"
+                android:text="150,00€"
+                android:textColor="?attr/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
