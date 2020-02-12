@@ -6,8 +6,13 @@
     <Button
         android:id="@+id/button_timestamp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:text="11:00"
-        android:background="?android:attr/selectableItemBackground"/>
+
+        android:background="?android:attr/selectableItemBackground">
+    </Button>
+
+    <View style="@style/Divider.Horizontal"/>
+
 
 </LinearLayout>
