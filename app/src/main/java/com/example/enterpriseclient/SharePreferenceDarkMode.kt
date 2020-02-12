@@ -8,7 +8,7 @@ import android.content.SharedPreferences
 class SharePreferenceDarkMode {
 
     internal var mySharedPref: SharedPreferences
-    lateinit var activity: Activity
+    val activity: Activity
 
     constructor(activity: Activity) {
         this.activity = activity
@@ -26,9 +26,24 @@ class SharePreferenceDarkMode {
         return mySharedPref.getBoolean("Night Mode", false)
     }
 
-    fun restartApp() {
-        val i = Intent(activity, MainActivity::class.java)
-        activity.startActivity(i)
-        activity.finish()
+
+
+    companion object{
+        @JvmStatic
+        fun checkDarkMode(activity: Activity){
+            var sharedPref = SharePreferenceDarkMode(activity)
+            if (sharedPref.loadNightModeState() == true) {
+                activity.setTheme(R.style.darkTheme)
+            } else
+                activity.setTheme(R.style.AppTheme)
+        }
+
+        @JvmStatic
+        fun restartApp(activity: Activity) {
+            val i = Intent(activity, MainActivity::class.java)
+            activity.startActivity(i)
+            activity.finish()
+        }
     }
+
 }

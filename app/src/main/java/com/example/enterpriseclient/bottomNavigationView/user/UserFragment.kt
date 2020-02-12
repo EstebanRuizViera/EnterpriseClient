@@ -24,11 +24,7 @@ class UserFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
 
-        sharedpref = SharePreferenceDarkMode(this.activity as Activity)
-        if (sharedpref.loadNightModeState() == true) {
-            root.context.setTheme(R.style.darkTheme)
-        } else
-            root.context.setTheme(R.style.AppTheme)
+        SharePreferenceDarkMode.checkDarkMode(activity as Activity)
 
         return root
     }

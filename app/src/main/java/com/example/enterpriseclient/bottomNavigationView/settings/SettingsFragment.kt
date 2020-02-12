@@ -21,18 +21,21 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var switchPreference :SwitchPreference
     internal lateinit var sharedpref: SharePreferenceDarkMode
 
+
+
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        SharePreferenceDarkMode.checkDarkMode(this.activity as Activity)
+
         setPreferencesFromResource(R.xml.pref_main, rootKey)
 
-        var context = this.activity
-        sharedpref = SharePreferenceDarkMode(activity as Activity)
-        if (sharedpref.loadNightModeState() == true) {
-            context!!.setTheme(R.style.darkTheme)
-        } else
-            context!!.setTheme(R.style.AppTheme)
+        var activity = this.activity
+
+
 
         var switchPreference = findPreference("darkMode") as androidx.preference.SwitchPreference
 
+        sharedpref = SharePreferenceDarkMode(this.activity as Activity)
 
         if (sharedpref.loadNightModeState() == true) {
             switchPreference!!.isChecked = true
@@ -46,10 +49,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 if (newValue as Boolean == true) {
                     Log.println(Log.INFO, null, "true" )
                     sharedpref.setNightModeState(true)
+                    SharePreferenceDarkMode.restartApp(activity as Activity)
                     return true
                 }
                 Log.println(Log.INFO, null, "false" )
                 sharedpref.setNightModeState(false)
+                SharePreferenceDarkMode.restartApp(activity as Activity)
                 return true
             }
         })

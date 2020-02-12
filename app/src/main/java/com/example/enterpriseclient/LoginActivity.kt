@@ -22,9 +22,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val intent = Intent(baseContext, MainActivity::class.java)
-        startActivity(intent)
-
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
