@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frameHome"
+    android:id="@+id/linearHome"
+    android:orientation="vertical"
     android:paddingTop="30dp"
     android:paddingRight="30dp"
     android:paddingLeft="30dp"
@@ -13,7 +14,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="230dp"
         app:cardBackgroundColor="?attr/cardBackground">
 
         <LinearLayout
@@ -88,4 +89,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</LinearLayout>
