@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string-array name="pref_language">
-        <item>Spanish</item>
+
         <item>English</item>
+        <item>Spanish</item>
     </string-array>
 
 </resources>
