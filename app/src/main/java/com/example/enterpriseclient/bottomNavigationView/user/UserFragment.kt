@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.AvailabilityActivity
 import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.fragment_user.toolbar
 
 
 class UserFragment : Fragment() {
@@ -25,6 +28,12 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
+
+        var activ = activity as AppCompatActivity
+
+        activ.setSupportActionBar(toolbar)
+
+//        activ.onBackPressed()
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
 

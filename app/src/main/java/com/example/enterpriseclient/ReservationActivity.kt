@@ -12,10 +12,16 @@ class ReservationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation)
 
+        setSupportActionBar(toolbar)
+
         checkDisponibility.setOnClickListener(){
             val intent = Intent(this,AvailabilityActivity::class.java)
             startActivity(intent)
         }
 
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
     }
 }

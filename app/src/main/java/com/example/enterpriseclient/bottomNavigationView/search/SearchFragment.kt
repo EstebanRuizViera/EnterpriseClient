@@ -31,13 +31,9 @@ class SearchFragment : Fragment() {
             ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
 
-        var activ = activity as AppCompatActivity
-
         val root = inflater.inflate(R.layout.recyclerview_home, container, false)
 
-        activ.setSupportActionBar(toolbar)
 
-        activ.onBackPressed()
 
 //        var bookButton = root.findViewById<TextView>(R.id.bookButton)
 //
