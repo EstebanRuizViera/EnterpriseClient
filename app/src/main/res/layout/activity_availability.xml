@@ -15,14 +15,27 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="280dp"
         android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAvailability"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Add to cart"
+            android:gravity="center"/>
 
     </LinearLayout>
 
