@@ -1,4 +1,4 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.example.enterpriseclient.R
+import com.example.enterpriseclient.model.Availability
 
 
 class AvailabilityAdapter (private val mContext: Context, private val mData: List<Availability>) :

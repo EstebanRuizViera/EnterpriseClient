@@ -1,4 +1,4 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.ReservationActivity
+import com.example.enterpriseclient.model.Product
 
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
@@ -21,7 +23,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
         val inflater = LayoutInflater.from(mContext)
-        view = inflater.inflate(R.layout.fragment_search, parent, false)
+        view = inflater.inflate(R.layout.fragment_home, parent, false)
         val viewHolder =
             MyViewHolder(
                 view

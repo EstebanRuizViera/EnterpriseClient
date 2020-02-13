@@ -1,9 +1,11 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.bottomNavigationView.settings
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.R
 
 class SharePreferenceDarkMode {
 
@@ -31,7 +33,10 @@ class SharePreferenceDarkMode {
     companion object{
         @JvmStatic
         fun checkDarkMode(activity: Activity){
-            var sharedPref = SharePreferenceDarkMode(activity)
+            var sharedPref =
+                SharePreferenceDarkMode(
+                    activity
+                )
             if (sharedPref.loadNightModeState() == true) {
                 activity.setTheme(R.style.darkTheme)
             } else

@@ -9,10 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.AvailabilityActivity
-import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
-import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.fragment_user.*
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import kotlinx.android.synthetic.main.fragment_user.toolbar
 
 

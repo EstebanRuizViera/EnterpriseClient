@@ -7,10 +7,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.SharePreferenceDarkMode
 
 
 /**
@@ -35,7 +33,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         var switchPreference = findPreference("darkMode") as androidx.preference.SwitchPreference
 
-        sharedpref = SharePreferenceDarkMode(this.activity as Activity)
+        sharedpref =
+            SharePreferenceDarkMode(
+                this.activity as Activity
+            )
 
         if (sharedpref.loadNightModeState() == true) {
             switchPreference!!.isChecked = true

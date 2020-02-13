@@ -1,4 +1,4 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.requestServer
 
 import android.app.Activity
 import android.os.AsyncTask

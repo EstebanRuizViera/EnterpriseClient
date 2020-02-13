@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.requestServer.RequestProduct
-import java.sql.Time
+import com.example.enterpriseclient.adapter.AvailabilityAdapter
+import com.example.enterpriseclient.model.Availability
 import java.sql.Timestamp
 
 class AvailabilityActivity : AppCompatActivity() {
@@ -18,10 +18,26 @@ class AvailabilityActivity : AppCompatActivity() {
 
         var availabilityList=arrayListOf<Availability>()
 
-        availabilityList.add(Availability(Timestamp(14)))
-        availabilityList.add(Availability(Timestamp(15)))
-        availabilityList.add(Availability(Timestamp(16)))
-        availabilityList.add(Availability(Timestamp(17)))
+        availabilityList.add(
+            Availability(
+                Timestamp(14)
+            )
+        )
+        availabilityList.add(
+            Availability(
+                Timestamp(15)
+            )
+        )
+        availabilityList.add(
+            Availability(
+                Timestamp(16)
+            )
+        )
+        availabilityList.add(
+            Availability(
+                Timestamp(17)
+            )
+        )
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
