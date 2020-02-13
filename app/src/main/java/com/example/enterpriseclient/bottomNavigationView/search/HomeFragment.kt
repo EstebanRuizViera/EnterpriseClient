@@ -1,31 +1,27 @@
 package com.example.enterpriseclient.bottomNavigationView.search
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.request.RequestOptions
-import com.example.enterpriseclient.Product
-import com.example.enterpriseclient.ProductAdapter
+import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.SharePreferenceDarkMode
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.requestServer.RequestProduct
 
-class SearchFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var searchViewModel: SearchViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     internal lateinit var sharedpref: SharePreferenceDarkMode
 
     companion object {
-        fun newInstance(): SearchFragment = SearchFragment()
+        fun newInstance(): HomeFragment = HomeFragment()
 
 
     }
@@ -40,8 +36,9 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        searchViewModel =
-            ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        homeViewModel =
+            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
 
         val root = inflater.inflate(R.layout.recyclerview_home, container, false)
 

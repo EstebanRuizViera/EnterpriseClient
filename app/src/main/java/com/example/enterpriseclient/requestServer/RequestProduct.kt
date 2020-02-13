@@ -1,30 +1,25 @@
 package com.example.enterpriseclient.requestServer
 
 import android.content.Context
-import android.os.AsyncTask
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.enterpriseclient.Product
-import com.example.enterpriseclient.ProductAdapter
-import com.example.enterpriseclient.SynchronizeThread
+import com.example.enterpriseclient.model.Product
+import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
-import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
-import kotlinx.coroutines.awaitAll
 
 class RequestProduct {
 
     companion object {
         private var db: ReservationDatabase? = null
-        const val URL = "http://192.168.103.210:8000"
+        const val URL = "http://localhost:8000"
 
         //------------- PRODUCTOS --------------------
 
@@ -92,7 +87,7 @@ class RequestProduct {
                             Product(
                                 0,
                                 product.getString("name"),
-                                "",
+                                product.getString("description"),
                                 product.getString("img"),
                                 0
                             )

@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
-import com.example.enterpriseclient.requestServer.RequestProduct
 import com.example.enterpriseclient.requestServer.RequestUser
+import com.example.enterpriseclient.requestServer.SynchronizeThread
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -30,7 +30,10 @@ class LoginActivity : AppCompatActivity() {
             ViewModelProviders.of(this).get(ProductViewModel::class.java)
         }
 
-        hilo=SynchronizeThread(this,productViewModel)
+        hilo= SynchronizeThread(
+            this,
+            productViewModel
+        )
 
         hilo.execute()
 

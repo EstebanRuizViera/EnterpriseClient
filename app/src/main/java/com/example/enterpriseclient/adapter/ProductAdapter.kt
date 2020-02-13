@@ -1,15 +1,19 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.ReservationActivity
+import com.example.enterpriseclient.model.Product
 
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
@@ -19,7 +23,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
         val inflater = LayoutInflater.from(mContext)
-        view = inflater.inflate(R.layout.fragment_search, parent, false)
+        view = inflater.inflate(R.layout.fragment_home, parent, false)
         val viewHolder =
             MyViewHolder(
                 view
@@ -31,12 +35,13 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.Name.text = mData[position].name
+        holder.Description.text = mData[position].description
 
 
-        //holder.frameHome.setOnClickListener{
-           // val intent = Intent(mContext, LoginActivity::class.java)
-           // mContext.startActivity(intent)
-       // }
+        holder.linearHome.setOnClickListener{
+            val intent = Intent(mContext, ReservationActivity::class.java)
+            mContext.startActivity(intent)
+        }
 
         // Load Image from the internet and set it into Imageview using Glide
         Glide.with(mContext).load(mData[position].image_url).apply(option)
@@ -49,11 +54,15 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var Name: TextView
+        var Description: TextView
         var imgThumbnail: ImageView
+        lateinit var linearHome: LinearLayout
 
         init {
             Name = itemView.findViewById(R.id.productName)
+            Description = itemView.findViewById(R.id.productDescription)
             imgThumbnail = itemView.findViewById(R.id.thumbnail)
+            linearHome = itemView.findViewById(R.id.linearHome)
 
         }
     }

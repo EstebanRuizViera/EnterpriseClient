@@ -1,16 +1,15 @@
 package com.example.enterpriseclient
 
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.R.*
-import com.example.enterpriseclient.bottomNavigationView.search.SearchFragment
+import com.example.enterpriseclient.bottomNavigationView.search.HomeFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
             when (menuItem.itemId) {
                 id.navigation_search -> {
-                    val fragment = SearchFragment.newInstance()
+                    val fragment = HomeFragment.newInstance()
                     openFragment(fragment)
                     true
                 }
