@@ -4,6 +4,8 @@ package com.example.enterpriseclient
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.R.*
@@ -56,6 +58,20 @@ class MainActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
+    override fun onPrepareOptionsMenu(menu :Menu):Boolean {
+        //Se accede al ítem usando el id que
+        //tiene dentro del menú directamente
+        var opcion1 = menu.findItem(R.id.cart_menu);
+        opcion1.setEnabled(true);
+
+        return true;
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_action_bar, menu)
+        return true
+    }
+
 
     override fun onBackPressed() {
         //super.onBackPressed()
