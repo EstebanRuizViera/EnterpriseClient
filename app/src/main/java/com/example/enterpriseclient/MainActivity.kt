@@ -1,6 +1,7 @@
 package com.example.enterpriseclient
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragme
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_reservation.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar);
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
 
@@ -69,6 +72,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_action_bar, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.cart_menu) {
+            val b = Intent(this, AvailabilityActivity::class.java)
+            startActivity(b)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
