@@ -7,6 +7,20 @@
     tools:context=".ReservationActivity"
     android:orientation="vertical">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppTheme">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="Availability"
+            app:titleTextColor="#ffffff" />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -45,8 +59,9 @@ Dark stubble graciously compliments his eyes and cheekbones and leaves a pleasur
             android:id="@+id/checkDisponibility"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Check disponibility"
+            android:text="Check availability"
             android:layout_gravity="center"
+            android:background="@drawable/availability_button_circle"
             android:clickable="true"/>
 
     </LinearLayout>
