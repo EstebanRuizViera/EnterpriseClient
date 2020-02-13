@@ -1,19 +1,18 @@
 package com.example.enterpriseclient.bottomNavigationView.search
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.AvailabilityActivity
 import com.example.enterpriseclient.Product
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.requestServer.RequestProduct
+import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment() {
 
@@ -32,7 +31,13 @@ class SearchFragment : Fragment() {
             ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
 
+        var activ = activity as AppCompatActivity
+
         val root = inflater.inflate(R.layout.recyclerview_home, container, false)
+
+        activ.setSupportActionBar(toolbar)
+
+        activ.onBackPressed()
 
 //        var bookButton = root.findViewById<TextView>(R.id.bookButton)
 //
@@ -55,5 +60,8 @@ class SearchFragment : Fragment() {
         RequestProduct.selectAllProducts(root.context,productsList,recyclerView)
 
         return root
+
     }
+
+
 }
