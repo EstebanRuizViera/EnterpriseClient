@@ -31,11 +31,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         SharePreferenceDarkMode.checkDarkMode(activity as Activity)
-
         setPreferencesFromResource(R.xml.pref_main, rootKey)
 
         changeValueSwitch()
 
+        changeLanguage()
     }
 
     private fun changeValueSwitch() {
@@ -70,19 +70,21 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeLanguage() {
         listPreference = findPreference("Language") as ListPreference
 
+
         val intent = Intent(this.context, MainActivity::class.java)
 
         listPreference.setOnPreferenceChangeListener(object :
             Preference.OnPreferenceChangeListener {
             override fun onPreferenceChange(preference: Preference?, newValue: Any): Boolean {
 
-                if (listPreference!!.getKey().equals("english")) {
+
+                if (listPreference!!.value.equals("English")) {
 
                     selectLanguageEnglish(intent)
-                    Log.println(Log.INFO, null, "spanish ")
-                } else if (listPreference!!.getKey().equals("spanish")) {
-                    selectLanguageSpanish(intent)
                     Log.println(Log.INFO, null, "english ")
+                } else if (listPreference!!.value.equals("Spanish")) {
+                    selectLanguageSpanish(intent)
+                    Log.println(Log.INFO, null, "spanish")
                 }
                 Log.println(Log.INFO, null, "true ")
                 return true
@@ -118,4 +120,5 @@ class SettingsFragment : PreferenceFragmentCompat() {
             )
         startActivity(intent)
     }
+
 }
