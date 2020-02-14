@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(layout.activity_main)
         setSupportActionBar(toolbar);
 
         //setSupportActionBar(toolbar)
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 id.navigation_user -> {
-                    val fragment = UserFragment.newInstance()
+                    val fragment = LoginFragment.newInstance()
                     openFragment(fragment)
                     //supportActionBar!!.hide()
                     true
@@ -108,7 +108,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    override fun onBackPressed() {
-        //super.onBackPressed()
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

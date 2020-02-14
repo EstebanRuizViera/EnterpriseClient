@@ -12,6 +12,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.*
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
+import com.example.enterpriseclient.AvailabilityActivity
+import com.example.enterpriseclient.EditProfileActivity
+import com.example.enterpriseclient.R
+import com.example.enterpriseclient.ReservationActivity
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
+
 
 
 class UserFragment : Fragment() {

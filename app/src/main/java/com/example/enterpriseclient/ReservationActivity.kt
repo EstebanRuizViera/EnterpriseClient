@@ -21,7 +21,8 @@ class ReservationActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        //super.onBackPressed()
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
