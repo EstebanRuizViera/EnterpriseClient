@@ -29,7 +29,6 @@ class HomeFragment : Fragment() {
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()
 
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
