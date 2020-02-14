@@ -1,16 +1,22 @@
-package com.example.enterpriseclient.bottomNavigationView.search
+package com.example.enterpriseclient.bottomNavigationView.home
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.enterpriseclient.AvailabilityActivity
+import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.requestServer.RequestProduct
 
@@ -43,12 +49,11 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.recyclerview_home, container, false)
 
 
-
         var productsList=arrayListOf<Product>()
 
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewHome)
 
-        //3º) Indico la disposición en la que se mostrarán los items en el RecyclerView (P.Ej: GridLayout de 2 columnas)
+
         val layoutManagerProducts = GridLayoutManager(root.context, 1)
         recyclerView.setLayoutManager(layoutManagerProducts)
 

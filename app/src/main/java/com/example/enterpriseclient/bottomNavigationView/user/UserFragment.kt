@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.AvailabilityActivity
+import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import kotlinx.android.synthetic.main.fragment_user.toolbar
 
@@ -29,17 +31,12 @@ class UserFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
 
-        var activ = activity as AppCompatActivity
-
-        activ.setSupportActionBar(toolbar)
-
-//        activ.onBackPressed()
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
 
 
         profilePencil.setOnClickListener {
-            val intent = Intent(activity, AvailabilityActivity::class.java)
+            val intent = Intent(activity, EditProfileActivity::class.java)
             startActivity(intent)
         }
 
