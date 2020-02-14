@@ -186,15 +186,13 @@ class RequestUser {
         @JvmStatic fun deleteUser(context: Context,usersViewModel: UsersViewModel) {
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/users/"+usersViewModel.getUserId(1)
+            val url = URL +"/auth/users/"+usersViewModel.getUserId(1)
             val req = object : StringRequest(
                 Request.Method.DELETE, url,
                 Response.Listener {
                     Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-
-//                    val intent=Intent(context,LoginActivity::class.java)
-//                    context.startActivity(intent)
-
+                    Log.println(Log.INFO,null,"delete ")
+                    logout(context,usersViewModel)
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO,null,"ERROR "+it.toString())
@@ -216,7 +214,8 @@ class RequestUser {
         }
 
         @JvmStatic fun logout(context: Context,usersViewModel: UsersViewModel){
-            usersViewModel.updateToken(User(1,"","","",""))
+            usersViewModel.updateUser(User(1,"","You are not logged in","login",""))
+            Log.println(Log.INFO,null,"log_out ")
 //            val intent = Intent(context,LoginActivity::class.java)
 //            context.startActivity(intent)
         }

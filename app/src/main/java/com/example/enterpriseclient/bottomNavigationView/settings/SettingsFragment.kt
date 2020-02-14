@@ -7,9 +7,12 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.preference.*
 import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
+import com.example.enterpriseclient.requestServer.RequestUser
 import java.util.*
 
 
@@ -21,6 +24,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var switchPreference: SwitchPreference
     private lateinit var listPreference: ListPreference
     internal lateinit var sharedpref: SharePreferenceDarkMode
+    private lateinit var logout: Preference
+    private lateinit var deleteAccount : Preference
+
+    private lateinit var usersViewModel: UsersViewModel
 
 
     companion object {
@@ -32,9 +39,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         SharePreferenceDarkMode.checkDarkMode(activity as Activity)
         setPreferencesFromResource(R.xml.pref_main, rootKey)
 
-        changeValueSwitch()
+        usersViewModel = run {
+            ViewModelProviders.of(this).get(UsersViewModel::class.java)
+        }
 
+        changeValueSwitch()
         changeLanguage()
+        logout()
+        delete()
     }
 
     private fun changeValueSwitch() {
@@ -90,6 +102,28 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         })
 
+    }
+    private fun logout() {
+        logout = findPreference("log_out")
+
+        logout.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
+            override fun onPreferenceClick(preference: Preference?): Boolean {
+
+                RequestUser.logout(context!!,usersViewModel)
+                return true
+            }
+        })
+    }
+
+    private fun delete() {
+        deleteAccount = findPreference("delete_account")
+
+        deleteAccount.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
+            override fun onPreferenceClick(preference: Preference?): Boolean {
+                RequestUser.deleteUser(context!!,usersViewModel)
+                return true
+            }
+        })
     }
 
     private fun selectLanguageSpanish(intent : Intent){

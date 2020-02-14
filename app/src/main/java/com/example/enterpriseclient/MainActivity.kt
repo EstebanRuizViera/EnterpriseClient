@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 id.navigation_user -> {
-                    val fragment = LoginFragment.newInstance()
+                    val fragment = UserFragment.newInstance()
                     openFragment(fragment)
                     //supportActionBar!!.hide()
                     true
