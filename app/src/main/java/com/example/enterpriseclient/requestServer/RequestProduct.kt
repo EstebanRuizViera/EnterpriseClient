@@ -19,7 +19,7 @@ class RequestProduct {
 
     companion object {
         private var db: ReservationDatabase? = null
-        const val URL = "http://localhost:8000"
+        const val URL = "http://192.168.1.210:8000"
 
         //------------- PRODUCTOS --------------------
 

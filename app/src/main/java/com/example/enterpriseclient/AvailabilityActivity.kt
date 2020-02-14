@@ -6,17 +6,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Availability
+import kotlinx.android.synthetic.main.fragment_user.*
 import java.sql.Timestamp
 
 class AvailabilityActivity : AppCompatActivity() {
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_availability)
 
-        var availabilityList=arrayListOf<Availability>()
+        setSupportActionBar(toolbar)
+
+        var availabilityList = arrayListOf<Availability>()
 
         availabilityList.add(
             Availability(
@@ -59,5 +61,8 @@ class AvailabilityActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        //super.onBackPressed()
+    }
 
 }

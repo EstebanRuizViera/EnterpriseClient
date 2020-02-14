@@ -17,8 +17,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="Availability"
-            app:titleTextColor="#ffffff" />
+            app:titleTextColor="#ffffff"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Product" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView

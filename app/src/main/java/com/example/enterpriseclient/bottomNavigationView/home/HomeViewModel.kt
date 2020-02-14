@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.bottomNavigationView.search
+package com.example.enterpriseclient.bottomNavigationView.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,17 +1,19 @@
 package com.example.enterpriseclient
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.enterpriseclient.R.*
-import com.example.enterpriseclient.bottomNavigationView.search.HomeFragment
+import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_user.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(layout.activity_main)
+
+        setSupportActionBar(toolbar)
+
 
         val bottomNavigationView: BottomNavigationView = findViewById(id.bottom_navigation_view)
 
@@ -30,17 +35,20 @@ class MainActivity : AppCompatActivity() {
                 id.navigation_search -> {
                     val fragment = HomeFragment.newInstance()
                     openFragment(fragment)
+                    supportActionBar!!.show()
                     true
                 }
 
                 id.navigation_settings -> {
                     val fragment = SettingsFragment.newInstance()
                     openFragment(fragment)
+                    supportActionBar!!.hide()
                     true
                 }
                 id.navigation_user -> {
                     val fragment = UserFragment.newInstance()
                     openFragment(fragment)
+                    supportActionBar!!.hide()
                     true
                 }
                 else -> false
@@ -61,15 +69,27 @@ class MainActivity : AppCompatActivity() {
     override fun onPrepareOptionsMenu(menu :Menu):Boolean {
         //Se accede al ítem usando el id que
         //tiene dentro del menú directamente
-        var opcion1 = menu.findItem(R.id.cart_menu);
-        opcion1.setEnabled(true);
+        var opcion1 = menu.findItem(R.id.cart_menu)
+        opcion1.setEnabled(true)
 
-        return true;
+        return true
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_action_bar, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.cart_menu) {
+            val b = Intent(this, AvailabilityActivity::class.java)
+            startActivity(b)
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 
 
     override fun onBackPressed() {
