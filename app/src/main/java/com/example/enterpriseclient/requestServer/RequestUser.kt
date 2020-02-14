@@ -9,14 +9,19 @@ import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
 import com.example.enterpriseclient.LoginActivity
+import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.ReservationActivity
+import com.example.enterpriseclient.bottomNavigationView.user.LoginFragment
+import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
+import org.json.JSONArray
 import org.json.JSONObject
 
 class RequestUser {
@@ -29,7 +34,7 @@ class RequestUser {
         //------------------- User, login and register -----------------------
 
 
-        @JvmStatic fun login(context: Context,email_text:EditText,password_text:EditText,usersViewModel: UsersViewModel) {
+        @JvmStatic fun login(activity: MainActivity, context: Context,email_text:EditText,password_text:EditText,usersViewModel: UsersViewModel) {
 
             val loginJsonobj = JSONObject()
 
@@ -41,7 +46,7 @@ class RequestUser {
             val url = URL +"/api/login"
             val req = object : JsonObjectRequest(Request.Method.POST, url, loginJsonobj,
                 Response.Listener {
-                    updateToken(context,email_text,usersViewModel,it.getString("token"))
+                    updateToken(activity,context,email_text,usersViewModel,it.getString("token"))
                     Toast.makeText(context, "Identificacion correcta ", Toast.LENGTH_SHORT).show()
                 },
                 Response.ErrorListener {
@@ -52,21 +57,25 @@ class RequestUser {
         }
 
 
-        @JvmStatic fun updateToken(context: Context,email_text:EditText,usersViewModel: UsersViewModel,token:String) {
+        @JvmStatic fun updateToken(activity: MainActivity, context: Context,email_text:EditText,usersViewModel: UsersViewModel,token:String) {
 
+            val jsonArray = JSONArray()
             val jsonObject = JSONObject()
 
             jsonObject.put("email",email_text.text.toString())
-
+            jsonArray.put(jsonObject)
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
             val url = URL +"/api/user"
-            val req = object : JsonObjectRequest(Request.Method.POST, url, jsonObject,
+            val req = object : JsonArrayRequest(Request.Method.POST, url, jsonArray,
                 Response.Listener {
-                    usersViewModel.updateUser(User(1, it.getString("id"), token))
+                    Log.println(Log.INFO,null,"ERROR "+ it.toString())
+                    usersViewModel.updateUser(User(1, it.getJSONObject(0).getString("id"),it.getJSONObject(0).getString("name"),it.getJSONObject(0).getString("email"), token))
 
-                    val intent = Intent(context,ReservationActivity::class.java)
-                    context.startActivity(intent)
+//                    val intent = Intent(context,MainActivity::class.java)
+//                    context.startActivity(intent)
+                    val fragment = UserFragment.newInstance()
+                    activity.openFragment(fragment)
 
                 },
                 Response.ErrorListener {
@@ -78,7 +87,7 @@ class RequestUser {
         }
 
 
-        @JvmStatic fun registerUser(context: Context,rg_name:EditText,rg_email:EditText,rg_password:EditText) {
+        @JvmStatic fun registerUser(activity: MainActivity, context: Context,rg_name:EditText,rg_email:EditText,rg_password:EditText) {
 
             val loginJsonobj = JSONObject()
 
@@ -94,18 +103,20 @@ class RequestUser {
 
                     Toast.makeText(context, "Registro realizado !", Toast.LENGTH_LONG).show()
 
-                    val intent = Intent(context, LoginActivity::class.java)
-                    context.startActivity(intent)
+//                    val intent = Intent(context, MainActivity::class.java)
+//                    context.startActivity(intent)
+                    val fragment = LoginFragment.newInstance()
+                    activity.openFragment(fragment)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO,null,"Error al registrar: "+it.networkResponse)
+                    Toast.makeText(context, "Registro no realizado !", Toast.LENGTH_LONG).show()
                 })
             {}
 
             queue.add(req)
         }
 
-        @JvmStatic fun selectUser(context: Context, usersViewModel: UsersViewModel, name_editText: TextView, lastname_editText:TextView, dni_editText:TextView, telephone:TextView, email_editText:TextView) {
+        @JvmStatic fun selectUser(context: Context, usersViewModel: UsersViewModel, name_editText: TextView, email_editText:TextView) {
 
 
             val queue = Volley.newRequestQueue(context)
@@ -115,9 +126,6 @@ class RequestUser {
                 Response.Listener {
 
                     name_editText.setText(it.getString("name"))
-                    lastname_editText.setText(it.getString("lastname"))
-                    dni_editText.setText(it.getString("dni"))
-                    telephone.setText(it.getString("phone"))
                     email_editText.setText(it.getString("email"))
 
                 },
@@ -139,18 +147,15 @@ class RequestUser {
             queue.add(req)
         }
 
-        @JvmStatic fun updateUser(context: Context,usersViewModel: UsersViewModel,name_editText:TextView,lastname_editText:TextView,dni_editText:TextView,telephone:TextView,email_editText:TextView) {
+        @JvmStatic fun updateUser(context: Context,usersViewModel: UsersViewModel,name_editText:TextView, email_editText:TextView) {
 
             val updateJsonobj = JSONObject()
 
             updateJsonobj.put("name", name_editText.text)
-            updateJsonobj.put("lastname", lastname_editText.text)
-            updateJsonobj.put("dni", dni_editText.text)
-            updateJsonobj.put("phone", telephone.text)
             updateJsonobj.put("email", email_editText.text)
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/users/"+usersViewModel.getUserId(1)
+            val url = URL +"/auth/users/"+usersViewModel.getUserId(1)
             val req = object : JsonObjectRequest(
                 Request.Method.PUT, url, updateJsonobj,
                 Response.Listener {
@@ -211,7 +216,7 @@ class RequestUser {
         }
 
         @JvmStatic fun logout(context: Context,usersViewModel: UsersViewModel){
-            usersViewModel.updateToken(User(1,"",""))
+            usersViewModel.updateToken(User(1,"","","",""))
 //            val intent = Intent(context,LoginActivity::class.java)
 //            context.startActivity(intent)
         }

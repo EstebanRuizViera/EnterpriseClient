@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
         val layoutManagerProducts = GridLayoutManager(root.context, 1)
         recyclerView.setLayoutManager(layoutManagerProducts)
 
-        RequestProduct.selectAllProducts(root.context,productsList,recyclerView)
+        RequestProduct.selectAllProducts(root.context, productsList, recyclerView)
 
 
         return root

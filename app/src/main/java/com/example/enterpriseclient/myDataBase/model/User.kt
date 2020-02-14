@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull
 data class User(
     @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "id_remoto") @NotNull val id_remoto: String,
+    @ColumnInfo(name = "name") @NotNull val name: String,
+    @ColumnInfo(name = "email") @NotNull val email: String,
     @ColumnInfo(name = "token") @NotNull val token: String
 ) {
     companion object {
