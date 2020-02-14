@@ -67,7 +67,7 @@
                         android:background="@drawable/book_button_circle"
                         android:text="Book now"
                         android:textAllCaps="false"
-                        android:textColor="?attr/textColor" />
+                        android:textColor="?attr/bookButtonColor" />
 
                 </LinearLayout>
 

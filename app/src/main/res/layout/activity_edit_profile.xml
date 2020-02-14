@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/backgroundColor"
     tools:context=".EditProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -49,6 +50,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="36dp"
         android:text="Edit profile"
+        android:textColor="?attr/textColor"
         android:background="@drawable/login_button_circle"
         android:textAllCaps="false"
         android:textSize="20sp"
