@@ -16,7 +16,7 @@ class AvailabilityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_availability)
 
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
 
         var availabilityList = arrayListOf<Availability>()
 
@@ -62,7 +62,7 @@ class AvailabilityActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        //super.onBackPressed()
+        super.onBackPressed()
     }
 
 }

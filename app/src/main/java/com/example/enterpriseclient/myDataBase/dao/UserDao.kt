@@ -21,6 +21,9 @@ interface UserDao {
     @Query("SELECT token FROM " + User.TABLE_NAME + " WHERE id=:id")
     fun getToken(id: Int): String
 
+    @Query("SELECT * FROM " + User.TABLE_NAME + " WHERE id=:id")
+    fun getUser(id: Int): List<User>
+
     @Query("SELECT id_remoto FROM " + User.TABLE_NAME + " WHERE id=:id")
     fun getUserId(id: Int): String
 

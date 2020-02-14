@@ -2,23 +2,21 @@ package com.example.enterpriseclient.bottomNavigationView.user
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.enterpriseclient.AvailabilityActivity
-import com.example.enterpriseclient.EditProfileActivity
-import com.example.enterpriseclient.R
-import com.example.enterpriseclient.ReservationActivity
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-import kotlinx.android.synthetic.main.fragment_user.toolbar
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
+import com.example.enterpriseclient.*
+import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 
 
 class UserFragment : Fragment() {
 
-    internal lateinit var sharedpref: SharePreferenceDarkMode
+    private lateinit var usersViewModel: UsersViewModel
 
     companion object {
         fun newInstance(): UserFragment = UserFragment()
@@ -31,13 +29,38 @@ class UserFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
 
+        usersViewModel = run {
+            ViewModelProviders.of(this).get(UsersViewModel::class.java)
+        }
+
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
+
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
+        var textName = root.findViewById<TextView>(R.id.textName)
+        var textEmail = root.findViewById<TextView>(R.id.textEmail)
+
+        var list = usersViewModel.getUser(1)
+
+        if(list != null){
+            textName.setText(list.get(0).name)
+            textEmail.setText(list.get(0).email)
+        }
+
+        textEmail.setOnClickListener(){
+            if(textEmail.text.toString().equals("login")){
+                val fragment = LoginFragment.newInstance()
+                val activity = activity as MainActivity
+                activity.openFragment(fragment)
+            }
+        }
 
 
         profilePencil.setOnClickListener {
-            val intent = Intent(activity, EditProfileActivity::class.java)
-            startActivity(intent)
+            //if(!textEmail.text.toString().equals("login")) {
+                val intent = Intent(activity, EditProfileActivity::class.java)
+                startActivity(intent)
+            //}
         }
 
         return root

@@ -20,7 +20,7 @@ class RegisterActivity : AppCompatActivity() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
         rg_register.setOnClickListener(){
-            RequestUser.registerUser(this,rg_name,rg_email,rg_password)
+            //RequestUser.registerUser(this,rg_name,rg_email,rg_password)
         }
 
         rg_registerText.setOnClickListener {

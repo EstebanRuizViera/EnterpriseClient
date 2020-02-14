@@ -25,7 +25,7 @@
 
 
     <EditText
-        android:id="@+id/editAlias"
+        android:id="@+id/editName"
         android:layout_width="300dp"
         android:layout_marginTop="250dp"
         android:layout_height="wrap_content"
