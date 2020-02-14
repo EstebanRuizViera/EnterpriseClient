@@ -16,7 +16,7 @@
             android:id="@+id/thumbnail"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:background="@drawable/book_button_circle"
+            android:background="@drawable/loading_shape"
             android:src="@drawable/teror2" />
 
 
