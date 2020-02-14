@@ -13,6 +13,10 @@ import com.example.enterpriseclient.R
  */
 class LoginFragment : Fragment() {
 
+    companion object {
+        fun newInstance(): LoginFragment = LoginFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

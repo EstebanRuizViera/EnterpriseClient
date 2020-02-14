@@ -13,7 +13,7 @@ import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-import kotlinx.android.synthetic.main.fragment_user.toolbar
+
 
 
 class UserFragment : Fragment() {

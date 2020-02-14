@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Availability
+import kotlinx.android.synthetic.main.activity_availability.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import java.sql.Timestamp
 
@@ -61,8 +62,9 @@ class AvailabilityActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        //super.onBackPressed()
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
