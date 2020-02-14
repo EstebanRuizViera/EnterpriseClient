@@ -22,7 +22,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/PreferenceScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

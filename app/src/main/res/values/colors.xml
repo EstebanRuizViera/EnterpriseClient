@@ -11,5 +11,6 @@
     <color name="cardBackground">#ffffff</color>
     <color name="textColor">#000000</color>
     <color name="BookButtonColor">#ffffff</color>
+    <color name="summaryColor">#A4A4A4</color>
 
 </resources>
