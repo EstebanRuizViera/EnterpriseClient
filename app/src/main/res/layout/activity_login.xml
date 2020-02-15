@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hotel" />
+        app:srcCompat="@drawable/hotel2" />
 
     <EditText
         android:id="@+id/lg_email"
