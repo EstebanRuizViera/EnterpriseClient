@@ -2,6 +2,7 @@ package com.example.enterpriseclient.requestServer
 
 import android.content.Context
 import android.util.Log
+import android.widget.CalendarView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,13 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.adapter.ProductAdapter
+import com.example.enterpriseclient.model.Availability
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
+import java.sql.Timestamp
 
 class RequestProduct {
 
@@ -46,11 +50,11 @@ class RequestProduct {
 
 
         @JvmStatic
-        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView) {
+        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView, id : String) {
 
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL + "/api/products/1"
+            val url = URL + "/api/products/" +id
             val req = object : JsonObjectRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
@@ -58,6 +62,7 @@ class RequestProduct {
 
                     productName.setText(it.getString("name"))
                     productDescription.setText(it.getString("description"))
+
 
 //                    Log.println(
 ////                        Log.INFO,
@@ -72,6 +77,49 @@ class RequestProduct {
 
             queue.add(req)
         }
+
+
+        @JvmStatic
+        fun selectAvailabilityForProduct(context: Context, calendar : CalendarView, availabilities: ArrayList<Availability>,
+                                         recyclerView: RecyclerView, id : String) {
+
+
+            val queue = Volley.newRequestQueue(context)
+            val url = URL + "/select_availabilities/" +id
+            val req = object : JsonArrayRequest(
+                Request.Method.GET, url, null,
+                Response.Listener {
+                    var array = it
+                    for (i in 0 until array.length()) {
+                        val availability = array.getJSONObject(i)
+                        availabilities.add(
+                            Availability(
+                                availability.getInt("id"),
+                                availability.getString("timestamp"),
+                                availability.getInt("price"),
+                                availability.getInt("quota"),
+                                availability.getInt("id_product")
+
+                            )
+                        )
+
+                    }
+                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
+                    val availabilityAdapter =
+                        AvailabilityAdapter(
+                            context,
+                            availabilities
+                        )
+                    recyclerView.setAdapter(availabilityAdapter)
+                },
+                Response.ErrorListener {
+                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                }) {}
+
+            queue.add(req)
+        }
+
+
 
         fun selectAllProducts(
             context: Context,
@@ -92,7 +140,7 @@ class RequestProduct {
                         val product = array.getJSONObject(i)
                         productList.add(
                             Product(
-                                0,
+                                product.getInt("id"),
                                 product.getString("name"),
                                 product.getString("description"),
                                 product.getString("img"),

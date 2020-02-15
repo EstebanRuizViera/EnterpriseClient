@@ -40,6 +40,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
 
         holder.linearHome.setOnClickListener{
             val intent = Intent(mContext, ReservationActivity::class.java)
+            intent.putExtra("id", mData[position].id)
             mContext.startActivity(intent)
         }
 
