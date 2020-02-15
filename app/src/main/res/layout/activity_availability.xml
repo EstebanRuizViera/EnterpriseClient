@@ -16,9 +16,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:titleTextColor="#ffffff"
+            app:titleTextColor="?attr/textColor"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:title="Availability" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <CalendarView

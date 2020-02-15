@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:titleTextColor="#ffffff"
+            app:titleTextColor="?attr/textColor"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:title="Edit profile" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:hint="@string/hint_name"
+        android:textColor="?attr/descriptionColor"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -41,6 +42,7 @@
         android:layout_marginBottom="28dp"
         android:layout_gravity="center_horizontal"
         android:hint="@string/hint_email"
+        android:textColor="?attr/descriptionColor"
         android:inputType="textEmailAddress"/>
 
     <Button
