@@ -2,6 +2,7 @@ package com.example.enterpriseclient.requestServer
 
 import android.content.Context
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -45,19 +46,25 @@ class RequestProduct {
 
 
         @JvmStatic
-        fun selectProduct(context: Context, productViewModel: ProductViewModel) {
+        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView) {
 
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL + "/auth/products/1"
+            val url = URL + "/api/products/1"
             val req = object : JsonObjectRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    Log.println(
-                        Log.INFO,
-                        null,
-                        "Name: " + it.getString("name") + " description: " + it.getString("description")
-                    )
+
+
+                    productName.setText(it.getString("name"))
+                    productDescription.setText(it.getString("description"))
+
+//                    Log.println(
+////                        Log.INFO,
+////                        null,
+////                        "Name: " + it.getString("name") + " description: " + it.getString("description")
+////                    )
+
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "ERROR " + it.message)

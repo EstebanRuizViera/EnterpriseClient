@@ -1,9 +1,11 @@
 package com.example.enterpriseclient
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.enterpriseclient.requestServer.RequestProduct
 import kotlinx.android.synthetic.main.activity_reservation.*
+
 
 class ReservationActivity : AppCompatActivity() {
 
@@ -17,6 +19,8 @@ class ReservationActivity : AppCompatActivity() {
             val intent = Intent(this,AvailabilityActivity::class.java)
             startActivity(intent)
         }
+
+        RequestProduct.selectProduct(this, null, productReservationName, productReservationDescription)
 
     }
 
