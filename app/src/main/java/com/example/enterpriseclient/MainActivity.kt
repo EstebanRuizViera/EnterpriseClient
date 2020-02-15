@@ -1,11 +1,8 @@
 package com.example.enterpriseclient
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -13,7 +10,6 @@ import com.example.enterpriseclient.R.*
 import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.bottomNavigationView.user.LoginFragment
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel

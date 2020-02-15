@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#0775A5">
+        style="@style/AppTheme">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:title="Product"
-            app:titleTextColor="#ffffff" />
+            app:titleTextColor="?attr/textColor" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
