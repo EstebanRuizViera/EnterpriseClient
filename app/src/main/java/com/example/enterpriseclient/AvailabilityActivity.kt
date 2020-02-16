@@ -3,29 +3,50 @@ package com.example.enterpriseclient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.CalendarView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Availability
+import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestProduct
+import com.example.enterpriseclient.requestServer.RequestUser
 import kotlinx.android.synthetic.main.activity_availability.*
 import kotlinx.android.synthetic.main.activity_availability.toolbar
-import kotlinx.android.synthetic.main.activity_reservation.*
-import kotlinx.android.synthetic.main.fragment_user.*
-import java.sql.Timestamp
 
 class AvailabilityActivity : AppCompatActivity() {
+
+    private lateinit var usersViewModel: UsersViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_availability)
 
+
+
         setSupportActionBar(toolbar)
 
         var bundle: Bundle? = intent.extras
         val message = bundle!!.getInt("id")
         Log.println(Log.INFO, null, "LLEGO AQUI" + message )
+
+
+        val calendarView = findViewById<CalendarView>(R.id.calendar)
+
+        calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            var msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
+
+        usersViewModel = run {
+            ViewModelProviders.of(this).get(UsersViewModel::class.java)
+        }
+
+        var number = usersViewModel.getUserId(1)
+
+
 
         var availabilityList = arrayListOf<Availability>()
 
@@ -42,14 +63,15 @@ class AvailabilityActivity : AppCompatActivity() {
 
         RequestProduct.selectAvailabilityForProduct(this, calendar, availabilityList,recyclerView, "1"  )
 
-//        //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-//        val availabilityAdapter =
-//            AvailabilityAdapter(
-//                this,
-//                availabilityList
-//            )
-//        recyclerView.setAdapter(availabilityAdapter)
+        addToCart.setOnClickListener{
+            if(!number.equals("")){
+                RequestUser.createReservation(this, 1524, "2020/10/10", number, message.toString())
+            } else {
+                Toast.makeText(this, "Operacion NO PERMITIDA ", Toast.LENGTH_LONG).show()
+            }
 
+            //RequestUser.createReservation(this, 1524, "2020/10/10", number, message.toString())
+        }
 
 
 
