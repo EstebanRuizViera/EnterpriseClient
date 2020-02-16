@@ -1,8 +1,10 @@
 package com.example.enterpriseclient.requestServer
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.widget.CalendarView
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +17,9 @@ import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.adapter.ProductAdapter
+import com.example.enterpriseclient.adapter.UserAdapter
 import com.example.enterpriseclient.model.Availability
+import com.example.enterpriseclient.model.ProductProfile
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import java.sql.Timestamp
@@ -166,6 +170,57 @@ class RequestProduct {
             queue.add(updateReq)
 
         }
+
+
+        fun selectAllProductsForCustomer(
+            context: Context,
+            productList: ArrayList<ProductProfile>,
+            recyclerView: RecyclerView,
+            id: String
+        ) {
+
+
+            // new Volley newRequestQueue
+            val queue = Volley.newRequestQueue(context)
+            val url = URL + "/allProductsForCustomer/"+id
+            val updateReq = object : JsonArrayRequest(
+                Request.Method.GET, url, null,
+                Response.Listener {
+                    Log.println(Log.INFO, null, "Llego al listener:")
+                    var array = it
+                    for (i in 0 until array.length()) {
+                        val product = array.getJSONObject(i)
+                        productList.add(
+                            ProductProfile(
+                                product.getString("name"),
+                                product.getString("date"),
+                                product.getString("status"),
+                                "120",
+                                product.getString("img")
+                            )
+                        )
+
+                    }
+                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
+                    val userAdapter =
+                        UserAdapter(
+                            context,
+                            productList
+                        )
+                    recyclerView.setAdapter(userAdapter)
+                },
+                Response.ErrorListener {
+                    Log.println(Log.INFO, null, "Llego al error: "+it.message)
+                    Toast.makeText(context, "Error al devolver los productos", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            ) {}
+
+            queue.add(updateReq)
+
+        }
+
+
 
         @JvmStatic
         fun updateProduct(context: Context, productViewModel: ProductViewModel) {

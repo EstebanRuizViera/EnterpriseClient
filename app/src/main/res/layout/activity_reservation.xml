@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/backgroundColor"
     tools:context=".ReservationActivity">
 
 
@@ -24,6 +25,7 @@
 
 
     <ImageView
+        android:id="@+id/thumbnailProduct"
         android:layout_width="match_parent"
         android:layout_height="216dp"
         android:src="@drawable/loro" />
@@ -39,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Visit Loro Parque"
+            android:textColor="?attr/textColor"
             android:textStyle="bold"
             android:textSize="25sp"/>
 
@@ -71,7 +74,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="end"
                 android:text="150€"
-                android:textStyle="bold"
+                android:textColor="?attr/textColor"
                 android:textSize="25sp" />
 
 
@@ -80,6 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/descriptionColor"
             android:text="63 customer ratings" />
 
         <TextView

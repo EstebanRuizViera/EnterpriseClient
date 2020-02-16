@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.requestServer.RequestProduct
 import kotlinx.android.synthetic.main.activity_reservation.*
 
@@ -13,6 +14,7 @@ class ReservationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation)
+
 
         var bundle: Bundle? = intent.extras
         val message = bundle!!.getInt("id")
@@ -33,6 +35,7 @@ class ReservationActivity : AppCompatActivity() {
         }
 
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

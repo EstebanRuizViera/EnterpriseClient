@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.*
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
@@ -17,7 +18,10 @@ import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-
+import com.example.enterpriseclient.model.Product
+import com.example.enterpriseclient.model.ProductProfile
+import com.example.enterpriseclient.requestServer.RequestProduct
+import com.example.enterpriseclient.requestServer.RequestUser
 
 
 class UserFragment : Fragment() {
@@ -39,7 +43,28 @@ class UserFragment : Fragment() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
+
+
+
+        var productsList=arrayListOf<ProductProfile>()
+
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
+
+
+        val layoutManagerProducts = GridLayoutManager(root.context, 1)
+        recyclerView.setLayoutManager(layoutManagerProducts)
+
+        var number = usersViewModel.getUserId(1)
+
+        if(number.equals("")){
+            number="1"
+        }
+
+
+
+        RequestProduct.selectAllProductsForCustomer(root.context, productsList, recyclerView, number)
+
+
 
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
