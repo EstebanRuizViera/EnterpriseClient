@@ -26,7 +26,7 @@ class ReservationActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
-        checkDisponibility.setOnClickListener(){
+        checkAvailability.setOnClickListener(){
             val intent = Intent(this,AvailabilityActivity::class.java)
             intent.putExtra("id", message)
             startActivity(intent)

@@ -28,7 +28,7 @@ class RequestUser {
     companion object {
 
         private var db: ReservationDatabase? = null
-        const val URL = "http://192.168.103.210:8000"
+        const val URL = "http://192.168.1.210:8000"
 
 
         //------------------- User, login and register -----------------------

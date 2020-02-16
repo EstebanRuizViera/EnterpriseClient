@@ -103,7 +103,7 @@ Dark stubble graciously compliments his eyes and cheekbones and leaves a pleasur
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/checkDisponibility"
+            android:id="@+id/checkAvailability"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
