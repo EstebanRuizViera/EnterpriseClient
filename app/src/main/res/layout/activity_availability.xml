@@ -22,6 +22,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
+    <!--    <com.events.calendar.views.EventsCalendar-->
+    <!--        android:id="@+id/eventsCalendar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#000000"-->
+    <!--        android:overScrollMode="never"-->
+    <!--        app:eventDotColor="#ff0000"-->
+    <!--        app:isBoldTextOnSelectionEnabled="true"-->
+    <!--        app:monthTitleColor="#ffffff"-->
+    <!--        app:primaryTextColor="#c4c4c4"-->
+    <!--        app:secondaryTextColor="#666666"-->
+    <!--        app:selectedTextColor="#000000"-->
+    <!--        app:selectionColor="#ffe600"-->
+    <!--        app:weekHeaderColor="#c6c6c6" />-->
+
+
     <CalendarView
         android:layout_marginTop="10dp"
         android:id="@+id/calendar"
@@ -29,6 +46,20 @@
         android:layout_height="wrap_content"
         android:shownWeekCount="100"
         android:firstDayOfWeek="2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#D7DBDD">
+
+        <TextView
+            android:id="@+id/calendarText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -39,8 +70,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAvailability"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp"/>
+        android:layout_height="match_parent" />
 
     </LinearLayout>
 

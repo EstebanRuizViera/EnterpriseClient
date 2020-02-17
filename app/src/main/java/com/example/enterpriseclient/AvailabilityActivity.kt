@@ -62,7 +62,7 @@ class AvailabilityActivity : AppCompatActivity() {
             if(!number.equals("")){
                 RequestUser.createReservation(this, 1524, "2020/10/10", number, message.toString())
             } else {
-                Toast.makeText(this, "ERROR. You have to sign in to book a product ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "You have to sign in to book a product ", Toast.LENGTH_LONG).show()
             }
 
         }
