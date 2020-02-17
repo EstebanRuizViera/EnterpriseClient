@@ -5,23 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/backgroundColor"
-    tools:context=".EditProfileActivity">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-
-        android:theme="@style/AppTheme">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:titleTextColor="?attr/textColor"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/toolbar_edit_profile" />
-    </com.google.android.material.appbar.AppBarLayout>
+    android:background="?attr/backgroundColor">
 
 
     <EditText

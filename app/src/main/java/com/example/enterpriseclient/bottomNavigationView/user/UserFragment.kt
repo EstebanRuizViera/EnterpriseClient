@@ -1,8 +1,7 @@
 package com.example.enterpriseclient.bottomNavigationView.user
 
-import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.*
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
-import com.example.enterpriseclient.AvailabilityActivity
-import com.example.enterpriseclient.EditProfileActivity
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.ReservationActivity
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.model.ProductProfile
 import com.example.enterpriseclient.requestServer.RequestProduct
-import com.example.enterpriseclient.requestServer.RequestUser
 
 
 class UserFragment : Fragment() {
@@ -63,16 +56,26 @@ class UserFragment : Fragment() {
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
         var textName = root.findViewById<TextView>(R.id.textName)
         var textEmail = root.findViewById<TextView>(R.id.textEmail)
+        var textRegister = root.findViewById<TextView>(R.id.textRegister)
 
         var list = usersViewModel.getUser(1)
 
         if(list != null){
+            if(list.get(0).name.equals("You are not logged in")){
+                textEmail.setTextColor(Color.RED)
+                textRegister.setTextColor(Color.RED)
+            } else {
+                textEmail.setTextColor(Color.BLACK)
+                textRegister.setTextColor(Color.BLACK)
+                textRegister.visibility = View.GONE
+            }
             textName.setText(list.get(0).name)
             textEmail.setText(list.get(0).email)
+            textRegister.setText(list.get(0).token)
         }
 
         textEmail.setOnClickListener(){
-            if(textEmail.text.toString().equals("login")){
+            if(textEmail.text.toString().equals("Login")){
                 val fragment = LoginFragment.newInstance()
                 val activity = activity as MainActivity
                 activity.openFragment(fragment)
@@ -80,9 +83,22 @@ class UserFragment : Fragment() {
         }
 
 
+        textRegister.setOnClickListener(){
+            if(textRegister.text.toString().equals("Register")){
+                val fragment = RegisterFragment.newInstance()
+                val activity = activity as MainActivity
+                activity.openFragment(fragment)
+            }
+        }
+
+
         profilePencil.setOnClickListener {
-                val intent = Intent(activity, EditProfileActivity::class.java)
-                startActivity(intent)
+            if(!list!!.get(0).name.equals("You are not logged in")){
+                val fragment = EditFragment.newInstance()
+                val activity = activity as MainActivity
+                activity.openFragment(fragment)
+            }
+
         }
 
         return root
