@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             app:titleTextColor="?attr/textColor"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Edit profile" />
+            app:title="@string/toolbar_edit_profile" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="36dp"
-        android:text="Edit profile"
+        android:text="@string/button_edit_profile"
         android:textColor="?attr/textColor"
         android:background="@drawable/login_button_circle"
         android:textAllCaps="false"

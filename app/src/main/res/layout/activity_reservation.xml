@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Product"
+            app:title="@string/toolbar_product"
             app:titleTextColor="?attr/textColor" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="?attr/descriptionColor"
-            android:text="63 customer ratings" />
+            android:text="@string/customer_rating" />
 
         <TextView
             android:id="@+id/productReservationDescription"
