@@ -26,7 +26,7 @@ class RequestUser {
     companion object {
 
         private var db: ReservationDatabase? = null
-        const val URL = "http://192.168.1.210:8000"
+        const val URL = "http://192.168.103.210:8000"
 
 
         //------------------- User, login and register -----------------------
@@ -136,8 +136,6 @@ class RequestUser {
 
                     Toast.makeText(context, "Account created ", Toast.LENGTH_LONG).show()
 
-//                    val intent = Intent(context, MainActivity::class.java)
-//                    context.startActivity(intent)
                     val fragment = LoginFragment.newInstance()
                     activity.openFragment(fragment)
                 },
@@ -159,7 +157,6 @@ class RequestUser {
         ) {
 
             val reservationJsonobj = JSONObject()
-            val productsJsonobj = JSONObject()
             val productsJsonArray = JSONArray()
 
             reservationJsonobj.put("total", total.toString())
@@ -168,10 +165,6 @@ class RequestUser {
             reservationJsonobj.put("id_customer", id_customer)
 
             productsJsonArray.put(id_product)
-            //productsJsonArray.put("2")
-
-            // productsJsonArray.put(productsJsonobj)
-//
             reservationJsonobj.put("id_products", productsJsonArray)
 
             val queue = Volley.newRequestQueue(context)
@@ -234,10 +227,11 @@ class RequestUser {
 
         @JvmStatic
         fun updateUser(
-            context: Context,
+            activity: MainActivity,
             usersViewModel: UsersViewModel,
             name_editText: TextView,
-            email_editText: TextView
+            email_editText: TextView,
+            data_user_local:List<User>
         ) {
 
             val updateJsonobj = JSONObject()
@@ -245,16 +239,17 @@ class RequestUser {
             updateJsonobj.put("name", name_editText.text)
             updateJsonobj.put("email", email_editText.text)
 
-            val queue = Volley.newRequestQueue(context)
+            val queue = Volley.newRequestQueue(activity)
             val url = URL + "/auth/users/" + usersViewModel.getUserId(1)
             val req = object : JsonObjectRequest(
                 Request.Method.PUT, url, updateJsonobj,
                 Response.Listener {
-                    Toast.makeText(context, "actualización realizada con exito", Toast.LENGTH_LONG)
+                    usersViewModel.updateUser(User(1, data_user_local.get(0).id_remoto, name_editText.text.toString(), email_editText.text.toString(), data_user_local.get(0).token))
+                    Toast.makeText(activity, "actualización realizada con exito", Toast.LENGTH_LONG)
                         .show()
 
-//                    val intent=Intent(context,LoggedInActivity::class.java)
-//                    context.startActivity(intent)
+                    val fragment = UserFragment.newInstance()
+                    activity.openFragment(fragment)
 
                 },
                 Response.ErrorListener {
@@ -306,10 +301,10 @@ class RequestUser {
 
         @JvmStatic
         fun logout(context: Context, usersViewModel: UsersViewModel) {
-            usersViewModel.updateUser(User(1, "", "You are not logged in", "login", ""))
+            usersViewModel.updateUser(User(1, "", "You are not logged in", "Login", "Register"))
             Log.println(Log.INFO, null, "log_out ")
-//            val intent = Intent(context,LoginActivity::class.java)
-//            context.startActivity(intent)
+            val intent = Intent(context,MainActivity::class.java)
+            context.startActivity(intent)
         }
 
     }

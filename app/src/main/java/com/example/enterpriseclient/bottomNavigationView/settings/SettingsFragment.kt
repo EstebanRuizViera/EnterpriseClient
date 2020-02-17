@@ -2,10 +2,12 @@ package com.example.enterpriseclient.bottomNavigationView.settings
 
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.*
@@ -109,7 +111,20 @@ class SettingsFragment : PreferenceFragmentCompat() {
         logout.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
             override fun onPreferenceClick(preference: Preference?): Boolean {
 
-                RequestUser.logout(context!!,usersViewModel)
+                val builder = AlertDialog.Builder(context!!)
+                builder.setTitle("Log out")
+                builder.setMessage("Do you want to logout?")
+                Log.println(Log.INFO, null, "log_out ")
+                builder.setPositiveButton("yes", {
+                    dialog: DialogInterface?, which: Int ->
+                    RequestUser.logout(context!!,usersViewModel)
+                })
+
+                builder.setNegativeButton("no", {dialog: DialogInterface?, which: Int -> })
+                builder.show()
+
+
+
                 return true
             }
         })
@@ -120,7 +135,20 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         deleteAccount.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
             override fun onPreferenceClick(preference: Preference?): Boolean {
-                RequestUser.deleteUser(context!!,usersViewModel)
+
+                val builder = AlertDialog.Builder(context!!)
+                builder.setTitle("Delete account")
+                builder.setMessage("Do you want to delete your account?")
+                Log.println(Log.INFO, null, "log_out ")
+                builder.setPositiveButton("yes", {
+                        dialog: DialogInterface?, which: Int ->
+                    RequestUser.deleteUser(context!!,usersViewModel)
+                })
+
+                builder.setNegativeButton("no", {dialog: DialogInterface?, which: Int -> })
+                builder.show()
+
+
                 return true
             }
         })

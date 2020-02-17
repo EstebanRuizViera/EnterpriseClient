@@ -4,19 +4,19 @@
         android:id="@+id/navigation_search"
 
         android:icon="@drawable/ic_home"
-        android:title="@string/title_home"
+        android:title=""
         android:background="?attr/backgroundColor"/>
 
     <item
         android:id="@+id/navigation_user"
         android:icon="@drawable/ic_user"
-        android:title="@string/title_profile"
+        android:title=""
         android:background="?attr/backgroundColor"/>
 
     <item
 
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
-        android:title="@string/title_settings"
+        android:title=""
         android:background="?attr/backgroundColor"/>
 </menu>

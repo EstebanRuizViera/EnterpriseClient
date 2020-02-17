@@ -27,14 +27,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(layout.activity_main)
         setSupportActionBar(toolbar);
 
-        //setSupportActionBar(toolbar)
-
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
         if(usersViewModel.getUserIdLocal(1)==0){
-            usersViewModel.saveUser(User(1,"","You are not logged in","login",""))
+            usersViewModel.saveUser(User(1,"","You are not logged in","Login","Register"))
             Log.println(Log.INFO,null,"Guardado ")
         }else{
             Log.println(Log.INFO,null,"No guardado ")
@@ -48,20 +46,17 @@ class MainActivity : AppCompatActivity() {
                 id.navigation_search -> {
                     val fragment = HomeFragment.newInstance()
                     openFragment(fragment)
-                    //supportActionBar!!.show()
                     true
                 }
 
                 id.navigation_settings -> {
                     val fragment = SettingsFragment.newInstance()
                     openFragment(fragment)
-                    //supportActionBar!!.hide()
                     true
                 }
                 id.navigation_user -> {
                     val fragment = UserFragment.newInstance()
                     openFragment(fragment)
-                    //supportActionBar!!.hide()
                     true
                 }
                 else -> false

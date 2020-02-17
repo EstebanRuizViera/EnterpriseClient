@@ -15,19 +15,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/profile_rounded_corners"
+            android:background="#B4B0B0"
             android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/profile_pencil"
-                android:padding="25dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_edit_black_24dp"/>
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_edit_black_24dp"
+                android:focusable="true"
+                android:padding="25dp" />
 
             <ImageView
                 android:layout_width="100dp"
@@ -49,6 +49,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:text=''
+                android:textColor="?attr/textColor"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/textRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="30dp"
                 android:clickable="true"
                 android:text=''
@@ -61,12 +72,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#ECE9E9"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewProfile"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="#D8D3D3" />
 
         </LinearLayout>
 
