@@ -27,24 +27,25 @@ class AvailabilityActivity : AppCompatActivity() {
 
         var bundle: Bundle? = intent.extras
         val message = bundle!!.getInt("id")
-        Log.println(Log.INFO, null, "LLEGO AQUI" + message )
-
 
         val calendarView = findViewById<CalendarView>(R.id.calendar)
 
+        var number = usersViewModel.getUserId(1)
+
+        var availabilityList = arrayListOf<Availability>()
+
+        var selectedDate:String
+
         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            var msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            selectedDate = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
+            Toast.makeText(this, selectedDate, Toast.LENGTH_SHORT).show()
         }
 
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
-        var number = usersViewModel.getUserId(1)
 
-
-        var availabilityList = arrayListOf<Availability>()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
 
@@ -53,10 +54,8 @@ class AvailabilityActivity : AppCompatActivity() {
 
         if(message != null) {
             RequestProduct.selectAvailabilityForProduct(this, calendar, availabilityList,recyclerView, message.toString())
-
         }
 
-        RequestProduct.selectAvailabilityForProduct(this, calendar, availabilityList,recyclerView, "1"  )
 
         addToCart.setOnClickListener{
             if(!number.equals("")){
