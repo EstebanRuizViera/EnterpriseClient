@@ -30,7 +30,7 @@ class RequestProduct {
         private var db: ReservationDatabase? = null
         const val URL = "http://192.168.1.210:8000"
 
-        //------------- PRODUCTOS --------------------
+        //------------- PRODUCTS --------------------
 
         @JvmStatic
         fun createProduct(context: Context, productViewModel: ProductViewModel) {
@@ -67,12 +67,6 @@ class RequestProduct {
                     productName.setText(it.getString("name"))
                     productDescription.setText(it.getString("description"))
 
-
-//                    Log.println(
-////                        Log.INFO,
-////                        null,
-////                        "Name: " + it.getString("name") + " description: " + it.getString("description")
-////                    )
 
                 },
                 Response.ErrorListener {
@@ -162,7 +156,7 @@ class RequestProduct {
                     recyclerView.setAdapter(productAdapter)
                 },
                 Response.ErrorListener {
-                    Toast.makeText(context, "Error al devolver los productos", Toast.LENGTH_SHORT)
+                    Toast.makeText(context, "Error getting the products. Try again later", Toast.LENGTH_SHORT)
                         .show()
                 }
             ) {}
@@ -211,7 +205,7 @@ class RequestProduct {
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "Llego al error: "+it.message)
-                    Toast.makeText(context, "Error al devolver los productos", Toast.LENGTH_SHORT)
+                    Toast.makeText(context, "Error getting your bookings. Try again later", Toast.LENGTH_SHORT)
                         .show()
                 }
             ) {}

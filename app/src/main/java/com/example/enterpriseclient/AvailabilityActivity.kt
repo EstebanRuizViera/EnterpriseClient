@@ -19,12 +19,9 @@ class AvailabilityActivity : AppCompatActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_availability)
-
-
 
         setSupportActionBar(toolbar)
 
@@ -47,12 +44,10 @@ class AvailabilityActivity : AppCompatActivity() {
         var number = usersViewModel.getUserId(1)
 
 
-
         var availabilityList = arrayListOf<Availability>()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
 
-        //3º) Indico la disposición en la que se mostrarán los items en el RecyclerView (P.Ej: GridLayout de 2 columnas)
         val layoutManagerAvailability = GridLayoutManager(this, 1)
         recyclerView.setLayoutManager(layoutManagerAvailability)
 
@@ -67,15 +62,13 @@ class AvailabilityActivity : AppCompatActivity() {
             if(!number.equals("")){
                 RequestUser.createReservation(this, 1524, "2020/10/10", number, message.toString())
             } else {
-                Toast.makeText(this, "Operacion NO PERMITIDA ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "ERROR. You have to sign in to book a product ", Toast.LENGTH_LONG).show()
             }
 
-            //RequestUser.createReservation(this, 1524, "2020/10/10", number, message.toString())
         }
 
-
-
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

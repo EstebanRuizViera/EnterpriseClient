@@ -1,6 +1,5 @@
 package com.example.enterpriseclient.requestServer
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -14,9 +13,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
-import com.example.enterpriseclient.LoginActivity
 import com.example.enterpriseclient.MainActivity
-import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.user.LoginFragment
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
@@ -61,10 +58,10 @@ class RequestUser {
                         usersViewModel,
                         it.getString("token")
                     )
-                    Toast.makeText(context, "Identificacion correcta ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Access granted ", Toast.LENGTH_SHORT).show()
                 },
                 Response.ErrorListener {
-                    Toast.makeText(context, "Identificacion erronea ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Access denied ", Toast.LENGTH_SHORT).show()
                 }
             ) {}
             queue.add(req)
@@ -137,7 +134,7 @@ class RequestUser {
                 Request.Method.POST, url, loginJsonobj,
                 Response.Listener {
 
-                    Toast.makeText(context, "Registro realizado !", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Account created ", Toast.LENGTH_LONG).show()
 
 //                    val intent = Intent(context, MainActivity::class.java)
 //                    context.startActivity(intent)
@@ -145,7 +142,7 @@ class RequestUser {
                     activity.openFragment(fragment)
                 },
                 Response.ErrorListener {
-                    Toast.makeText(context, "Registro no realizado !", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Account not created. Try again later ", Toast.LENGTH_LONG).show()
                 }) {}
 
             queue.add(req)
@@ -153,7 +150,13 @@ class RequestUser {
 
 
         @JvmStatic
-        fun createReservation(context: Context, total: Int, date: String, id_customer: String, id_product: String) {
+        fun createReservation(
+            context: Context,
+            total: Int,
+            date: String,
+            id_customer: String,
+            id_product: String
+        ) {
 
             val reservationJsonobj = JSONObject()
             val productsJsonobj = JSONObject()
@@ -167,7 +170,7 @@ class RequestUser {
             productsJsonArray.put(id_product)
             //productsJsonArray.put("2")
 
-           // productsJsonArray.put(productsJsonobj)
+            // productsJsonArray.put(productsJsonobj)
 //
             reservationJsonobj.put("id_products", productsJsonArray)
 
@@ -176,7 +179,11 @@ class RequestUser {
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
-                    Toast.makeText(context, "Reservation done " + it.getString("state"), Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "" + it.getString("state"),
+                        Toast.LENGTH_LONG
+                    ).show()
                     val intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 },

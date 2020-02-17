@@ -61,10 +61,7 @@ class UserFragment : Fragment() {
         }
 
 
-
         RequestProduct.selectAllProductsForCustomer(root.context, productsList, recyclerView, number)
-
-
 
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)
@@ -88,14 +85,10 @@ class UserFragment : Fragment() {
 
 
         profilePencil.setOnClickListener {
-            //if(!textEmail.text.toString().equals("login")) {
                 val intent = Intent(activity, EditProfileActivity::class.java)
                 startActivity(intent)
-            //}
         }
 
         return root
-
-
     }
 }

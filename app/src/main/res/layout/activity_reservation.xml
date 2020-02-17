@@ -40,7 +40,7 @@
             android:id="@+id/productReservationName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Visit Loro Parque"
+            android:text=""
             android:textColor="?attr/textColor"
             android:textStyle="bold"
             android:textSize="25sp"/>
@@ -92,8 +92,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="8dp"
-            android:text="Golden, perfectly groomed hair tight in a ponytail reveals a furrowed, lively face. Bloodshot sapphire eyes, set high within their sockets, watch carefully over the mountains they've become enchancted by for so long.
-Dark stubble graciously compliments his eyes and cheekbones and leaves a pleasurable memory of his fortunate destiny."
+            android:text=""
             android:textColor="?attr/descriptionColor"
             android:textSize="18sp" />
 
