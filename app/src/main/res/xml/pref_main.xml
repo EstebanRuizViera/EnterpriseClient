@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="General">
+    <PreferenceCategory android:title="@string/preferences_title_general">
         <SwitchPreference
             android:icon="@drawable/moon"
             android:defaultValue="false"
             android:key="darkMode"
-            android:title="Dark mode"
-            android:summary="Change application theme"/>
+            android:title="@string/preferences_title_dark_mode"
+            android:summary="@string/preferences_summary_dark_mode"/>
 
 
     <ListPreference
         android:defaultValue="1"
-        android:dialogTitle="Select language"
+        android:dialogTitle="@string/preferences_dialog_title_language"
         android:icon="@drawable/subject"
         android:entries="@array/pref_language"
         android:entryValues="@array/pref_language"
         android:key="Language"
-        android:title="Language" />
+        android:title="@string/preferences_title_language" />
 
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="Account ">
+    <PreferenceCategory android:title="@string/preferences_title_account">
 
         <Preference
             android:icon="@drawable/trash"
             android:key="delete_account"
-            android:title="Delete Account"
+            android:title="@string/preferences_title_delete_account"
              />
 
         <Preference
             android:icon="@drawable/logout"
-            android:key="log_out"
+            android:key="@string/preferences_title_log_out"
             android:title="Log out" />
 
     </PreferenceCategory>
 
 
 
-    <PreferenceCategory android:title="About">
+    <PreferenceCategory android:title="@string/preferences_title_about">
 
         <Preference
             android:summary="1.0"
-            android:title="Version" />
+            android:title="@string/preferences_title_version" />
 
         <Preference
             android:icon="@drawable/writing"
             android:key="key_send_feedback"
             android:summary="Got any queries? We are happy to help!"
-            android:title="Send feedback" />
+            android:title="@string/preferences_title_send_feedback" />
 
         <!-- preference opens url in browser -->
         <Preference
             android:key="frequently_asked_questions"
             android:icon="@drawable/question"
-            android:summary="View frequently asked questions"
-            android:title="FAQ">
+            android:summary="@string/preferences_summary_faq"
+            android:title="@string/preferences_title_faq">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://kotlinlang.org/docs/reference/faq.html" />

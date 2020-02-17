@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
-        setSupportActionBar(toolbar);
+
+        setSupportActionBar(toolbar)
 
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
