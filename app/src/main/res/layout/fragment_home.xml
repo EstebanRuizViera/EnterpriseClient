@@ -64,7 +64,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="5dp"
                         android:background="@drawable/book_button_circle"
-                        android:text="Book now"
+                        android:text="@string/button_book_now"
                         android:textAllCaps="false"
                         android:textColor="?attr/bookButtonColor" />
 

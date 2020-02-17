@@ -1,6 +1,7 @@
 package com.example.enterpriseclient.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class AvailabilityAdapter (private val mContext: Context, private val mData: Lis
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.timestamp.text = mData[position].timestamp.time.toString()
+        holder.timestamp.text = mData[position].timestamp
 
 
         //holder.frameHome.setOnClickListener{

@@ -56,5 +56,7 @@ dependencies {
 
     implementation 'com.nex3z:notification-badge:1.0.2'
 
+    implementation 'com.github.tizisdeepan:eventscalendar:1.0.0'
+
 
 }

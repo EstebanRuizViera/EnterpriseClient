@@ -19,6 +19,7 @@ import com.example.enterpriseclient.R
 import com.example.enterpriseclient.ReservationActivity
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.requestServer.RequestProduct
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -58,6 +59,13 @@ class HomeFragment : Fragment() {
 
         RequestProduct.selectAllProducts(root.context, productsList, recyclerView)
 
+
+//        var bookButton = root.findViewById<TextView>(R.id.bookButton)
+//
+//        bookButton.setOnClickListener {
+//            val intent = Intent(activity, AvailabilityActivity::class.java)
+//            startActivity(intent)
+//        }
 
         return root
     }

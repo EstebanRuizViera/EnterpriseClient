@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hotel" />
+        app:srcCompat="@drawable/hotel2" />
 
     <EditText
         android:id="@+id/lg_email"
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:drawableStart="@drawable/ic_email"
+        android:textColor="?attr/descriptionColor"
         android:ems="10"
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
@@ -43,6 +44,7 @@
         android:ems="10"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:textColor="?attr/descriptionColor"
         app:layout_constraintBottom_toTopOf="@+id/lg_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -55,7 +57,7 @@
         android:layout_marginBottom="36dp"
         android:background="@drawable/login_button_circle"
         android:text="@string/login"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/lg_accountText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +71,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="140dp"
         android:text="@string/dont_have_an_account"
+        android:textColor="?attr/textColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -77,11 +80,12 @@
         android:id="@+id/lg_loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="140dp"
         android:clickable="true"
-        android:focusable="true"
         android:contextClickable="true"
+        android:focusable="true"
         android:text="@string/register"
         android:textColor="@color/blue_login_register"
         android:textSize="18sp"

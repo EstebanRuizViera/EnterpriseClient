@@ -14,6 +14,14 @@
     <string name="dont_have_an_account">¿No tienes una cuenta?</string>
     <string name="register">Registrarse</string>
     <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+    <string name="customer_rating">63 opiniones de clientes</string>
+    <string name="button_check_availability">Ver disponibilidad</string>
+    <string name="button_book_now">Reservar ahora</string>
+    <string name="button_book">Reservar</string>
+    <string name="button_edit_profile">Editar perfil</string>
+    <string name="toolbar_availability">Disponibilidad</string>
+    <string name="toolbar_edit_profile">Editar perfil</string>
+    <string name="toolbar_product">Producto</string>
 
 
 </resources>
