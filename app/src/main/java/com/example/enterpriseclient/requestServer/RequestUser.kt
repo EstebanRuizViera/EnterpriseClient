@@ -26,7 +26,7 @@ class RequestUser {
     companion object {
 
         private var db: ReservationDatabase? = null
-        const val URL = "http://192.168.1.210:8000"
+        const val URL = "http://192.168.103.210:8000"
 
 
         //------------------- User, login and register -----------------------
@@ -97,9 +97,6 @@ class RequestUser {
                             token
                         )
                     )
-
-//                    val intent = Intent(context,MainActivity::class.java)
-//                    context.startActivity(intent)
                     val fragment = UserFragment.newInstance()
                     activity.openFragment(fragment)
 
@@ -135,9 +132,6 @@ class RequestUser {
                 Response.Listener {
 
                     Toast.makeText(context, "Account created ", Toast.LENGTH_LONG).show()
-
-//                    val intent = Intent(context, MainActivity::class.java)
-//                    context.startActivity(intent)
                     val fragment = LoginFragment.newInstance()
                     activity.openFragment(fragment)
                 },
@@ -159,7 +153,6 @@ class RequestUser {
         ) {
 
             val reservationJsonobj = JSONObject()
-            val productsJsonobj = JSONObject()
             val productsJsonArray = JSONArray()
 
             reservationJsonobj.put("total", total.toString())
@@ -168,10 +161,7 @@ class RequestUser {
             reservationJsonobj.put("id_customer", id_customer)
 
             productsJsonArray.put(id_product)
-            //productsJsonArray.put("2")
 
-            // productsJsonArray.put(productsJsonobj)
-//
             reservationJsonobj.put("id_products", productsJsonArray)
 
             val queue = Volley.newRequestQueue(context)
@@ -191,43 +181,6 @@ class RequestUser {
                     Toast.makeText(context, "Registro no realizado !", Toast.LENGTH_LONG).show()
                     Log.println(Log.INFO, null, "ERROR Volley " + reservationJsonobj.toString())
                 }) {}
-
-            queue.add(req)
-        }
-
-
-        @JvmStatic
-        fun selectUser(
-            context: Context,
-            usersViewModel: UsersViewModel,
-            name_editText: TextView,
-            email_editText: TextView
-        ) {
-
-
-            val queue = Volley.newRequestQueue(context)
-            val url = URL + "/api/users/" + usersViewModel.getUserId(1)
-            val req = object : JsonObjectRequest(
-                Request.Method.GET, url, null,
-                Response.Listener {
-
-                    name_editText.setText(it.getString("name"))
-                    email_editText.setText(it.getString("email"))
-
-                },
-                Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
-                }) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer " + token
-                    return headers
-                }
-            }
 
             queue.add(req)
         }

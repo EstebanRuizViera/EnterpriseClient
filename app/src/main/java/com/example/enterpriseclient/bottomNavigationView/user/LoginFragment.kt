@@ -1,10 +1,7 @@
 package com.example.enterpriseclient.bottomNavigationView.user
 
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +11,6 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.RegisterActivity
-import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
-import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
@@ -38,7 +32,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.activity_login, container, false)
+        val root = inflater.inflate(R.layout.fragment_login, container, false)
 
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)

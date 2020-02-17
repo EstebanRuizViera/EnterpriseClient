@@ -43,13 +43,9 @@ class UserFragment : Fragment() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
-
-
-
         var productsList=arrayListOf<ProductProfile>()
 
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
-
 
         val layoutManagerProducts = GridLayoutManager(root.context, 1)
         recyclerView.setLayoutManager(layoutManagerProducts)

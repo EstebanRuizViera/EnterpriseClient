@@ -1,7 +1,6 @@
 package com.example.enterpriseclient.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ class AvailabilityAdapter (private val mContext: Context, private val mData: Lis
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
         val inflater = LayoutInflater.from(mContext)
-        view = inflater.inflate(R.layout.layout_content_recyclerview, parent, false)
+        view = inflater.inflate(R.layout.recyclerview_availability, parent, false)
         val viewHolder =
             MyViewHolder(
                 view

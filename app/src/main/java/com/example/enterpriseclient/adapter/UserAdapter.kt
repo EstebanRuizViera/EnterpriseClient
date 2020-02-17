@@ -1,19 +1,15 @@
 package com.example.enterpriseclient.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.ReservationActivity
-import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.model.ProductProfile
 
 class UserAdapter (private val mContext: Context, private val mData: List<ProductProfile>) :
@@ -24,7 +20,7 @@ class UserAdapter (private val mContext: Context, private val mData: List<Produc
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
         val inflater = LayoutInflater.from(mContext)
-        view = inflater.inflate(R.layout.layout_content_profile_recyclerview, parent, false)
+        view = inflater.inflate(R.layout.recyclerview_profile, parent, false)
         val viewHolder =
             MyViewHolder(
                 view
