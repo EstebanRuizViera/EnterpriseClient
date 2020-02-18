@@ -32,8 +32,8 @@
 
         <Preference
             android:icon="@drawable/logout"
-            android:key="@string/preferences_title_log_out"
-            android:title="Log out" />
+            android:key="log_out"
+            android:title="@string/preferences_title_log_out" />
 
     </PreferenceCategory>
 

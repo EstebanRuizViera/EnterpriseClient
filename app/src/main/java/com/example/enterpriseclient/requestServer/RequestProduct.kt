@@ -31,7 +31,7 @@ class RequestProduct {
 
     companion object {
         private var db: ReservationDatabase? = null
-        const val URL = "http://192.168.103.210:8000"
+        const val URL = "http://192.168.1.210:8000"
 
         //------------- PRODUCTS --------------------
 
@@ -57,7 +57,7 @@ class RequestProduct {
 
 
         @JvmStatic
-        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView, id : String,image:ImageView) {
+        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView, id : String, image:ImageView) {
 
             var option: RequestOptions
 
@@ -75,6 +75,10 @@ class RequestProduct {
                     productDescription.setText(it.getString("description"))
                     Glide.with(context).load(it.getString("img")).apply(option)
                         .into(image)
+
+                    Glide.with(context).load(it.getString("img")).apply(option)
+                        .into(image)
+
 
                 },
                 Response.ErrorListener {
