@@ -15,7 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#B4B0B0"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -79,7 +78,8 @@
                 android:id="@+id/recyclerViewProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#D8D3D3" />
+                android:background="?attr/backgroundColor"
+                />
 
         </LinearLayout>
 

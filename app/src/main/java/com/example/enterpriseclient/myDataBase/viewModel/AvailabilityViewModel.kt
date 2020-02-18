@@ -23,4 +23,9 @@ class AvailabilityViewModel(application: Application) : AndroidViewModel(applica
         return repository.getAvailability(id)
     }
 
+    fun getAllAvailability():List<Availability>? {
+
+        return repository.getAllAvailability()
+    }
+
 }

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.*
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.model.ProductProfile
+import com.example.enterpriseclient.model.ProductProfilePojo
 import com.example.enterpriseclient.requestServer.RequestProduct
 
 
@@ -36,7 +36,7 @@ class UserFragment : Fragment() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
-        var productsList=arrayListOf<ProductProfile>()
+        var productsList=arrayListOf<ProductProfilePojo>()
 
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
 

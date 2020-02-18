@@ -6,30 +6,49 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Este campo no puede estar vacío"
+        android:textColor="@color/validationColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_password" />
+
     <EditText
         android:id="@+id/rg_name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="55dp"
         android:drawableStart="@drawable/ic_person"
         android:ems="10"
         android:hint="@string/hint_name"
         android:inputType="textEmailAddress"
         android:textColor="?attr/descriptionColor"
-        app:layout_constraintBottom_toTopOf="@+id/rg_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_logo"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintTop_toBottomOf="@+id/rg_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Este campo no puede estar vacío"
+        android:textColor="@color/validationColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_name" />
 
     <TextView
         android:id="@+id/rg_registerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="68dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:clickable="true"
         android:contextClickable="true"
         android:text="@string/login"
@@ -40,26 +59,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/rg_accountText" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Este campo no puede estar vacío"
+        android:textColor="@color/validationColor"
+        app:layout_constraintBottom_toTopOf="@+id/rg_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_email"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
         android:id="@+id/rg_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="30dp"
         android:drawableStart="@drawable/ic_lock"
         android:ems="10"
         android:hint="@string/hint_password"
-        android:textColor="?attr/descriptionColor"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/rg_register"
+        android:textColor="?attr/descriptionColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_email" />
 
     <Button
         android:id="@+id/rg_register"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/login_button_circle"
         android:text="@string/register"
         android:textColor="?attr/textColor"
@@ -67,17 +99,18 @@
         app:layout_constraintBottom_toTopOf="@+id/rg_accountText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_password" />
 
     <TextView
         android:id="@+id/rg_accountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/already_have_an_account"
-        android:textSize="18sp"
         android:textColor="?attr/textColor"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rg_registerText"
         app:layout_constraintStart_toStartOf="parent" />
@@ -86,15 +119,16 @@
         android:id="@+id/rg_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:drawableStart="@drawable/ic_email"
         android:ems="10"
         android:hint="@string/hint_email"
-        android:textColor="?attr/descriptionColor"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/rg_password"
+        android:textColor="?attr/descriptionColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_name" />
 
     <ImageView
         android:id="@+id/rg_logo"

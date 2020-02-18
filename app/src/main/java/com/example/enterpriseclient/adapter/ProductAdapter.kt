@@ -15,7 +15,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.AvailabilityActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.ReservationActivity
-import com.example.enterpriseclient.model.Product
+import com.example.enterpriseclient.model.ProductPojo
+import com.example.enterpriseclient.myDataBase.model.Product
 
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
@@ -26,10 +27,6 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         val view: View
         val inflater = LayoutInflater.from(mContext)
         view = inflater.inflate(R.layout.recyclerview_home, parent, false)
-        val viewHolder =
-            MyViewHolder(
-                view
-            )
         return MyViewHolder(
             view
         )
@@ -65,7 +62,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         var Name: TextView
         var Description: TextView
         var imgThumbnail: ImageView
-        lateinit var linearHome: LinearLayout
+        var linearHome: LinearLayout
         var bookButton: Button
 
         init {

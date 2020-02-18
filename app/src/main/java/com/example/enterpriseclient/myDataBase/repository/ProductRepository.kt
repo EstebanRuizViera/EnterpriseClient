@@ -23,6 +23,13 @@ class ProductRepository(application: Application) {
         return null
     }
 
+    fun getAllProduct(): List<Product>? {
+
+        if (productDao != null)
+            return GetAllProductAsyncTask(productDao).execute().get()
+        return null
+    }
+
     fun getCountProduct(): Int? {
 
         if (productDao != null)
@@ -56,6 +63,17 @@ class ProductRepository(application: Application) {
                         return product
                     }
                 }
+            }
+            return null
+        }
+    }
+
+    private class GetAllProductAsyncTask(private val productDao: ProductDao) :
+        AsyncTask<Void, Void, List<Product>>() {
+        override fun doInBackground(vararg ids: Void): List<Product>? {
+            var product = productDao.getAllProduct()
+            if (product != null) {
+                return product
             }
             return null
         }
