@@ -21,7 +21,7 @@ class ReservationActivity : AppCompatActivity() {
         Log.println(Log.INFO, null, "LLEGO AQUI" + message )
 
         if(message != null) {
-            RequestProduct.selectProduct(this, null, productReservationName, productReservationDescription, message.toString())
+            RequestProduct.selectProduct(this, null, productReservationName, productReservationDescription, message.toString(), thumbnailProduct)
 
         }
 

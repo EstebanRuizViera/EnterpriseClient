@@ -16,12 +16,25 @@
     <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
     <string name="customer_rating">63 opiniones de clientes</string>
     <string name="button_check_availability">Ver disponibilidad</string>
-    <string name="button_book_now">Reservar ahora</string>
+    <string name="button_book_now">Reservar</string>
     <string name="button_book">Reservar</string>
     <string name="button_edit_profile">Editar perfil</string>
     <string name="toolbar_availability">Disponibilidad</string>
     <string name="toolbar_edit_profile">Editar perfil</string>
     <string name="toolbar_product">Producto</string>
+    <string name="preferences_title_dark_mode">Modo nocturno</string>
+    <string name="preferences_summary_dark_mode">Cambia el tema de la aplicación</string>
+    <string name="preferences_title_language">Idioma</string>
+    <string name="preferences_dialog_title_language">Selecciona un idioma</string>
+    <string name="preferences_title_delete_account">Borrar cuenta</string>
+    <string name="preferences_title_log_out">Log out</string>
+    <string name="preferences_title_general">Gerenal</string>
+    <string name="preferences_title_account">Cuenta</string>
+    <string name="preferences_title_about">Información</string>
+    <string name="preferences_title_version">Versión</string>
+    <string name="preferences_title_send_feedback">Enviar feedback</string>
+    <string name="preferences_title_faq">FAQ</string>
+    <string name="preferences_summary_faq">Ver las preguntas más contestadas</string>
 
 
 </resources>
