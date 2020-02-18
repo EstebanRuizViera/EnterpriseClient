@@ -13,5 +13,6 @@
     <color name="BookButtonColor">#ffffff</color>
     <color name="summaryColor">#A4A4A4</color>
     <color name="ratingBarColor">#F4D03F</color>
+    <color name="informationFragment2">#EDEDED</color>
 
 </resources>
