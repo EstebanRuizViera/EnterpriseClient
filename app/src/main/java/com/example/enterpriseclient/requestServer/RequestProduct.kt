@@ -14,6 +14,9 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.enterpriseclient.R
 import com.example.enterpriseclient.adapter.AvailabilityAdapter
 import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.adapter.ProductAdapter
@@ -54,8 +57,12 @@ class RequestProduct {
 
 
         @JvmStatic
-        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView, id : String) {
+        fun selectProduct(context: Context, productViewModel: ProductViewModel?, productName : TextView, productDescription : TextView, id : String, image:ImageView) {
 
+            var option: RequestOptions
+
+            option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
+                .error(R.drawable.loading_shape)
 
             val queue = Volley.newRequestQueue(context)
             val url = URL + "/api/products/" +id
@@ -66,6 +73,9 @@ class RequestProduct {
 
                     productName.setText(it.getString("name"))
                     productDescription.setText(it.getString("description"))
+
+                    Glide.with(context).load(it.getString("img")).apply(option)
+                        .into(image)
 
 
                 },
