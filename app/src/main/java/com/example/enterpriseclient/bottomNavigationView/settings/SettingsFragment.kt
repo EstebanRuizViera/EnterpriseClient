@@ -54,7 +54,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeValueSwitch() {
 
 
-        switchPreference = findPreference("darkMode") as androidx.preference.SwitchPreference
+        switchPreference = findPreference("darkMode") as SwitchPreference
 
         sharedpref = SharePreferenceDarkMode(activity as Activity)
 
@@ -106,7 +106,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     }
     private fun logout() {
-        logout = findPreference("log_out")
+        logout = findPreference("log_out")!!
 
         logout.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
             override fun onPreferenceClick(preference: Preference?): Boolean {
@@ -131,7 +131,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun delete() {
-        deleteAccount = findPreference("delete_account")
+        deleteAccount = findPreference("delete_account")!!
 
         deleteAccount.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
             override fun onPreferenceClick(preference: Preference?): Boolean {

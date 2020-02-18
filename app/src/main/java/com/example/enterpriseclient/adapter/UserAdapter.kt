@@ -10,21 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.model.ProductProfile
+import com.example.enterpriseclient.model.ProductProfilePojo
 
-class UserAdapter (private val mContext: Context, private val mData: List<ProductProfile>) :
+class UserAdapter (private val mContext: Context, private val mData: List<ProductProfilePojo>) :
     RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
-    var option: RequestOptions
+    private var option: RequestOptions
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
         val inflater = LayoutInflater.from(mContext)
         view = inflater.inflate(R.layout.recyclerview_profile, parent, false)
-        val viewHolder =
-            MyViewHolder(
-                view
-            )
+
         return MyViewHolder(
             view
         )
@@ -51,7 +48,6 @@ class UserAdapter (private val mContext: Context, private val mData: List<Produc
         var profileDate: TextView
         var profileStatus: TextView
         var profilePrice: TextView
-
         var thumbnail: ImageView
 
 
@@ -61,8 +57,6 @@ class UserAdapter (private val mContext: Context, private val mData: List<Produc
             profileStatus = itemView.findViewById(R.id.profile_status)
             profilePrice = itemView.findViewById(R.id.profile_price)
             thumbnail = itemView.findViewById(R.id.thumbnail)
-
-
         }
     }
 

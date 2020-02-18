@@ -25,4 +25,8 @@ class DistributionViewModel(application: Application) : AndroidViewModel(applica
         return repository.getDistribution(id)
     }
 
+    fun getAllDistribution():List<Distribution>? {
+
+        return repository.getAllDistribution()
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.enterpriseclient.requestServer
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.android.volley.AuthFailureError
@@ -10,159 +11,59 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.enterpriseclient.Constants
+import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.myDataBase.database.ReservationDatabase
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
+import org.json.JSONArray
+import org.json.JSONObject
 
 class RequestReservation {
     companion object {
-        private var db: ReservationDatabase? = null
-        const val URL ="http://192.168.103.210:8000"
 
 
         //------------- RESERVATION --------------------
 
-        @JvmStatic fun createrReservation(context: Context, usersViewModel: UsersViewModel){
+        @JvmStatic
+        fun createReservation(
+            context: Context,
+            total: Int,
+            date: String,
+            id_customer: String,
+            id_product: String
+        ) {
 
-            // new Volley newRequestQueue
-            val queue = Volley.newRequestQueue(context)
-            val url = URL+"/api/reservation"
-            val updateReq = object : StringRequest(
-                Request.Method.POST, url,
-                Response.Listener {
+            val reservationJsonobj = JSONObject()
+            val productsJsonArray = JSONArray()
 
-                },
-                Response.ErrorListener {
-                    Toast.makeText(context, "Error al crear la reserva", Toast.LENGTH_SHORT).show()
-                }
-            )
-            {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer "+token
-                    return headers
-                }
-            }
+            reservationJsonobj.put("total", total.toString())
+            reservationJsonobj.put("status", "pendiente")
+            reservationJsonobj.put("date", date)
+            reservationJsonobj.put("id_customer", id_customer)
 
-            queue.add(updateReq)
+            productsJsonArray.put(id_product)
 
-        }
-
-
-        @JvmStatic fun selectReservation(context: Context, usersViewModel: UsersViewModel) {
-
+            reservationJsonobj.put("id_products", productsJsonArray)
 
             val queue = Volley.newRequestQueue(context)
-            val url = URL +"/api/reservation/"
+            val url = Constants.URL_SERVER + "/createReservation"
             val req = object : JsonObjectRequest(
-                Request.Method.GET, url, null,
+                Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
-
+                    Toast.makeText(
+                        context,
+                        "" + it.getString("state"),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    val intent = Intent(context, MainActivity::class.java)
+                    context.startActivity(intent)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO,null,"ERROR "+it.message)
-                })
-            {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer "+token
-                    return headers
-                }
-            }
+                    Toast.makeText(context, "Registro no realizado !", Toast.LENGTH_LONG).show()
+                }) {}
 
             queue.add(req)
         }
-
-        fun selectAllReservation(context: Context, usersViewModel: UsersViewModel){
-
-            // new Volley newRequestQueue
-            val queue = Volley.newRequestQueue(context)
-            val url = URL+"/api/reservation"
-            val updateReq = object : JsonArrayRequest(
-                Request.Method.GET, url, null,
-                Response.Listener {
-
-                },
-                Response.ErrorListener {
-                    Toast.makeText(context, "Error al devolver los vuelos", Toast.LENGTH_SHORT).show()
-                }
-            )
-            {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer "+token
-                    return headers
-                }
-            }
-
-            queue.add(updateReq)
-
-        }
-
-        @JvmStatic fun updateReservation(context: Context, usersViewModel: UsersViewModel) {
-
-            val queue = Volley.newRequestQueue(context)
-            val url = URL+"/api/reservation/"
-            val req = object : JsonObjectRequest(
-                Request.Method.PUT, url, null,
-                Response.Listener {
-                },
-                Response.ErrorListener {
-                    Log.println(Log.INFO,null,"ERROR "+it.message)
-                })
-            {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer "+token
-                    return headers
-                }
-            }
-
-            queue.add(req)
-        }
-
-        @JvmStatic fun deleteReservation(context: Context, usersViewModel: UsersViewModel) {
-
-            val queue = Volley.newRequestQueue(context)
-            val url = URL+"/api/reservation/"
-            val req = object : StringRequest(
-                Request.Method.DELETE, url,
-                Response.Listener {
-
-                },
-                Response.ErrorListener {
-                    Log.println(Log.INFO,null,"ERROR "+it.toString())
-                })
-            {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers: MutableMap<String, String> =
-                        HashMap()
-                    // Basic Authentication
-                    var token = usersViewModel.getToken(1)
-                    headers["Authorization"] = "Bearer "+token
-                    return headers
-                }
-            }
-
-            queue.add(req)
-        }
-
 
     }
 }
