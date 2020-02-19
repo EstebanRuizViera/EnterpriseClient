@@ -45,12 +45,6 @@
             android:summary="1.0"
             android:title="@string/preferences_title_version" />
 
-        <Preference
-            android:icon="@drawable/writing"
-            android:key="key_send_feedback"
-            android:summary="Got any queries? We are happy to help!"
-            android:title="@string/preferences_title_send_feedback" />
-
         <!-- preference opens url in browser -->
         <Preference
             android:key="frequently_asked_questions"
