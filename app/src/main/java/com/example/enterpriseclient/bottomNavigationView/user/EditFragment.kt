@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.MainActivity
@@ -14,6 +15,7 @@ import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
 import kotlinx.android.synthetic.main.fragmen_edit.*
+import java.util.zip.Inflater
 
 /**
  * A simple [Fragment] subclass.
@@ -33,14 +35,24 @@ class EditFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragmen_edit, container, false)
 
-        var editName = root.findViewById<TextView>(R.id.editName)
-        var editEmail = root.findViewById<TextView>(R.id.editEmail)
+        updateInfo(root)
+
+        return root
+    }
+
+    fun updateInfo(root: View) {
+        var editName = root.findViewById<EditText>(R.id.editName)
+        var editEmail = root.findViewById<EditText>(R.id.editEmail)
         var editBtn = root.findViewById<Button>(R.id.editBtn)
+        var editValidateEmail = root.findViewById<TextView>(R.id.editValidateEmail)
 
 
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
+
+        val regex = Regex(pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}\$")
+        val matched = regex.containsMatchIn(input = editEmail.text)
 
         editBtn.setOnClickListener() {
             var newModification = 0
@@ -49,14 +61,25 @@ class EditFragment : Fragment() {
                 newModification++
             }
             if (editEmail.text.toString().equals("")) {
+                editValidateEmail.visibility = View.INVISIBLE
                 editEmail.setText(usersViewModel.getUser(1)!!.get(0).email)
                 newModification++
+            } else if (!matched) {
+                editValidateEmail.visibility = View.VISIBLE
+                newModification++
             }
-            if(newModification!=2) {
-                RequestUser.updateUser(activity as MainActivity, usersViewModel, editName, editEmail,usersViewModel.getUser(1)!!)
+            if (newModification != 2) {
+                RequestUser.updateUser(
+                    activity as MainActivity,
+                    usersViewModel,
+                    editName,
+                    editEmail,
+
+                    usersViewModel.getUser(1)!!
+                )
             }
+
         }
-        return root
     }
 }
 

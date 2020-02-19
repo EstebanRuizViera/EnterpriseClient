@@ -16,13 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CalActivity"></activity>
         <!-- android:name=".MyApplication" -->
         <activity android:name=".AvailabilityActivity" />
         <activity android:name=".ReservationActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".EditProfileActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/PreferenceScreen">

@@ -23,11 +23,21 @@
         android:layout_width="300dp"
         android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+
         android:layout_gravity="center_horizontal"
         android:hint="@string/hint_email"
         android:textColor="?attr/descriptionColor"
         android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/editValidateEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_gravity="center_horizontal"
+        android:text="This email is not valid"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/editBtn"

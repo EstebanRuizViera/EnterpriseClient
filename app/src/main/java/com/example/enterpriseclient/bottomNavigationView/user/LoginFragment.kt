@@ -44,14 +44,35 @@ class LoginFragment : Fragment() {
 
         var lg_login = root.findViewById<TextView>(R.id.lg_login)
         var lg_loginText = root.findViewById<TextView>(R.id.lg_loginText)
+
         var lg_email = root.findViewById<EditText>(R.id.lg_email)
         var lg_password = root.findViewById<EditText>(R.id.lg_password)
 
+        var lg_validate_email = root.findViewById<TextView>(R.id.lg_validate_email)
+        var lg_validate_password = root.findViewById<TextView>(R.id.lg_validate_password)
+
+
+        var check = true
         lg_login.setOnClickListener() {
-            RequestUser.login(activity as MainActivity,root.context, lg_email, lg_password, usersViewModel)
-//            val fragment = LoginFragment.newInstance()
-//            val activity = activity as MainActivity
-//            activity.openFragment(fragment)
+
+            if(lg_email.text.toString().equals("")){
+                lg_validate_email.visibility=View.VISIBLE
+                check = false
+            }else{
+                lg_validate_email.visibility=View.INVISIBLE
+                check = true
+            }
+            if(lg_password.text.toString().equals("")){
+                lg_validate_password.visibility=View.VISIBLE
+                check = false
+            }else{
+                lg_validate_password.visibility=View.INVISIBLE
+                check = true
+            }
+
+            if(check) {
+                RequestUser.login(activity as MainActivity, root.context, lg_email, lg_password, usersViewModel)
+            }
         }
 
         lg_loginText.setOnClickListener() {

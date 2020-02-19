@@ -44,8 +44,39 @@ class RegisterFragment : Fragment() {
         var rg_email = root.findViewById<EditText>(R.id.rg_email)
         var rg_password = root.findViewById<EditText>(R.id.rg_password)
 
+        var rg_validate_name = root.findViewById<TextView>(R.id.rg_validate_name)
+        var rg_validate_email = root.findViewById<TextView>(R.id.rg_validate_email)
+        var rg_validate_password = root.findViewById<TextView>(R.id.rg_validate_password)
+
+        var check = true
+
         rg_register.setOnClickListener(){
-            RequestUser.registerUser(activity as MainActivity,root.context,rg_name,rg_email,rg_password)
+            if(rg_name.text.toString().equals("")){
+                rg_validate_name.visibility=View.VISIBLE
+                check = false
+            }else{
+                rg_validate_name.visibility=View.INVISIBLE
+                check = true
+            }
+            if(rg_email.text.toString().equals("")){
+                rg_validate_email.visibility=View.VISIBLE
+                check = false
+            }else{
+                rg_validate_email.visibility=View.INVISIBLE
+                check = true
+            }
+            if(rg_password.text.toString().equals("")){
+                rg_validate_password.visibility=View.VISIBLE
+                check = false
+            }else{
+                rg_validate_password.visibility=View.INVISIBLE
+                check = true
+            }
+            rg_password
+
+            if(check) {
+                RequestUser.registerUser(activity as MainActivity,root.context,rg_name,rg_email,rg_password)
+            }
         }
 
         rg_registerText.setOnClickListener {
