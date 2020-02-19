@@ -57,9 +57,9 @@
             android:icon="@drawable/question"
             android:summary="@string/preferences_summary_faq"
             android:title="@string/preferences_title_faq">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://chinegua.github.io" />
+<!--            <intent-->
+<!--                android:action="android.intent.action.VIEW"-->
+<!--                android:data="http://192.168.103.210:8000/paginahelp/index.html" />-->
         </Preference>
 
     </PreferenceCategory>
