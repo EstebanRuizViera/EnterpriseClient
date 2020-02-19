@@ -17,7 +17,7 @@
         android:entries="@array/pref_language"
         android:entryValues="@array/pref_language"
         android:key="Language"
-        android:title="@string/preferences_title_language" />
+        android:title="@string/preferences_title_language"/>
 
     </PreferenceCategory>
 

@@ -3,9 +3,11 @@ package com.example.enterpriseclient
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import com.example.enterpriseclient.R.id
 import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         //Registro que contendrá la información del usuario que este logeado
         setFirthUserLocalDatabase()
 
@@ -47,24 +48,24 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun syncronizedProduct(){
+    private fun syncronizedProduct() {
         synchronizedLocalDatabase = SynchronizedLocalDatabase(this)
         synchronizedLocalDatabase.syncronizedProduct()
     }
 
-    private fun setFirthUserLocalDatabase(){
-        if(usersViewModel.getUserIdLocal(1)==0){
-            usersViewModel.saveUser(User(1,"","You are not logged in","Login","Register"))
-            Log.println(Log.INFO,null,"Guardado ")
-        }else{
-            Log.println(Log.INFO,null,"No guardado ")
+    private fun setFirthUserLocalDatabase() {
+        if (usersViewModel.getUserIdLocal(1) == 0) {
+            usersViewModel.saveUser(User(1, "", "You are not logged in", "Login", "Register"))
+            Log.println(Log.INFO, null, "Guardado ")
+        } else {
+            Log.println(Log.INFO, null, "No guardado ")
         }
     }
 
-    private fun setBottomNavigationView(){
+    private fun setBottomNavigationView() {
         bottomNavigationView = findViewById(id.bottom_navigation_view)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener  { menuItem ->
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
 
             when (menuItem.itemId) {
                 id.navigation_search -> {
@@ -98,9 +99,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
+
 }

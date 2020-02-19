@@ -4,10 +4,8 @@ package com.example.enterpriseclient.bottomNavigationView.settings
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -86,7 +84,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeLanguage() {
         listPreference = findPreference("Language") as ListPreference
 
-
         val intent = Intent(this.context, MainActivity::class.java)
 
         listPreference.setOnPreferenceChangeListener(object :
@@ -95,14 +92,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
 
                 if (listPreference!!.value.equals("English")) {
-
-                    selectLanguageEnglish(intent)
-                    Log.println(Log.INFO, null, "english ")
-                } else if (listPreference!!.value.equals("Spanish")) {
                     selectLanguageSpanish(intent)
-                    Log.println(Log.INFO, null, "spanish")
+
+                } else if (listPreference!!.value.equals("Spanish")) {
+                    selectLanguageEnglish(intent)
+
                 }
-                Log.println(Log.INFO, null, "true ")
                 return true
             }
         })
@@ -117,7 +112,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 val builder = AlertDialog.Builder(context!!)
                 builder.setTitle("Log out")
                 builder.setMessage("Do you want to logout?")
-                Log.println(Log.INFO, null, "log_out ")
                 builder.setPositiveButton("yes", {
                     dialog: DialogInterface?, which: Int ->
                     RequestUser.logout(context!!,usersViewModel)
@@ -125,8 +119,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
                 builder.setNegativeButton("no", {dialog: DialogInterface?, which: Int -> })
                 builder.show()
-
-
 
                 return true
             }
@@ -158,30 +150,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun selectLanguageSpanish(intent : Intent){
-        val localizacion = Locale("es", "ES")
-
-        Locale.setDefault(localizacion)
-        val config = Configuration()
-        config.locale = localizacion
-        this.activity!!.baseContext.resources
-            .updateConfiguration(
-                config,
-                this.activity!!.baseContext.resources.displayMetrics
-            )
+        val locale = Locale("es", "ES")
+        Locale.setDefault(locale)
+        val resources = getResources()
+        val configuration = resources.getConfiguration()
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics())
         startActivity(intent)
     }
 
     private fun selectLanguageEnglish(intent : Intent){
-        val localizacion = Locale("en", "EN")
 
-        Locale.setDefault(localizacion)
-        val config = Configuration()
-        config.locale = localizacion
-        this.activity!!.baseContext.resources
-            .updateConfiguration(
-                config,
-                this.activity!!.baseContext.resources.displayMetrics
-            )
+        val locale = Locale("en", "EN")
+        Locale.setDefault(locale)
+        val resources = getResources()
+        val configuration = resources.getConfiguration()
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics())
+
         startActivity(intent)
     }
 

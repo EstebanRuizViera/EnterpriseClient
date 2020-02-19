@@ -57,8 +57,6 @@ class HomeFragment : Fragment() {
         val layoutManagerProducts = GridLayoutManager(root.context, 1)
         recyclerView.setLayoutManager(layoutManagerProducts)
 
-        //RequestProduct.selectAllProducts(root.context, productsList, recyclerView)
-
         //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
         val productAdapter =
             ProductAdapter(

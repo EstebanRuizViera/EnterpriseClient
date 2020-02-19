@@ -2,6 +2,7 @@ package com.example.enterpriseclient.requestServer
 
 import android.content.Context
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,10 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.Constants
+import com.example.enterpriseclient.R
 import com.example.enterpriseclient.model.ProductPojo
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.adapter.UserAdapter
@@ -25,8 +29,10 @@ class RequestProduct {
         //------------- PRODUCTS --------------------
 
         @JvmStatic
-        fun selectProduct(context: Context, productName : TextView, productDescription : TextView, id : String) {
+        fun selectProduct(context: Context, productName : TextView, productDescription : TextView, id : String, img:ImageView) {
 
+            var option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
+                .error(R.drawable.loading_shape)
 
             val queue = Volley.newRequestQueue(context)
             val url = Constants.URL_SERVER + "/api/products/" +id
@@ -36,6 +42,8 @@ class RequestProduct {
 
                     productName.setText(it.getString("name"))
                     productDescription.setText(it.getString("description"))
+                        Glide.with(context).load(it.getString("img")).apply(option)
+                            .into(img)
 
                 },
                 Response.ErrorListener {
