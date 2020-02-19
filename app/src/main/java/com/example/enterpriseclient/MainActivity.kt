@@ -6,7 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.enterpriseclient.R.*
+import com.example.enterpriseclient.R.id
+import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
@@ -16,6 +17,7 @@ import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_reservation.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
-
 
 
 
