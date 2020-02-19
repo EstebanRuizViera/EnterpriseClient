@@ -4,19 +4,18 @@ package com.example.enterpriseclient.bottomNavigationView.settings
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.*
+import com.example.enterpriseclient.Constants
 import com.example.enterpriseclient.MainActivity
-import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
 import java.util.*
-
+import com.example.enterpriseclient.R.xml.pref_main
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +27,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     internal lateinit var sharedpref: SharePreferenceDarkMode
     private lateinit var logout: Preference
     private lateinit var deleteAccount : Preference
+    private lateinit var frequently_asked_questions : Preference
 
     private lateinit var usersViewModel: UsersViewModel
 
@@ -39,7 +39,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         SharePreferenceDarkMode.checkDarkMode(activity as Activity)
-        setPreferencesFromResource(R.xml.pref_main, rootKey)
+        setPreferencesFromResource(pref_main, rootKey)
 
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
@@ -49,6 +49,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         changeLanguage()
         logout()
         delete()
+        helpHtml()
     }
 
     private fun changeValueSwitch() {
@@ -83,7 +84,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeLanguage() {
         listPreference = findPreference("Language") as ListPreference
 
-
         val intent = Intent(this.context, MainActivity::class.java)
 
         listPreference.setOnPreferenceChangeListener(object :
@@ -92,14 +92,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
 
                 if (listPreference!!.value.equals("English")) {
-
-                    selectLanguageEnglish(intent)
-                    Log.println(Log.INFO, null, "english ")
-                } else if (listPreference!!.value.equals("Spanish")) {
                     selectLanguageSpanish(intent)
-                    Log.println(Log.INFO, null, "spanish")
+
+                } else if (listPreference!!.value.equals("Spanish")) {
+                    selectLanguageEnglish(intent)
+
                 }
-                Log.println(Log.INFO, null, "true ")
                 return true
             }
         })
@@ -114,7 +112,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 val builder = AlertDialog.Builder(context!!)
                 builder.setTitle("Log out")
                 builder.setMessage("Do you want to logout?")
-                Log.println(Log.INFO, null, "log_out ")
                 builder.setPositiveButton("yes", {
                     dialog: DialogInterface?, which: Int ->
                     RequestUser.logout(context!!,usersViewModel)
@@ -122,8 +119,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
                 builder.setNegativeButton("no", {dialog: DialogInterface?, which: Int -> })
                 builder.show()
-
-
 
                 return true
             }
@@ -139,7 +134,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 val builder = AlertDialog.Builder(context!!)
                 builder.setTitle("Delete account")
                 builder.setMessage("Do you want to delete your account?")
-                Log.println(Log.INFO, null, "log_out ")
+
                 builder.setPositiveButton("yes", {
                         dialog: DialogInterface?, which: Int ->
                     RequestUser.deleteUser(context!!,usersViewModel)
@@ -155,31 +150,39 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun selectLanguageSpanish(intent : Intent){
-        val localizacion = Locale("es", "ES")
-
-        Locale.setDefault(localizacion)
-        val config = Configuration()
-        config.locale = localizacion
-        this.activity!!.baseContext.resources
-            .updateConfiguration(
-                config,
-                this.activity!!.baseContext.resources.displayMetrics
-            )
+        val locale = Locale("es", "ES")
+        Locale.setDefault(locale)
+        val resources = getResources()
+        val configuration = resources.getConfiguration()
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics())
         startActivity(intent)
     }
 
     private fun selectLanguageEnglish(intent : Intent){
-        val localizacion = Locale("en", "EN")
 
-        Locale.setDefault(localizacion)
-        val config = Configuration()
-        config.locale = localizacion
-        this.activity!!.baseContext.resources
-            .updateConfiguration(
-                config,
-                this.activity!!.baseContext.resources.displayMetrics
-            )
+        val locale = Locale("en", "EN")
+        Locale.setDefault(locale)
+        val resources = getResources()
+        val configuration = resources.getConfiguration()
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics())
+
         startActivity(intent)
+    }
+
+
+    private fun helpHtml(){
+        frequently_asked_questions = findPreference("frequently_asked_questions")!!
+
+        frequently_asked_questions.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
+            override fun onPreferenceClick(preference: Preference?): Boolean {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_SERVER+"/paginahelp/index.html"))
+                context!!.startActivity(intent)
+                return true
+            }
+        })
+
     }
 
 }
