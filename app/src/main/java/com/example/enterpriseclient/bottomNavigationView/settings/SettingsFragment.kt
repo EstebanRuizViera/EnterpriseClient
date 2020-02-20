@@ -92,10 +92,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
 
                 if (listPreference!!.value.equals("English")) {
-                    selectLanguageSpanish(intent)
+                    selectLanguageEnglish(intent)
 
                 } else if (listPreference!!.value.equals("Spanish")) {
-                    selectLanguageEnglish(intent)
+                    selectLanguageSpanish(intent)
 
                 }
                 return true
@@ -156,7 +156,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val configuration = resources.getConfiguration()
         configuration.locale = locale
         resources.updateConfiguration(configuration, resources.getDisplayMetrics())
+
         startActivity(intent)
+        activity!!.finish()
     }
 
     private fun selectLanguageEnglish(intent : Intent){
@@ -169,6 +171,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics())
 
         startActivity(intent)
+        activity!!.finish()
     }
 
 
