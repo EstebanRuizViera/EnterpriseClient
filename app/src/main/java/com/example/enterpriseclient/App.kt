@@ -2,9 +2,13 @@ package com.example.enterpriseclient
 
 import android.app.Application
 import androidx.preference.PreferenceManager
+import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
 import java.util.*
 
 class App : Application() {
+
+
+//    private lateinit var synchronizedLocalDatabase: SynchronizedLocalDatabase
 
     override fun onCreate() {
         super.onCreate()
@@ -21,5 +25,11 @@ class App : Application() {
         }
 
         BaseActivity.dLocale = Locale(change) //set any locale you want here
+        //syncronizedProduct()
     }
+
+//    private fun syncronizedProduct() {
+//        synchronizedLocalDatabase = SynchronizedLocalDatabase(this.applicationContext)
+//        synchronizedLocalDatabase.syncronizedProduct()
+//    }
 }

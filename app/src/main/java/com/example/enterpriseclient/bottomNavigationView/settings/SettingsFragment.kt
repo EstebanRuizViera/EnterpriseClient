@@ -29,6 +29,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var logout: Preference
     private lateinit var deleteAccount : Preference
     private lateinit var frequently_asked_questions : Preference
+    private lateinit var generatePdf : Preference
 
     private lateinit var usersViewModel: UsersViewModel
 
@@ -51,6 +52,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         logout()
         delete()
         helpHtml()
+        showPdf()
     }
 
     private fun changeValueSwitch() {
@@ -191,6 +193,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         })
 
+    }
+
+    private fun showPdf(){
+        generatePdf = findPreference("generatePdf")!!
+
+        generatePdf.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
+            override fun onPreferenceClick(preference: Preference?): Boolean {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_SERVER+"/productList.pdf"))
+                context!!.startActivity(intent)
+                return true
+            }
+        })
     }
 
 }

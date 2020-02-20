@@ -203,11 +203,10 @@ class RequestUser {
                 Request.Method.DELETE, url,
                 Response.Listener {
                     Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-                    Log.println(Log.INFO, null, "delete ")
                     logout(context, usersViewModel)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.toString())
+                    Toast.makeText(context, "Error deleting your account. Try again later", Toast.LENGTH_LONG).show()
                 }) {
                 @Throws(AuthFailureError::class)
                 override fun getHeaders(): Map<String, String> {
@@ -227,7 +226,7 @@ class RequestUser {
         @JvmStatic
         fun logout(context: Context, usersViewModel: UsersViewModel) {
             usersViewModel.updateUser(User(1, "", "You are not logged in", "Login", "Register"))
-            Log.println(Log.INFO, null, "log_out ")
+            Toast.makeText(context, "Logged out", Toast.LENGTH_LONG).show()
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }

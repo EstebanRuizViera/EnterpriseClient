@@ -33,7 +33,6 @@ class RequestAvailability {
                     for (i in 0 until array.length()) {
                         val availability = array.getJSONObject(i)
                         var timestamp = availability.getString("timestamp").split(" ")
-//                        Log.println(Log.INFO, null, "timestamp0 " +timestamp[0]+"timestamp1 " +timestamp[1] )
                         availabilityPojos.add(
                             AvailabilityPojo(
                                 availability.getInt("id"),
