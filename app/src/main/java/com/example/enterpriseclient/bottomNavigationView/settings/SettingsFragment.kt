@@ -165,6 +165,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val configuration = resources.getConfiguration()
         configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.getDisplayMetrics())
+
         startActivity(intent)
         activity!!.finish()
     }
