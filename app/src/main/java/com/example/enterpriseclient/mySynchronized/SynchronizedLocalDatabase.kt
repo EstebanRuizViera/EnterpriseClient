@@ -1,10 +1,12 @@
 package com.example.enterpriseclient.mySynchronized
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.enterpriseclient.App
 import com.example.enterpriseclient.model.AvailabilityPojo
 import com.example.enterpriseclient.model.DistributionPojo
 import com.example.enterpriseclient.model.ProductPojo
@@ -24,7 +26,8 @@ class SynchronizedLocalDatabase{
     private var availabilityViewModel: AvailabilityViewModel
     private var distributionViewModel: DistributionViewModel
 
-    private var activity:Activity
+    private var context: Context
+    private var application: App
 
     private var listLocalProductPojos : ArrayList<ProductPojo> = arrayListOf()
     private var listRemoteProductPojos : ArrayList<ProductPojo> = arrayListOf()
@@ -35,19 +38,15 @@ class SynchronizedLocalDatabase{
     private var listLocalDistributionPojos : ArrayList<DistributionPojo> = arrayListOf()
     private var listRemoteDistributionPojos : ArrayList<DistributionPojo> = arrayListOf()
 
-    constructor(activity:Activity){
+    constructor(context: Context,application: App){
 
-        this.activity = activity
+        this.context = context
+        this.application = application
 
-        productViewModel = run {
-            ViewModelProviders.of(activity as FragmentActivity).get(ProductViewModel::class.java)
-        }
-        availabilityViewModel = run {
-            ViewModelProviders.of(activity as FragmentActivity).get(AvailabilityViewModel::class.java)
-        }
-        distributionViewModel = run {
-            ViewModelProviders.of(activity as FragmentActivity).get(DistributionViewModel::class.java)
-        }
+        productViewModel = ProductViewModel(application)
+        availabilityViewModel = AvailabilityViewModel(application)
+        distributionViewModel= DistributionViewModel(application)
+
     }
 
     fun syncronizedProduct(){
@@ -144,7 +143,7 @@ class SynchronizedLocalDatabase{
             }
 
         }else{
-            Toast.makeText(activity, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -168,7 +167,7 @@ class SynchronizedLocalDatabase{
             }
 
         }else{
-            Toast.makeText(activity, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -192,21 +191,21 @@ class SynchronizedLocalDatabase{
             }
 
         }else{
-            Toast.makeText(activity, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
     private fun getRemoteProducts(){
-        RequestProduct.selectAllProducts(activity,listRemoteProductPojos, this)
+        RequestProduct.selectAllProducts(context,listRemoteProductPojos, this)
     }
 
     private fun getRemoteAvailability(){
-        RequestAvailability.selectAvailabilityForProduct(activity,listRemoteAvailabilityPojos, this)
+        RequestAvailability.selectAvailabilityForProduct(context,listRemoteAvailabilityPojos, this)
     }
 
     private fun getRemoteDistribution(){
-        RequestDistribution.selectAllDistribution(activity,listRemoteDistributionPojos, this)
+        RequestDistribution.selectAllDistribution(context,listRemoteDistributionPojos, this)
     }
 
 

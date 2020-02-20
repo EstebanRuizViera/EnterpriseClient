@@ -42,26 +42,17 @@ class MainActivity : BaseActivity() {
 
         setSupportActionBar(toolbar);
 
-        RequestReport.generateReportListProduct(this)
-
         usersViewModel = run {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
-
 
         //Registro que contendrá la información del usuario que este logeado
         setFirthUserLocalDatabase()
 
         setBottomNavigationView()
 
-        syncronizedProduct()
-
     }
 
-    private fun syncronizedProduct() {
-        synchronizedLocalDatabase = SynchronizedLocalDatabase(this)
-        synchronizedLocalDatabase.syncronizedProduct()
-    }
 
     private fun setFirthUserLocalDatabase() {
         if (usersViewModel.getUserIdLocal(1) == 0) {
