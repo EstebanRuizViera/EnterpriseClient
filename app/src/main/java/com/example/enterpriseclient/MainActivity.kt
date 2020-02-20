@@ -1,8 +1,11 @@
 package com.example.enterpriseclient
 
 
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -19,9 +22,10 @@ import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_reservation.*
+import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -30,8 +34,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         SharePreferenceDarkMode.checkDarkMode(this)
+
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
+
         setSupportActionBar(toolbar);
 
         usersViewModel = run {
