@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
@@ -90,9 +89,7 @@ class RequestProduct {
                     recyclerView.setAdapter(userAdapter)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Llego al error: "+it.message)
-                    Toast.makeText(context, "Error getting your bookings. Try again later", Toast.LENGTH_SHORT)
-                        .show()
+                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
                 }
             ) {}
 
@@ -128,8 +125,7 @@ class RequestProduct {
                     synchronizedLocalDatabase.saveProduct()
                 },
                 Response.ErrorListener {
-                    Toast.makeText(context, "Error getting the products. Try again later", Toast.LENGTH_SHORT)
-                        .show()
+                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
                 }
             ) {}
 

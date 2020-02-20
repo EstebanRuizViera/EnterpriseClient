@@ -1,9 +1,10 @@
 package com.example.enterpriseclient
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.CalendarView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,10 @@ import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability
 import com.example.enterpriseclient.requestServer.RequestReservation
 import kotlinx.android.synthetic.main.activity_availability.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class AvailabilityActivity : AppCompatActivity() {
 
@@ -19,8 +24,9 @@ class AvailabilityActivity : AppCompatActivity() {
     private lateinit var calendarView:CalendarView
     private lateinit var recyclerView:RecyclerView
     private var idProduct:Int = 0
-    private var selectedDate:String = "2020-10-10"
+    private var selectedDate:String = ""
     private var idUser:String = ""
+    private lateinit var availabilityList:ArrayList<AvailabilityPojo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +40,19 @@ class AvailabilityActivity : AppCompatActivity() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
+        calendarView = findViewById(R.id.calendar)
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        selectedDate = sdf.format(Date(calendarView.date))
+
         addProductToCard()
         getAvailabilityForProduct()
 
     }
 
     private fun getAvailabilityForProduct(){
-        var availabilityList = arrayListOf<AvailabilityPojo>()
-        recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
+        availabilityList = arrayListOf<AvailabilityPojo>()
 
         val layoutManagerAvailability = GridLayoutManager(this, 1)
         recyclerView.setLayoutManager(layoutManagerAvailability)
@@ -52,12 +63,11 @@ class AvailabilityActivity : AppCompatActivity() {
     }
 
     private fun addProductToCard(){
-        calendarView = findViewById(R.id.calendar)
+
         idUser = usersViewModel.getUserId(1)
 
         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
             selectedDate = ""+year + "-" + (month + 1) + "-" + dayOfMonth
-            Toast.makeText(this, selectedDate, Toast.LENGTH_SHORT).show()
         }
 
         addToCart.setOnClickListener{
@@ -68,6 +78,10 @@ class AvailabilityActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    fun selectTimeAvailability(){
+
     }
 
 

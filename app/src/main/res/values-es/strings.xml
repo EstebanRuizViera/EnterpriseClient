@@ -33,10 +33,9 @@
     <string name="preferences_title_about">Información</string>
     <string name="preferences_title_version">Versión</string>
     <string name="preferences_title_send_feedback">Enviar feedback</string>
-    <string name="preferences_title_faq">FAQ</string>
-    <string name="preferences_summary_faq">Ver las preguntas más contestadas</string>
+    <string name="preferences_title_help">Manual de ayuda</string>
     <string name="preference_summary_feedback">¿Tienes alguna pregunta? Estamos encantados de ayudar</string>
-
+    <string name="preferences_title_generate_pdf">Generar lista de productos</string>
 
 
 

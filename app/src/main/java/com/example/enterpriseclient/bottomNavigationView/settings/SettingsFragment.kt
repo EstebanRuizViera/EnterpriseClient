@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -28,6 +29,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var logout: Preference
     private lateinit var deleteAccount : Preference
     private lateinit var frequently_asked_questions : Preference
+    private lateinit var generatePdf : Preference
 
     private lateinit var usersViewModel: UsersViewModel
 
@@ -50,6 +52,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         logout()
         delete()
         helpHtml()
+        showPdf()
     }
 
     private fun changeValueSwitch() {
@@ -84,19 +87,25 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeLanguage() {
         listPreference = findPreference("Language") as ListPreference
 
+        val language = Locale.getDefault().getDisplayLanguage()
+
+
+        if (language.equals("English")) {
+            listPreference.setValueIndex(0)
+        } else if (language.equals("Spanish")) {
+            listPreference.setValueIndex(1)
+        }
+
         val intent = Intent(this.context, MainActivity::class.java)
 
         listPreference.setOnPreferenceChangeListener(object :
             Preference.OnPreferenceChangeListener {
             override fun onPreferenceChange(preference: Preference?, newValue: Any): Boolean {
 
-
-                if (listPreference!!.value.equals("English")) {
-                    selectLanguageSpanish(intent)
-
-                } else if (listPreference!!.value.equals("Spanish")) {
+                if (newValue.equals("English")) {
                     selectLanguageEnglish(intent)
-
+                } else if (newValue.equals("Spanish")) {
+                    selectLanguageSpanish(intent)
                 }
                 return true
             }
@@ -154,9 +163,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         Locale.setDefault(locale)
         val resources = getResources()
         val configuration = resources.getConfiguration()
-        configuration.locale = locale
+        configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.getDisplayMetrics())
         startActivity(intent)
+        activity!!.finish()
     }
 
     private fun selectLanguageEnglish(intent : Intent){
@@ -165,10 +175,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         Locale.setDefault(locale)
         val resources = getResources()
         val configuration = resources.getConfiguration()
-        configuration.locale = locale
+        configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.getDisplayMetrics())
-
         startActivity(intent)
+        activity!!.finish()
     }
 
 
@@ -183,6 +193,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         })
 
+    }
+
+    private fun showPdf(){
+        generatePdf = findPreference("generatePdf")!!
+
+        generatePdf.setOnPreferenceClickListener(object: Preference.OnPreferenceClickListener {
+            override fun onPreferenceClick(preference: Preference?): Boolean {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_SERVER+"/productList.pdf"))
+                context!!.startActivity(intent)
+                return true
+            }
+        })
     }
 
 }

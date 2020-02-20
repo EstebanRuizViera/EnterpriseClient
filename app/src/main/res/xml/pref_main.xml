@@ -42,15 +42,19 @@
     <PreferenceCategory android:title="@string/preferences_title_about">
 
         <Preference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:summary="1.0"
             android:title="@string/preferences_title_version" />
+        <Preference
+            android:key="generatePdf"
+            android:title="@string/preferences_title_generate_pdf" />
 
         <!-- preference opens url in browser -->
         <Preference
             android:key="frequently_asked_questions"
             android:icon="@drawable/question"
-            android:summary="@string/preferences_summary_faq"
-            android:title="@string/preferences_title_faq">
+            android:title="@string/preferences_title_help">
 <!--            <intent-->
 <!--                android:action="android.intent.action.VIEW"-->
 <!--                android:data="http://192.168.103.210:8000/paginahelp/index.html" />-->

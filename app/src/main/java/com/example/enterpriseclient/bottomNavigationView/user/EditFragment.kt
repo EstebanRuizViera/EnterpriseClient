@@ -51,9 +51,6 @@ class EditFragment : Fragment() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
-        val regex = Regex(pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}\$")
-        val matched = regex.containsMatchIn(input = editEmail.text)
-
         editBtn.setOnClickListener() {
             var newModification = 0
             if (editName.text.toString().equals("")) {
@@ -61,13 +58,10 @@ class EditFragment : Fragment() {
                 newModification++
             }
             if (editEmail.text.toString().equals("")) {
-                editValidateEmail.visibility = View.INVISIBLE
                 editEmail.setText(usersViewModel.getUser(1)!!.get(0).email)
                 newModification++
-            } else if (!matched) {
-                editValidateEmail.visibility = View.VISIBLE
-                newModification++
             }
+
             if (newModification != 2) {
                 RequestUser.updateUser(
                     activity as MainActivity,
