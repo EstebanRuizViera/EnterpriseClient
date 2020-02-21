@@ -56,14 +56,14 @@ class RequestAvailability {
                     recyclerView.setAdapter(availabilityAdapter)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                    Log.println(Log.INFO, null, "Error getting your availabilities")
                 }) {}
 
             queue.add(req)
         }
 
         @JvmStatic
-        fun selectAvailabilityForProduct(
+        fun selectAllAvailabilities(
             context: Context, availabilityPojos: ArrayList<AvailabilityPojo>,
             synchronizedLocalDatabase: SynchronizedLocalDatabase
 
@@ -91,7 +91,9 @@ class RequestAvailability {
                     synchronizedLocalDatabase.saveAvailability()
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                    Log.println(Log.INFO, null, "Error getting your availabilities"+it)
+                    synchronizedLocalDatabase.getLocalDistribution()
+                    synchronizedLocalDatabase.getRemoteDistribution()
                 }) {}
 
             queue.add(req)

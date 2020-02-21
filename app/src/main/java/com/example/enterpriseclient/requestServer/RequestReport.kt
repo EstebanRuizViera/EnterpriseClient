@@ -5,6 +5,7 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Constants
 
@@ -21,13 +22,13 @@ class RequestReport {
 
             val queue = Volley.newRequestQueue(context)
             val url = Constants.URL_SERVER + "/report"
-            val req = object : JsonObjectRequest(
-                Request.Method.GET, url, null,
+                val req = object : StringRequest(
+                Request.Method.GET, url,
                 Response.Listener {
-                    Log.println(Log.INFO, null, "RESPUESTA " + it.getString("message"))
+                    Log.println(Log.INFO, null, it)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                    Log.println(Log.INFO, null, "Error generate your document"+it )
                 }) {}
 
             queue.add(req)

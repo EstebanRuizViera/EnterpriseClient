@@ -2,8 +2,6 @@ package com.example.enterpriseclient.requestServer
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -46,7 +44,8 @@ class RequestDistribution {
                     synchronizedLocalDatabase.saveDistribution()
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your distribution. Try again later")
+                    Log.println(Log.INFO, null, "Error getting your distributions")
+                    RequestReport.generateReportListProduct(context)
                 }
             ) {}
 

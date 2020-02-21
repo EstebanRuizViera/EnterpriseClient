@@ -3,6 +3,7 @@ package com.example.enterpriseclient.mySynchronized
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
@@ -19,8 +20,9 @@ import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability
 import com.example.enterpriseclient.requestServer.RequestDistribution
 import com.example.enterpriseclient.requestServer.RequestProduct
+import com.example.enterpriseclient.requestServer.RequestReport
 
-class SynchronizedLocalDatabase{
+class SynchronizedLocalDatabase {
 
     private var productViewModel: ProductViewModel
     private var availabilityViewModel: AvailabilityViewModel
@@ -29,43 +31,39 @@ class SynchronizedLocalDatabase{
     private var context: Context
     private var application: App
 
-    private var listLocalProductPojos : ArrayList<ProductPojo> = arrayListOf()
-    private var listRemoteProductPojos : ArrayList<ProductPojo> = arrayListOf()
+    private var listLocalProductPojos: ArrayList<ProductPojo> = arrayListOf()
+    private var listRemoteProductPojos: ArrayList<ProductPojo> = arrayListOf()
 
-    private var listLocalAvailabilityPojos : ArrayList<AvailabilityPojo> = arrayListOf()
-    private var listRemoteAvailabilityPojos : ArrayList<AvailabilityPojo> = arrayListOf()
+    private var listLocalAvailabilityPojos: ArrayList<AvailabilityPojo> = arrayListOf()
+    private var listRemoteAvailabilityPojos: ArrayList<AvailabilityPojo> = arrayListOf()
 
-    private var listLocalDistributionPojos : ArrayList<DistributionPojo> = arrayListOf()
-    private var listRemoteDistributionPojos : ArrayList<DistributionPojo> = arrayListOf()
+    private var listLocalDistributionPojos: ArrayList<DistributionPojo> = arrayListOf()
+    private var listRemoteDistributionPojos: ArrayList<DistributionPojo> = arrayListOf()
 
-    constructor(context: Context,application: App){
+    constructor(context: Context, application: App) {
 
         this.context = context
         this.application = application
 
         productViewModel = ProductViewModel(application)
         availabilityViewModel = AvailabilityViewModel(application)
-        distributionViewModel= DistributionViewModel(application)
+        distributionViewModel = DistributionViewModel(application)
 
     }
 
-    fun syncronizedProduct(){
+    fun syncronizedProduct() {
         getLocalProduct()
         getRemoteProducts()
 
-        getLocalAvailability()
-        getRemoteAvailability()
-
-        getLocalDistribution()
-        getRemoteDistribution()
+        //
     }
 
-    fun saveProduct(){
+    fun saveProduct() {
 
-        if(listRemoteProductPojos!=null && listLocalProductPojos!=null){
-            if(listRemoteProductPojos.size>listLocalProductPojos.size){
+        if (listRemoteProductPojos != null && listLocalProductPojos != null) {
+            if (listRemoteProductPojos.size > listLocalProductPojos.size) {
 
-                for(i in listLocalProductPojos.size..listRemoteProductPojos.size-1){
+                for (i in listLocalProductPojos.size..listRemoteProductPojos.size - 1) {
                     productViewModel.saveProduct(
                         Product(
                             listRemoteProductPojos.get(i).id,
@@ -75,19 +73,21 @@ class SynchronizedLocalDatabase{
                             listRemoteProductPojos.get(i).id_description
                         )
                     )
-                    Log.println(Log.INFO, null, "product"+i )
+                    Log.println(Log.INFO, null, "product " + i)
                 }
             }
-        }else{
-            Log.println(Log.INFO, null, "no product" )
+        } else {
+            Log.println(Log.INFO, null, "no product")
         }
+        getLocalAvailability()
+        getRemoteAvailability()
     }
 
-    fun saveAvailability(){
+    fun saveAvailability() {
 
-        if(listRemoteAvailabilityPojos.size>listLocalAvailabilityPojos.size){
+        if (listRemoteAvailabilityPojos.size > listLocalAvailabilityPojos.size) {
 
-            for(i in listLocalAvailabilityPojos.size..listRemoteAvailabilityPojos.size-1){
+            for (i in listLocalAvailabilityPojos.size..listRemoteAvailabilityPojos.size - 1) {
                 availabilityViewModel.saveAvailability(
                     Availability(
                         listRemoteAvailabilityPojos.get(i).id,
@@ -98,18 +98,19 @@ class SynchronizedLocalDatabase{
                         listRemoteAvailabilityPojos.get(i).id_product
                     )
                 )
-                Log.println(Log.INFO, null, "availability"+i )
+                Log.println(Log.INFO, null, "availability " + i)
             }
         }
-
+        getLocalDistribution()
+        getRemoteDistribution()
     }
 
     fun saveDistribution() {
-        if(listRemoteDistributionPojos.size>listLocalDistributionPojos.size){
+        if (listRemoteDistributionPojos.size > listLocalDistributionPojos.size) {
 
-            Log.println(Log.INFO, null, ""+listLocalDistributionPojos.size )
-            Log.println(Log.INFO, null, ""+listRemoteDistributionPojos.size )
-            for(i in listLocalDistributionPojos.size..listRemoteDistributionPojos.size-1){
+            Log.println(Log.INFO, null, "" + listLocalDistributionPojos.size)
+            Log.println(Log.INFO, null, "" + listRemoteDistributionPojos.size)
+            for (i in listLocalDistributionPojos.size..listRemoteDistributionPojos.size - 1) {
                 distributionViewModel.saveDistribution(
                     Distribution(
                         listRemoteDistributionPojos.get(i).id,
@@ -120,17 +121,18 @@ class SynchronizedLocalDatabase{
                         listRemoteDistributionPojos.get(i).block
                     )
                 )
-                Log.println(Log.INFO, null, "distribution" +i)
+                Log.println(Log.INFO, null, "distribution " + i)
             }
         }
+        RequestReport.generateReportListProduct(context)
     }
 
-    private fun getLocalProduct(){
+    fun getLocalProduct() {
 
         var list = productViewModel.getAllProduct()
 
-        if(list!=null){
-            for(product:Product in list.iterator()){
+        if (list != null) {
+            for (product: Product in list.iterator()) {
                 listLocalProductPojos.add(
                     ProductPojo(
                         product.id,
@@ -142,18 +144,19 @@ class SynchronizedLocalDatabase{
                 )
             }
 
-        }else{
-            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
-                .show()
+        } else {
+            var toast =Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+            toast.show()
         }
     }
 
-    private fun getLocalAvailability(){
+    fun getLocalAvailability() {
 
         var list = availabilityViewModel.getAllAvailability()
 
-        if(list!=null){
-            for(availability:Availability in list.iterator()){
+        if (list != null) {
+            for (availability: Availability in list.iterator()) {
                 listLocalAvailabilityPojos.add(
                     AvailabilityPojo(
                         availability.id,
@@ -166,18 +169,19 @@ class SynchronizedLocalDatabase{
                 )
             }
 
-        }else{
-            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
-                .show()
+        } else {
+            var toast = Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+            toast.show()
         }
     }
 
-    private fun getLocalDistribution(){
+    fun getLocalDistribution() {
 
         var list = distributionViewModel.getAllDistribution()
 
-        if(list!=null){
-            for(distribution:Distribution in list.iterator()){
+        if (list != null) {
+            for (distribution: Distribution in list.iterator()) {
                 listLocalDistributionPojos.add(
                     DistributionPojo(
                         distribution.id,
@@ -190,24 +194,24 @@ class SynchronizedLocalDatabase{
                 )
             }
 
-        }else{
-            Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
-                .show()
+        } else {
+            var toast = Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+            toast.show()
         }
     }
 
-    private fun getRemoteProducts(){
-        RequestProduct.selectAllProducts(context,listRemoteProductPojos, this)
+    fun getRemoteProducts() {
+        RequestProduct.selectAllProducts(context, listRemoteProductPojos, this)
     }
 
-    private fun getRemoteAvailability(){
-        RequestAvailability.selectAvailabilityForProduct(context,listRemoteAvailabilityPojos, this)
+    fun getRemoteAvailability() {
+        RequestAvailability.selectAllAvailabilities(context, listRemoteAvailabilityPojos, this)
     }
 
-    private fun getRemoteDistribution(){
-        RequestDistribution.selectAllDistribution(context,listRemoteDistributionPojos, this)
+    fun getRemoteDistribution() {
+        RequestDistribution.selectAllDistribution(context, listRemoteDistributionPojos, this)
     }
-
 
 
 }

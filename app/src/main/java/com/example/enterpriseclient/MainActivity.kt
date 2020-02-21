@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
     private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var synchronizedLocalDatabase: SynchronizedLocalDatabase
+//    private lateinit var synchronizedLocalDatabase: SynchronizedLocalDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,22 +46,10 @@ class MainActivity : BaseActivity() {
             ViewModelProviders.of(this).get(UsersViewModel::class.java)
         }
 
-        //Registro que contendrá la información del usuario que este logeado
-        setFirthUserLocalDatabase()
-
         setBottomNavigationView()
 
     }
 
-
-    private fun setFirthUserLocalDatabase() {
-        if (usersViewModel.getUserIdLocal(1) == 0) {
-            usersViewModel.saveUser(User(1, "", "You are not logged in", "Login", "Register"))
-            Log.println(Log.INFO, null, "Guardado ")
-        } else {
-            Log.println(Log.INFO, null, "No guardado ")
-        }
-    }
 
     private fun setBottomNavigationView() {
         bottomNavigationView = findViewById(id.bottom_navigation_view)

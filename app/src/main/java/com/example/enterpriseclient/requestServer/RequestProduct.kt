@@ -46,7 +46,7 @@ class RequestProduct {
 
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                    Log.println(Log.INFO, null, "Error getting your product for id" )
                 }) {}
 
             queue.add(req)
@@ -65,7 +65,6 @@ class RequestProduct {
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    Log.println(Log.INFO, null, "Llego al listener:")
                     var array = it
                     for (i in 0 until array.length()) {
                         val product = array.getJSONObject(i)
@@ -89,7 +88,7 @@ class RequestProduct {
                     recyclerView.setAdapter(userAdapter)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
+                    Log.println(Log.INFO, null, "Error getting your bookings for customer")
                 }
             ) {}
 
@@ -125,11 +124,14 @@ class RequestProduct {
                     synchronizedLocalDatabase.saveProduct()
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
+                    Log.println(Log.INFO, null, "Error getting your bookings")
+                    synchronizedLocalDatabase.getLocalAvailability()
+                    synchronizedLocalDatabase.getRemoteAvailability()
                 }
             ) {}
 
             queue.add(updateReq)
+
 
         }
     }
