@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">EnterpriseClient</string>
+
+    <string name="title_home">Inicio</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="tab_1">Inicio</string>
+    <string name="tab_3">Perfil</string>
+    <string name="tab_2">Ajustes</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_name">Nombre</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="dont_have_an_account">¿No tienes una cuenta?</string>
+    <string name="register">Registrarse</string>
+    <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+    <string name="customer_rating">63 opiniones de clientes</string>
+    <string name="button_check_availability">Ver disponibilidad</string>
+    <string name="button_book_now">Reservar</string>
+    <string name="button_book">Reservar</string>
+    <string name="button_edit_profile">Editar perfil</string>
+    <string name="toolbar_availability">Disponibilidad</string>
+    <string name="toolbar_edit_profile">Editar perfil</string>
+    <string name="toolbar_product">Producto</string>
+    <string name="preferences_title_dark_mode">Modo nocturno</string>
+    <string name="preferences_summary_dark_mode">Cambia el tema de la aplicación</string>
+    <string name="preferences_title_language">Idioma</string>
+    <string name="preferences_dialog_title_language">Selecciona un idioma</string>
+    <string name="preferences_title_delete_account">Borrar cuenta</string>
+    <string name="preferences_title_log_out">Cerrar sesión</string>
+    <string name="preferences_title_general">Gerenal</string>
+    <string name="preferences_title_account">Cuenta</string>
+    <string name="preferences_title_about">Información</string>
+    <string name="preferences_title_version">Versión</string>
+    <string name="preferences_title_send_feedback">Enviar feedback</string>
+    <string name="preferences_title_help">Manual de ayuda</string>
+    <string name="preference_summary_feedback">¿Tienes alguna pregunta? Estamos encantados de ayudar</string>
+    <string name="preferences_title_generate_pdf">Generar lista de productos</string>
+
+
+
+
+
+</resources>

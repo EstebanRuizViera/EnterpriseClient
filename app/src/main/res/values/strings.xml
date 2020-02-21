@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">EnterpriseClient</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+    <string name="tab_1">Home</string>
+    <string name="tab_3">Profile</string>
+    <string name="tab_2">Settings</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Name</string>
+    <string name="login">Login</string>
+    <string name="dont_have_an_account">Dont you have an account?</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="customer_rating">63 customer ratings</string>
+    <string name="button_check_availability">Check availability</string>
+    <string name="button_book_now">Book now</string>
+    <string name="button_book">Book</string>
+    <string name="button_edit_profile">Edit profile</string>
+    <string name="toolbar_availability">Availability</string>
+    <string name="toolbar_edit_profile">Edit profile</string>
+    <string name="toolbar_product">Product</string>
+    <string name="preferences_title_dark_mode">Dark mode</string>
+    <string name="preferences_summary_dark_mode">Change application theme</string>
+    <string name="preferences_title_language">Language</string>
+    <string name="preferences_dialog_title_language">Select language</string>
+    <string name="preferences_title_delete_account">Delete account</string>
+    <string name="preferences_title_log_out">Log out</string>
+    <string name="preferences_title_general">General</string>
+    <string name="preferences_title_account">Account</string>
+    <string name="preferences_title_about">About</string>
+    <string name="preferences_title_version">Version</string>
+    <string name="preferences_title_send_feedback">Send feedback</string>
+    <string name="preferences_title_help">Help manual</string>
+    <string name="preference_summary_feedback">Got any queries? We are happy to help!</string>
+    <string name="preferences_title_generate_pdf">Generate list product</string>
+
+
 </resources>

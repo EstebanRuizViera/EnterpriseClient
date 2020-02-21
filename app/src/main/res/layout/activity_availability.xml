@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AvailabilityActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppTheme">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:titleTextColor="?attr/textColor"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="@string/toolbar_availability" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!--    <com.events.calendar.views.EventsCalendar-->
+    <!--        android:id="@+id/eventsCalendar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#000000"-->
+    <!--        android:overScrollMode="never"-->
+    <!--        app:eventDotColor="#ff0000"-->
+    <!--        app:isBoldTextOnSelectionEnabled="true"-->
+    <!--        app:monthTitleColor="#ffffff"-->
+    <!--        app:primaryTextColor="#c4c4c4"-->
+    <!--        app:secondaryTextColor="#666666"-->
+    <!--        app:selectedTextColor="#000000"-->
+    <!--        app:selectionColor="#ffe600"-->
+    <!--        app:weekHeaderColor="#c6c6c6" />-->
+
+
+    <CalendarView
+        android:layout_marginTop="10dp"
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shownWeekCount="100"
+        android:firstDayOfWeek="2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#D7DBDD">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center">
+
+        <Button
+            android:id="@+id/addToCart"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_button_circle"
+            android:gravity="center"
+            android:text="@string/button_book" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

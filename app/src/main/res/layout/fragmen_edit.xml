@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/backgroundColor">
+
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="300dp"
+        android:layout_marginTop="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/hint_name"
+        android:textColor="?attr/descriptionColor"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/hint_email"
+        android:textColor="?attr/descriptionColor"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/editValidateEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_gravity="center_horizontal"
+        android:text="This email is not valid"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/editBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="36dp"
+        android:text="@string/button_edit_profile"
+        android:textColor="?attr/textColor"
+        android:background="@drawable/login_button_circle"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        />
+
+</LinearLayout>
