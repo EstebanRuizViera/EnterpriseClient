@@ -53,30 +53,12 @@
         android:orientation="vertical"
         android:background="#D7DBDD">
 
-        <TextView
-            android:id="@+id/calendarText"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAvailability"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:gravity="center_horizontal|center">
 
         <Button
@@ -84,8 +66,20 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_button_circle"
-            android:text="@string/button_book"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/button_book" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

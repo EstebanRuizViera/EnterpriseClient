@@ -1,7 +1,7 @@
 package com.example.enterpriseclient
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
 import android.widget.CalendarView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -74,7 +74,9 @@ class AvailabilityActivity : AppCompatActivity() {
             if(!idProduct.equals("")){
                 RequestReservation.createReservation(this, 1524, selectedDate, idUser, idProduct.toString())
             } else {
-                Toast.makeText(this, "You have to sign in to book a product ", Toast.LENGTH_LONG).show()
+                var toast=Toast.makeText(this, "You have to sign in to book a product ", Toast.LENGTH_LONG)
+                toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+                toast.show()
             }
 
         }
