@@ -36,7 +36,10 @@
     <string name="preferences_title_help">Manual de ayuda</string>
     <string name="preference_summary_feedback">¿Tienes alguna pregunta? Estamos encantados de ayudar</string>
     <string name="preferences_title_generate_pdf">Generar lista de productos</string>
-
+    <string name="toolnar_reservation">Producto</string>
+    <string name="toolbar_main_product">Productos</string>
+    <string name="toolbar_main_user">Perfil</string>
+    <string name="toolbar_main_preference">Preferencias</string>
 
 
 

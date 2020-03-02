@@ -36,6 +36,10 @@
     <string name="preferences_title_help">Help manual</string>
     <string name="preference_summary_feedback">Got any queries? We are happy to help!</string>
     <string name="preferences_title_generate_pdf">Generate list product</string>
+    <string name="toolnar_reservation">Product</string>
+    <string name="toolbar_main_product">Products</string>
+    <string name="toolbar_main_user">Profile</string>
+    <string name="toolbar_main_preference">Preference</string>
 
 
 </resources>

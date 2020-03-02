@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AvailabilityActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:navigationIcon="@drawable/ic_arrow_back"
+    android:background="?attr/backgroundColor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -40,52 +42,41 @@
 
 
     <CalendarView
-        android:layout_marginTop="10dp"
         android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:shownWeekCount="100"
-        android:firstDayOfWeek="2"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#D7DBDD">
-
-        <TextView
-            android:id="@+id/calendarText"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="" />
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:firstDayOfWeek="2"
+        android:shownWeekCount="100" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAvailability"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|center">
+        android:gravity="center_horizontal|center"
+        android:background="?attr/backgroundColor">
 
         <Button
             android:id="@+id/addToCart"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_button_circle"
-            android:text="@string/button_book"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/button_book" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/backgroundColor">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/backgroundColor"/>
 
     </LinearLayout>
 

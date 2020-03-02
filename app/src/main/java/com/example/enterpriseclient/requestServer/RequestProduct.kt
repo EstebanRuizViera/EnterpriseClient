@@ -15,11 +15,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.Constants
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.adapter.CartAdapter
 import com.example.enterpriseclient.model.ProductPojo
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.adapter.UserAdapter
 import com.example.enterpriseclient.model.ProductProfilePojo
 import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
+import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class RequestProduct {
 
@@ -46,7 +48,7 @@ class RequestProduct {
 
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "ERROR " + it.message)
+                    Log.println(Log.INFO, null, "Error getting your product for id" )
                 }) {}
 
             queue.add(req)
@@ -65,7 +67,6 @@ class RequestProduct {
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    Log.println(Log.INFO, null, "Llego al listener:")
                     var array = it
                     for (i in 0 until array.length()) {
                         val product = array.getJSONObject(i)
@@ -89,7 +90,51 @@ class RequestProduct {
                     recyclerView.setAdapter(userAdapter)
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
+                    Log.println(Log.INFO, null, "Error getting your bookings for customer")
+                }
+            ) {}
+
+            queue.add(updateReq)
+
+        }
+
+        fun prueba(
+            context: Context,
+            productListPojo: ArrayList<ProductProfilePojo>,
+            recyclerView: RecyclerView,
+            id: String
+        ) {
+
+            // new Volley newRequestQueue
+            val queue = Volley.newRequestQueue(context)
+            val url = Constants.URL_SERVER + "/allProductsForCustomer/"+id
+            val updateReq = object : JsonArrayRequest(
+                Request.Method.GET, url, null,
+                Response.Listener {
+                    var array = it
+                    for (i in 0 until array.length()) {
+                        val product = array.getJSONObject(i)
+                        productListPojo.add(
+                            ProductProfilePojo(
+                                product.getString("name"),
+                                product.getString("date"),
+                                product.getString("status"),
+                                "120",
+                                product.getString("img")
+                            )
+                        )
+
+                    }
+                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
+                    val productAdapter =
+                        CartAdapter(
+                            context,
+                            productListPojo
+                        )
+                    recyclerView.setAdapter(productAdapter)
+                },
+                Response.ErrorListener {
+                    Log.println(Log.INFO, null, "Error getting your bookings for customer")
                 }
             ) {}
 
@@ -125,11 +170,14 @@ class RequestProduct {
                     synchronizedLocalDatabase.saveProduct()
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings. Try again later")
+                    Log.println(Log.INFO, null, "Error getting your bookings")
+                    synchronizedLocalDatabase.getLocalAvailability()
+                    synchronizedLocalDatabase.getRemoteAvailability()
                 }
             ) {}
 
             queue.add(updateReq)
+
 
         }
     }

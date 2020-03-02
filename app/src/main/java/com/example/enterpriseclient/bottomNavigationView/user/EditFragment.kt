@@ -9,13 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
-import kotlinx.android.synthetic.main.fragmen_edit.*
-import java.util.zip.Inflater
 
 /**
  * A simple [Fragment] subclass.
@@ -47,9 +45,7 @@ class EditFragment : Fragment() {
         var editValidateEmail = root.findViewById<TextView>(R.id.editValidateEmail)
 
 
-        usersViewModel = run {
-            ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        }
+        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
         editBtn.setOnClickListener() {
             var newModification = 0

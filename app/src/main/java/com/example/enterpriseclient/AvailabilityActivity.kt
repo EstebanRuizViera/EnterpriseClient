@@ -1,13 +1,14 @@
 package com.example.enterpriseclient
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
 import android.widget.CalendarView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.model.AvailabilityPojo
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability
@@ -29,6 +30,7 @@ class AvailabilityActivity : AppCompatActivity() {
     private lateinit var availabilityList:ArrayList<AvailabilityPojo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SharePreferenceDarkMode.checkDarkMode(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_availability)
         setSupportActionBar(toolbar)
@@ -36,15 +38,10 @@ class AvailabilityActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         idProduct = bundle!!.getInt("id")
 
-        usersViewModel = run {
-            ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        }
+        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
-        recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAvailability)
+        recyclerView = findViewById(R.id.recyclerViewAvailability) as RecyclerView
         calendarView = findViewById(R.id.calendar)
-
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        selectedDate = sdf.format(Date(calendarView.date))
 
         addProductToCard()
         getAvailabilityForProduct()
@@ -64,6 +61,9 @@ class AvailabilityActivity : AppCompatActivity() {
 
     private fun addProductToCard(){
 
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        selectedDate = sdf.format(Date(calendarView.date))
+
         idUser = usersViewModel.getUserId(1)
 
         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -74,16 +74,13 @@ class AvailabilityActivity : AppCompatActivity() {
             if(!idProduct.equals("")){
                 RequestReservation.createReservation(this, 1524, selectedDate, idUser, idProduct.toString())
             } else {
-                Toast.makeText(this, "You have to sign in to book a product ", Toast.LENGTH_LONG).show()
+                var toast=Toast.makeText(this, "This product don´t exist", Toast.LENGTH_LONG)
+                toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+                toast.show()
             }
 
         }
     }
-
-    fun selectTimeAvailability(){
-
-    }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

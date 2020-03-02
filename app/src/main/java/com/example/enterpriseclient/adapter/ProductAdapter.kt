@@ -22,7 +22,8 @@ import com.example.enterpriseclient.myDataBase.model.Product
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
 
-    var option: RequestOptions
+    private var option= RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
+        .error(R.drawable.loading_shape)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
@@ -76,11 +77,6 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         }
     }
 
-    init {
-        // Request option for Glide
-        option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
-            .error(R.drawable.loading_shape)
-    }
 }
 
 
