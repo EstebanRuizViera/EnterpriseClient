@@ -1,12 +1,9 @@
 package com.example.enterpriseclient.mySynchronized
 
-import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
 import com.example.enterpriseclient.App
 import com.example.enterpriseclient.model.AvailabilityPojo
 import com.example.enterpriseclient.model.DistributionPojo
@@ -55,29 +52,24 @@ class SynchronizedLocalDatabase {
         getLocalProduct()
         getRemoteProducts()
 
-        //
     }
 
     fun saveProduct() {
 
-        if (listRemoteProductPojos != null && listLocalProductPojos != null) {
-            if (listRemoteProductPojos.size > listLocalProductPojos.size) {
+        if (listRemoteProductPojos.size > listLocalProductPojos.size) {
 
-                for (i in listLocalProductPojos.size..listRemoteProductPojos.size - 1) {
-                    productViewModel.saveProduct(
-                        Product(
-                            listRemoteProductPojos.get(i).id,
-                            listRemoteProductPojos.get(i).name,
-                            listRemoteProductPojos.get(i).description,
-                            listRemoteProductPojos.get(i).image_url,
-                            listRemoteProductPojos.get(i).id_description
-                        )
+            for (i in listLocalProductPojos.size..listRemoteProductPojos.size - 1) {
+                productViewModel.saveProduct(
+                    Product(
+                        listRemoteProductPojos.get(i).id,
+                        listRemoteProductPojos.get(i).name,
+                        listRemoteProductPojos.get(i).description,
+                        listRemoteProductPojos.get(i).image_url,
+                        listRemoteProductPojos.get(i).id_description
                     )
-                    Log.println(Log.INFO, null, "product " + i)
-                }
+                )
+                Log.println(Log.INFO, null, "product " + i)
             }
-        } else {
-            Log.println(Log.INFO, null, "no product")
         }
         getLocalAvailability()
         getRemoteAvailability()
@@ -145,7 +137,8 @@ class SynchronizedLocalDatabase {
             }
 
         } else {
-            var toast =Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            var toast =
+                Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
             toast.show()
         }
@@ -170,7 +163,8 @@ class SynchronizedLocalDatabase {
             }
 
         } else {
-            var toast = Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            var toast =
+                Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
             toast.show()
         }
@@ -195,7 +189,8 @@ class SynchronizedLocalDatabase {
             }
 
         } else {
-            var toast = Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
+            var toast =
+                Toast.makeText(context, "Error listLocalProducts is null", Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
             toast.show()
         }

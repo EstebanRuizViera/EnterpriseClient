@@ -3,6 +3,8 @@ package com.example.enterpriseclient.requestServer
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -48,6 +50,9 @@ class RequestReservation {
                     context.startActivity(intent)
                 },
                 Response.ErrorListener {
+                    var toast= Toast.makeText(context, "You have to sign in to book a product ", Toast.LENGTH_LONG)
+                    toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
+                    toast.show()
                     Log.println(Log.INFO, null, "Error creating your reservation. Try again later")
                 }) {}
 

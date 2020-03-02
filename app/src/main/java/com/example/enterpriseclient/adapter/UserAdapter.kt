@@ -16,7 +16,8 @@ import com.example.enterpriseclient.model.ProductProfilePojo
 class UserAdapter (private val mContext: Context, private val mData: List<ProductProfilePojo>) :
     RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
-    private var option: RequestOptions
+    private var option= RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
+        .error(R.drawable.loading_shape)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
@@ -61,11 +62,6 @@ class UserAdapter (private val mContext: Context, private val mData: List<Produc
         }
     }
 
-    init {
-        // Request option for Glide
-        option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
-            .error(R.drawable.loading_shape)
-    }
 }
 
 
