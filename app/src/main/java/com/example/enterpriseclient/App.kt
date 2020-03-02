@@ -2,13 +2,10 @@ package com.example.enterpriseclient
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import com.example.enterpriseclient.myDataBase.model.User
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
-import com.example.enterpriseclient.requestServer.RequestReport
 import java.util.*
 
 class App : Application() {

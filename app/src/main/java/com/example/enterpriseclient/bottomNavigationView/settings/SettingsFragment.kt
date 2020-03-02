@@ -6,10 +6,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.preference.*
 import com.example.enterpriseclient.Constants
 import com.example.enterpriseclient.MainActivity
@@ -43,9 +42,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         SharePreferenceDarkMode.checkDarkMode(activity as Activity)
         setPreferencesFromResource(pref_main, rootKey)
 
-        usersViewModel = run {
-            ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        }
+        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
         changeValueSwitch()
         changeLanguage()

@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.model.ProductPojo
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
@@ -30,9 +29,7 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         SharePreferenceDarkMode.checkDarkMode(this.activity as Activity)
 
-        productViewModel = run {
-            ViewModelProviders.of(this).get(ProductViewModel::class.java)
-        }
+        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,8 +37,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
 
         val root = inflater.inflate(R.layout.fragment_home, container, false)

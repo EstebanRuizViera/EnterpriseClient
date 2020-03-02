@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.enterpriseclient.MainActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
@@ -33,9 +33,7 @@ class RegisterFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_register, container, false)
 
-        usersViewModel = run {
-            ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        }
+        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
         var rg_register = root.findViewById<TextView>(R.id.rg_register)
         var rg_registerText = root.findViewById<TextView>(R.id.rg_registerText)

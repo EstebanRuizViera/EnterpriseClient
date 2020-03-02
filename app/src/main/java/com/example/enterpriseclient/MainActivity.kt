@@ -1,51 +1,31 @@
 package com.example.enterpriseclient
 
 
-import android.content.SharedPreferences
-import android.content.res.Configuration
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.ContextThemeWrapper
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import androidx.preference.PreferenceManager
 import com.example.enterpriseclient.R.id
 import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
-import com.example.enterpriseclient.myDataBase.model.User
-import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
-import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
-import com.example.enterpriseclient.requestServer.RequestReport
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_reservation.*
-import java.util.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
 
-    private lateinit var usersViewModel: UsersViewModel
     private lateinit var bottomNavigationView: BottomNavigationView
-//    private lateinit var synchronizedLocalDatabase: SynchronizedLocalDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         SharePreferenceDarkMode.checkDarkMode(this)
 
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
-
-        setSupportActionBar(toolbar);
-
-        usersViewModel = run {
-            ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        }
-
+        setSupportActionBar(toolbar)
         setBottomNavigationView()
 
     }
@@ -59,17 +39,21 @@ class MainActivity : BaseActivity() {
             when (menuItem.itemId) {
                 id.navigation_search -> {
                     val fragment = HomeFragment.newInstance()
+
+                    toolbar.title = resources.getString(R.string.toolbar_main_product)
                     openFragment(fragment)
                     true
                 }
 
                 id.navigation_settings -> {
                     val fragment = SettingsFragment.newInstance()
+                    toolbar.title = resources.getString(R.string.toolbar_main_preference)
                     openFragment(fragment)
                     true
                 }
                 id.navigation_user -> {
                     val fragment = UserFragment.newInstance()
+                    toolbar.title = resources.getString(R.string.toolbar_main_user)
                     openFragment(fragment)
                     true
                 }
@@ -93,4 +77,18 @@ class MainActivity : BaseActivity() {
         return true
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_action_bar,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.cart_menu ->{
+                val intent = Intent(this,CartListActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
