@@ -100,7 +100,7 @@ class RequestUser {
                         )
                     )
                     val fragment = UserFragment.newInstance()
-//                    activity.openFragment(fragment)
+                    activity.openFragment(fragment)
 
                 },
                 Response.ErrorListener {
@@ -137,7 +137,7 @@ class RequestUser {
                     toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
                     toast.show()
                     val fragment = LoginFragment.newInstance()
-//                    activity.openFragment(fragment)
+                    activity.openFragment(fragment)
                 },
                 Response.ErrorListener {
                     var toast=Toast.makeText(
@@ -185,7 +185,7 @@ class RequestUser {
                     toast.show()
 
                     val fragment = UserFragment.newInstance()
-//                    activity.openFragment(fragment)
+                    activity.openFragment(fragment)
 
                 },
                 Response.ErrorListener {

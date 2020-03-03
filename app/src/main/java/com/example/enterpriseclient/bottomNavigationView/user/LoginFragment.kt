@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
         lg_loginText.setOnClickListener() {
             val fragment = RegisterFragment.newInstance()
             val activity = activity as MainActivity
-            //activity.openFragment(fragment)
+            activity.openFragment(fragment)
         }
 
         return root

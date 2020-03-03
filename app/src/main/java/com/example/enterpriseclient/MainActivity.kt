@@ -1,86 +1,76 @@
 package com.example.enterpriseclient
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import com.example.enterpriseclient.R.id
 import com.example.enterpriseclient.R.layout
-import com.example.enterpriseclient.adapter.ProductAdapter
+import com.example.enterpriseclient.bottomNavigationView.home.HomeFragment
+import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.myDataBase.model.Product
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
-import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_drawer.*
+import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
 
-    private lateinit var productViewModel: ProductViewModel
-    private var mToggle: ActionBarDrawerToggle? = null
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SharePreferenceDarkMode.checkDarkMode(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_drawer)
+        setContentView(layout.activity_main)
         setSupportActionBar(toolbar)
+        setBottomNavigationView()
 
-        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-
-        mToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
-        drawer!!.addDrawerListener(mToggle!!)
-        mToggle!!.syncState()
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setupDrawerContent(navigationView)
-
-        setRecyclerView()
     }
 
-    fun setRecyclerView(){
 
-        var productsList = productViewModel.getAllProduct() as ArrayList<Product>
+    private fun setBottomNavigationView() {
+        bottomNavigationView = findViewById(id.bottom_navigation_view)
 
-        val layoutManagerProducts = GridLayoutManager(this, 1)
-        recyclerViewHome.setLayoutManager(layoutManagerProducts)
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
 
-        //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-        val productAdapter =
-            ProductAdapter(
-                this,
-                productsList
-            )
-        recyclerViewHome.setAdapter(productAdapter)
-    }
+            when (menuItem.itemId) {
+                id.navigation_search -> {
+                    val fragment = HomeFragment.newInstance()
 
-    fun selectItemDrawer(menuItem: MenuItem) {
-        when (menuItem.itemId) {
-            R.id.menuhome ->{
-//                val intent = Intent(this, )
-//                startActivity(intent)
+                    toolbar.title = resources.getString(R.string.toolbar_main_product)
+                    openFragment(fragment)
+                    true
+                }
+
+                id.navigation_settings -> {
+                    val fragment = SettingsFragment.newInstance()
+                    toolbar.title = resources.getString(R.string.toolbar_main_preference)
+                    openFragment(fragment)
+                    true
+                }
+                id.navigation_user -> {
+                    val fragment = UserFragment.newInstance()
+                    toolbar.title = resources.getString(R.string.toolbar_main_user)
+                    openFragment(fragment)
+                    true
+                }
+                else -> false
             }
-            R.id.menulogin -> {}
-//                IniciarSesion::class.java
-            R.id.menuregister -> {}
-//                Registrarse::class.java
-            R.id.menulogout -> {}
-//                CerrarSesion::class.java
-            else -> {}
-//                 Series::class.java
         }
-        menuItem.isChecked = true
-        title = menuItem.title
-        drawer!!.closeDrawers()
+
+        bottomNavigationView.selectedItemId = id.navigation_search
     }
 
-    private fun setupDrawerContent(navigationView: NavigationView) {
-        navigationView.setNavigationItemSelectedListener { item ->
-            selectItemDrawer(item)
-            true
-        }
+    fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(id.main_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -99,8 +89,6 @@ class MainActivity : BaseActivity() {
                 startActivity(intent)
             }
         }
-        return if (mToggle!!.onOptionsItemSelected(item)) {
-            true
-        } else super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 }
