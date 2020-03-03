@@ -41,5 +41,7 @@
     <string name="toolbar_main_user">Profile</string>
     <string name="toolbar_main_preference">Preference</string>
 
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>
