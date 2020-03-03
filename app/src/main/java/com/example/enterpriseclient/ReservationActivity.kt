@@ -42,7 +42,6 @@ class ReservationActivity : AppCompatActivity() {
     private fun getProduct(){
 
         if(idProduct != 0) {
-//            RequestProduct.selectProduct(this,  productReservationName, productReservationDescription, idProduct.toString(),thumbnailProduct)
 
             var listProduct = productViewModel.getProduct(idProduct)
 

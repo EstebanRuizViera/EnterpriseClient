@@ -80,7 +80,7 @@ class RegisterFragment : Fragment() {
         rg_registerText.setOnClickListener {
             val fragment = LoginFragment.newInstance()
             val activity = activity as MainActivity
-            activity.openFragment(fragment)
+//            activity.openFragment(fragment)
         }
 
         return root
