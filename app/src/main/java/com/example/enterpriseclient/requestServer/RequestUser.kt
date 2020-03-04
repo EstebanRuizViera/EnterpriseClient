@@ -15,7 +15,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Constants
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
+import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.bottomNavigationView.user.LoginFragment
 import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
 import com.example.enterpriseclient.myDataBase.model.User
@@ -32,7 +33,7 @@ class RequestUser {
 
         @JvmStatic
         fun login(
-            activity: MainActivity,
+            activity: ProfileActivity,
             context: Context,
             email_text: EditText,
             password_text: EditText,
@@ -72,7 +73,7 @@ class RequestUser {
 
         @JvmStatic
         fun updateToken(
-            activity: MainActivity,
+            activity: ProfileActivity,
             context: Context,
             email_text: EditText,
             usersViewModel: UsersViewModel,
@@ -114,7 +115,7 @@ class RequestUser {
 
         @JvmStatic
         fun registerUser(
-            activity: MainActivity,
+            activity: ProfileActivity,
             context: Context,
             rg_name: EditText,
             rg_email: EditText,
@@ -133,14 +134,14 @@ class RequestUser {
                 Request.Method.POST, url, loginJsonobj,
                 Response.Listener {
 
-                    var toast=Toast.makeText(context, "Account created ", Toast.LENGTH_LONG)
+                    var toast = Toast.makeText(context, "Account created ", Toast.LENGTH_LONG)
                     toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
                     toast.show()
                     val fragment = LoginFragment.newInstance()
                     activity.openFragment(fragment)
                 },
                 Response.ErrorListener {
-                    var toast=Toast.makeText(
+                    var toast = Toast.makeText(
                         context,
                         "Account not created. Try again later ",
                         Toast.LENGTH_LONG
@@ -154,7 +155,7 @@ class RequestUser {
 
         @JvmStatic
         fun updateUser(
-            activity: MainActivity,
+            activity: ProfileActivity,
             usersViewModel: UsersViewModel,
             name_editText: TextView,
             email_editText: TextView,
@@ -180,7 +181,7 @@ class RequestUser {
                             data_user_local.get(0).token
                         )
                     )
-                    var toast=Toast.makeText(activity, "Successful update", Toast.LENGTH_LONG)
+                    var toast = Toast.makeText(activity, "Successful update", Toast.LENGTH_LONG)
                     toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
                     toast.show()
 
@@ -189,7 +190,7 @@ class RequestUser {
 
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error updating your user " )
+                    Log.println(Log.INFO, null, "Error updating your user ")
                 }) {
                 @Throws(AuthFailureError::class)
                 override fun getHeaders(): Map<String, String> {
@@ -213,16 +214,28 @@ class RequestUser {
             val req = object : StringRequest(
                 Request.Method.DELETE, url,
                 Response.Listener {
-                    var toast=Toast.makeText(context, it, Toast.LENGTH_LONG)
+                    var toast = Toast.makeText(context, it, Toast.LENGTH_LONG)
                     toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
                     toast.show()
-                    usersViewModel.updateUser(User(1, "", "You are not logged in", "Login", "Register"))
+                    usersViewModel.updateUser(
+                        User(
+                            1,
+                            "",
+                            "You are not logged in",
+                            "Login",
+                            "Register"
+                        )
+                    )
 
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, DrawerActivity::class.java)
                     context.startActivity(intent)
                 },
                 Response.ErrorListener {
-                    var toast=Toast.makeText(context, "Error deleting your account. Try again later", Toast.LENGTH_LONG)
+                    var toast = Toast.makeText(
+                        context,
+                        "Error deleting your account. Try again later",
+                        Toast.LENGTH_LONG
+                    )
                     toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
                     toast.show()
                     Log.println(Log.INFO, null, "Error deleting your account")
@@ -247,7 +260,7 @@ class RequestUser {
             var toast = Toast.makeText(context, "Logged out", Toast.LENGTH_LONG)
             toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
             toast.show()
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, DrawerActivity::class.java)
             context.startActivity(intent)
         }
 

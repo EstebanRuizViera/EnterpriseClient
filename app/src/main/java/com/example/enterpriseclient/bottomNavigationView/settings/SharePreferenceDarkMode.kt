@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.R
 
 class SharePreferenceDarkMode {
@@ -45,7 +45,7 @@ class SharePreferenceDarkMode {
 
         @JvmStatic
         fun restartApp(activity: Activity) {
-            val i = Intent(activity, MainActivity::class.java)
+            val i = Intent(activity, DrawerActivity::class.java)
             activity.startActivity(i)
             activity.finish()
         }

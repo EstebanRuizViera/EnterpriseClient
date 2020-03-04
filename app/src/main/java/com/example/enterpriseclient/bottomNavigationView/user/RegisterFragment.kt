@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
+import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
@@ -73,13 +74,13 @@ class RegisterFragment : Fragment() {
             rg_password
 
             if(check) {
-                RequestUser.registerUser(activity as MainActivity,root.context,rg_name,rg_email,rg_password)
+                RequestUser.registerUser(activity as ProfileActivity,root.context,rg_name,rg_email,rg_password)
             }
         }
 
         rg_registerText.setOnClickListener {
             val fragment = LoginFragment.newInstance()
-            val activity = activity as MainActivity
+            val activity = activity as ProfileActivity
             activity.openFragment(fragment)
         }
 

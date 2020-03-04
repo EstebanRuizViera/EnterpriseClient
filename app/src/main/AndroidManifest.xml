@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/icon_launch"
         android:label="@string/app_name"
@@ -16,13 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:name=".App">
-        <activity android:name=".CartListActivity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CartListActivity" />
         <activity android:name=".AvailabilityActivity" />
         <activity android:name=".ReservationActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".DrawerActivity"
             android:theme="@style/PreferenceScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
