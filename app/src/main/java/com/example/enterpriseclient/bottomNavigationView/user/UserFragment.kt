@@ -75,8 +75,8 @@ class UserFragment : Fragment() {
         textEmail.setOnClickListener(){
             if(textEmail.text.toString().equals("Login")){
                 val fragment = LoginFragment.newInstance()
-                val activity = activity as MainActivity
-//                activity.openFragment(fragment)
+                val activity = activity as ProfileActivity
+                activity.openFragment(fragment)
             }
         }
 
@@ -84,8 +84,8 @@ class UserFragment : Fragment() {
         textRegister.setOnClickListener(){
             if(textRegister.text.toString().equals("Register")){
                 val fragment = RegisterFragment.newInstance()
-                val activity = activity as MainActivity
-//                activity.openFragment(fragment)
+                val activity = activity as ProfileActivity
+                activity.openFragment(fragment)
             }
         }
 
@@ -93,8 +93,8 @@ class UserFragment : Fragment() {
         profilePencil.setOnClickListener {
             if(!list!!.get(0).name.equals("You are not logged in")){
                 val fragment = EditFragment.newInstance()
-                val activity = activity as MainActivity
-//                activity.openFragment(fragment)
+                val activity = activity as ProfileActivity
+                activity.openFragment(fragment)
             }
 
         }

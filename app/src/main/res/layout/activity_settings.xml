@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DrawerActivity">
+    tools:context=".SettingsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,15 +16,17 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/toolbar_main_product"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="@string/toolnar_reservation"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHome"
+    <FrameLayout
+        android:id="@+id/container_settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/backgroundColor" />
+
 
 </LinearLayout>

@@ -5,24 +5,13 @@
     <group android:id="@+id/group1">
 
     <item
-        android:id="@+id/menuhome"
-        android:title="Series"/>
-    </group>
-
-    <group android:id="@+id/group2">
+        android:id="@+id/menuProfile"
+        android:title="@string/menu_drawer_profile"/>
 
     <item
-        android:id="@+id/menulogin"
-        android:title="Iniciar sesión"/>
-    <item
-        android:id="@+id/menuregister"
-        android:title="Registrarse"/>
-    </group>
+        android:id="@+id/menuSettings"
+        android:title="@string/menu_drawer_settings"/>
 
-    <group android:id="@+id/group3">
-    <item
-        android:id="@+id/menulogout"
-        android:title="Cerrar sesión"/>
-    </group>
 
+    </group>
 </menu>

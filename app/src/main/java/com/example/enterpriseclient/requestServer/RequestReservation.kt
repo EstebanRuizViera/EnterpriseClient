@@ -10,7 +10,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Constants
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -46,7 +46,7 @@ class RequestReservation {
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, DrawerActivity::class.java)
                     context.startActivity(intent)
                 },
                 Response.ErrorListener {

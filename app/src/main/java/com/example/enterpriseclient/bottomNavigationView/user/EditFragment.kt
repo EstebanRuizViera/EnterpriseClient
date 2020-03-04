@@ -10,7 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
+import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
@@ -60,7 +61,7 @@ class EditFragment : Fragment() {
 
             if (newModification != 2) {
                 RequestUser.updateUser(
-                    activity as MainActivity,
+                    activity as ProfileActivity,
                     usersViewModel,
                     editName,
                     editEmail,

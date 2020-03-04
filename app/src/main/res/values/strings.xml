@@ -40,8 +40,9 @@
     <string name="toolbar_main_product">Products</string>
     <string name="toolbar_main_user">Profile</string>
     <string name="toolbar_main_preference">Preference</string>
-
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="menu_drawer_profile">Profile</string>
+    <string name="menu_drawer_settings">Settings</string>
 
 </resources>

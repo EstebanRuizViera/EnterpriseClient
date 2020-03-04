@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.adapter.ProductAdapter
+import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
 import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.myDataBase.model.Product
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
@@ -16,7 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer.*
 
 
-class MainActivity : BaseActivity() {
+class DrawerActivity : BaseActivity() {
 
     private lateinit var productViewModel: ProductViewModel
     private var mToggle: ActionBarDrawerToggle? = null
@@ -57,18 +58,15 @@ class MainActivity : BaseActivity() {
 
     fun selectItemDrawer(menuItem: MenuItem) {
         when (menuItem.itemId) {
-            R.id.menuhome ->{
-//                val intent = Intent(this, )
-//                startActivity(intent)
+            R.id.menuProfile ->{
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
             }
-            R.id.menulogin -> {}
-//                IniciarSesion::class.java
-            R.id.menuregister -> {}
-//                Registrarse::class.java
-            R.id.menulogout -> {}
-//                CerrarSesion::class.java
-            else -> {}
-//                 Series::class.java
+            R.id.menuSettings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+
         }
         menuItem.isChecked = true
         title = menuItem.title
@@ -95,7 +93,7 @@ class MainActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.cart_menu ->{
-                val intent = Intent(this,CartListActivity::class.java)
+                val intent = Intent(this, CartListActivity::class.java)
                 startActivity(intent)
             }
         }
