@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.*
 import com.example.enterpriseclient.Constants
-import com.example.enterpriseclient.MainActivity
+import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
 import java.util.*
@@ -93,7 +93,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             listPreference.setValueIndex(1)
         }
 
-        val intent = Intent(this.context, MainActivity::class.java)
+        val intent = Intent(this.context, DrawerActivity::class.java)
 
         listPreference.setOnPreferenceChangeListener(object :
             Preference.OnPreferenceChangeListener {

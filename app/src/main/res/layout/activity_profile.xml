@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,30 +16,19 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/toolbar_main_product"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="@string/toolnar_reservation"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="675dp"
-        android:background="?attr/backgroundColor"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view">
+        android:layout_height="680dp"
+        android:background="?attr/backgroundColor">
 
     </FrameLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/cardBackground"
-        app:itemHorizontalTranslationEnabled="false"
-        app:itemIconSize="32dp"
-        app:menu="@menu/bottom_nav_menu" />
-
 </LinearLayout>
-
-
-
