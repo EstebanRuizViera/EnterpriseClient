@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_shopping_cart"
         android:title="Cart"
         app:showAsAction="always"
-        android:actionLayout="@layout/icon_cart_notification">
+        android:actionLayout="@layout/icon_cart_notification"/>
 
-    </item>
+
 </menu>

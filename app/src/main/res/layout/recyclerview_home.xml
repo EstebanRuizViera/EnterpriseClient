@@ -31,8 +31,7 @@
                     android:id="@+id/thumbnail"
                     android:layout_width="match_parent"
                     android:layout_height="145dp"
-                    android:background="@drawable/loading_shape"
-                    android:src="@drawable/restaurnt" />
+                    android:background="@drawable/loading_shape" />
 
 
                 <LinearLayout
