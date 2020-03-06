@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
+import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.model.AvailabilityPojo
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability

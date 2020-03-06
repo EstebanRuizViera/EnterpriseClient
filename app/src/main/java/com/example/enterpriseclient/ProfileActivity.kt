@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
+import com.example.enterpriseclient.fragment.user.UserFragment
 import kotlinx.android.synthetic.main.activity_drawer.*
 
 class ProfileActivity : AppCompatActivity() {

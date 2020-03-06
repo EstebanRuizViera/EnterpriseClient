@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.bottomNavigationView.settings
+package com.example.enterpriseclient.fragment.settings
 
 
 import android.app.Activity

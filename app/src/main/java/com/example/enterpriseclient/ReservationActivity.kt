@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
+import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import kotlinx.android.synthetic.main.activity_reservation.*
 

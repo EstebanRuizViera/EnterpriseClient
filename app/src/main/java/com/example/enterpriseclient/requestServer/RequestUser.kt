@@ -17,8 +17,8 @@ import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Constants
 import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.ProfileActivity
-import com.example.enterpriseclient.bottomNavigationView.user.LoginFragment
-import com.example.enterpriseclient.bottomNavigationView.user.UserFragment
+import com.example.enterpriseclient.fragment.user.LoginFragment
+import com.example.enterpriseclient.fragment.user.UserFragment
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import org.json.JSONArray

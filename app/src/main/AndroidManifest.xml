@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".CartListActivity" />
+        <activity android:name=".cart.CartListActivity" />
         <activity android:name=".AvailabilityActivity" />
         <activity android:name=".ReservationActivity" />
         <activity

@@ -2,8 +2,7 @@ package com.example.enterpriseclient
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
+import com.example.enterpriseclient.fragment.settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
