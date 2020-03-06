@@ -1,11 +1,11 @@
-package com.example.enterpriseclient
+package com.example.enterpriseclient.cart
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.enterpriseclient.adapter.CartAdapter
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
+import com.example.enterpriseclient.R
+import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.model.ProductProfilePojo
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.requestServer.RequestProduct

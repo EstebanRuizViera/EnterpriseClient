@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.adapter.ProductAdapter
-import com.example.enterpriseclient.bottomNavigationView.settings.SettingsFragment
-import com.example.enterpriseclient.bottomNavigationView.settings.SharePreferenceDarkMode
+import com.example.enterpriseclient.cart.CartListActivity
+import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.myDataBase.model.Product
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.google.android.material.navigation.NavigationView
@@ -44,10 +44,9 @@ class DrawerActivity : BaseActivity() {
 
         var productsList = productViewModel.getAllProduct() as ArrayList<Product>
 
-        val layoutManagerProducts = GridLayoutManager(this, 1)
+        val layoutManagerProducts = GridLayoutManager(this, 2)
         recyclerViewHome.setLayoutManager(layoutManagerProducts)
 
-        //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
         val productAdapter =
             ProductAdapter(
                 this,

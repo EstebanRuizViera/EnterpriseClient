@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.bottomNavigationView.user
+package com.example.enterpriseclient.fragment.user
 
 import android.graphics.Color
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.bottomNavigationView.user
+package com.example.enterpriseclient.fragment.user
 
 
 import android.os.Bundle
@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
