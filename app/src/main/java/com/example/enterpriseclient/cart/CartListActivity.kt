@@ -23,6 +23,7 @@ class CartListActivity : AppCompatActivity() {
 
         productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
+
         setRecyclerView()
     }
 

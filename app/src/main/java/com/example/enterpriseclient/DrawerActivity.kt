@@ -4,17 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.R.layout
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.cart.CartListActivity
+import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.myDataBase.model.Product
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer.*
+import kotlinx.android.synthetic.main.icon_cart_notification.*
 
 
 class DrawerActivity : BaseActivity() {
@@ -29,6 +34,10 @@ class DrawerActivity : BaseActivity() {
         setContentView(layout.activity_drawer)
         setSupportActionBar(toolbar)
 
+        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary))
+
+        swipeRefreshLayout.isRefreshing = true
+
         productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
         mToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
@@ -38,11 +47,19 @@ class DrawerActivity : BaseActivity() {
         setupDrawerContent(navigationView)
 
         setRecyclerView()
+
+        // cart_size.text = ShoppingCart.getShoppingCartSize().toString()
+
+//        var count = toolbar.get(R.id.cart_size) as TextView
+//        count.text = ShoppingCart.getShoppingCartSize().toString()
     }
 
     fun setRecyclerView(){
 
         var productsList = productViewModel.getAllProduct() as ArrayList<Product>
+
+        swipeRefreshLayout.isRefreshing = false
+        swipeRefreshLayout.isEnabled = false
 
         val layoutManagerProducts = GridLayoutManager(this, 2)
         recyclerViewHome.setLayoutManager(layoutManagerProducts)
