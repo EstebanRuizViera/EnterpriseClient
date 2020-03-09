@@ -111,27 +111,27 @@ class RequestProduct {
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
-                    var array = it
-                    for (i in 0 until array.length()) {
-                        val product = array.getJSONObject(i)
-                        productListPojo.add(
-                            ProductProfilePojo(
-                                product.getString("name"),
-                                product.getString("date"),
-                                product.getString("status"),
-                                "120",
-                                product.getString("img")
-                            )
-                        )
-
-                    }
-                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-                    val productAdapter =
-                        CartAdapter(
-                            context,
-                            productListPojo
-                        )
-                    recyclerView.setAdapter(productAdapter)
+//                    var array = it
+//                    for (i in 0 until array.length()) {
+//                        val product = array.getJSONObject(i)
+//                        productListPojo.add(
+//                            ProductProfilePojo(
+//                                product.getString("name"),
+//                                product.getString("date"),
+//                                product.getString("status"),
+//                                "120",
+//                                product.getString("img")
+//                            )
+//                        )
+//
+//                    }
+//                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
+//                    val productAdapter =
+//                        CartAdapter(
+//                            context,
+//                            productListPojo
+//                        )
+//                    recyclerView.setAdapter(productAdapter)
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "Error getting your bookings for customer")

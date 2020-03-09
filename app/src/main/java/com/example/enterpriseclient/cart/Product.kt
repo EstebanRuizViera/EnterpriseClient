@@ -1,11 +1,8 @@
 package com.example.enterpriseclient.cart
 
-//import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class Product(
-    @SerializedName("description")
-    var description: String? = null,
 
     @SerializedName("id")
     var id: Int? = null,
@@ -13,7 +10,13 @@ data class Product(
     @SerializedName("name")
     var name: String? = null,
 
+    @SerializedName("description")
+    var date: String? = null,
+
     @SerializedName("price")
-    var price: String? = null
+    var price: String? = null,
+
+    @SerializedName("img")
+    var img: String? = null
 
 )

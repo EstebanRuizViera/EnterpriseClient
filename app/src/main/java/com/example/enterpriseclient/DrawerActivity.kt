@@ -2,8 +2,11 @@ package com.example.enterpriseclient
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
@@ -19,7 +22,6 @@ import com.example.enterpriseclient.myDataBase.model.Product
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer.*
-import kotlinx.android.synthetic.main.icon_cart_notification.*
 
 
 class DrawerActivity : BaseActivity() {
@@ -47,11 +49,6 @@ class DrawerActivity : BaseActivity() {
         setupDrawerContent(navigationView)
 
         setRecyclerView()
-
-        // cart_size.text = ShoppingCart.getShoppingCartSize().toString()
-
-//        var count = toolbar.get(R.id.cart_size) as TextView
-//        count.text = ShoppingCart.getShoppingCartSize().toString()
     }
 
     fun setRecyclerView(){
@@ -96,13 +93,14 @@ class DrawerActivity : BaseActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
         menuInflater.inflate(R.menu.menu_action_bar,menu)
+
+//        var mMenu=menu!!.findItem(R.id.cart_menu) as MenuItem
+//        var cartSize = mMenu.actionView.findViewById<TextView>(R.id.cart_size)
+//        cartSize.text=ShoppingCart.getShoppingCartSize().toString()
+
         return true
     }
 
@@ -117,4 +115,10 @@ class DrawerActivity : BaseActivity() {
             true
         } else super.onOptionsItemSelected(item)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }
