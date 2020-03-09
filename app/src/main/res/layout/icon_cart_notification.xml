@@ -12,6 +12,7 @@
         android:layout_gravity="center"/>
     
     <TextView
+        android:id="@+id/cart_size"
         android:layout_width="@dimen/badge_size"
         android:layout_height="@dimen/badge_size"
         android:background="@drawable/badge"
