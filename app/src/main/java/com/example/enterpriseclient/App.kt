@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager
 import com.example.enterpriseclient.myDataBase.model.User
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
+import io.paperdb.Paper
 import java.util.*
 
 class App : Application() {
@@ -16,6 +17,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Paper.init(this)
 
         usersViewModel = UsersViewModel(this)
 

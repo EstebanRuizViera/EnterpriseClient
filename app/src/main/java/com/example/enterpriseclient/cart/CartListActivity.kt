@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.R
+import com.example.enterpriseclient.adapter.CartAdapter
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.model.ProductProfilePojo
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
@@ -28,22 +29,19 @@ class CartListActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView(){
-        var productsList=arrayListOf<ProductProfilePojo>()
 
-//        productsList = productViewModel.getAllProduct() as ArrayList<ProductProfilePojo>
+        var productsList = ShoppingCart.getCart()
 
         val layoutManagerProducts = GridLayoutManager(this, 1)
         recyclerViewCart.setLayoutManager(layoutManagerProducts)
 
-        RequestProduct.selectAllProductsForCustomer(this, productsList, recyclerViewCart, "1")
-
 //        //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-//        val productAdapter =
-//            CartAdapter(
-//                this,
-//                productsList
-//            )
-//        recyclerViewCart.setAdapter(productAdapter)
+        val productAdapter =
+            CartAdapter(
+                this,
+                productsList
+            )
+        recyclerViewCart.setAdapter(productAdapter)
     }
 
     override fun onSupportNavigateUp(): Boolean {

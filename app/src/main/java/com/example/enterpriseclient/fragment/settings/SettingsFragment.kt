@@ -55,7 +55,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun changeValueSwitch() {
 
 
-        switchPreference = findPreference("darkMode") as SwitchPreference
+        switchPreference = findPreference("darkMode")!!
 
         sharedpref = SharePreferenceDarkMode(activity as Activity)
 
@@ -82,7 +82,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun changeLanguage() {
-        listPreference = findPreference("Language") as ListPreference
+        listPreference = findPreference("Language")!!
 
         val language = Locale.getDefault().getDisplayLanguage()
 
