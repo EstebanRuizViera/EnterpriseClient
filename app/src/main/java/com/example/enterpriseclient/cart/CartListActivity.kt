@@ -1,9 +1,11 @@
 package com.example.enterpriseclient.cart
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.enterpriseclient.CustomerDetailsActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.adapter.CartAdapter
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
@@ -24,6 +26,11 @@ class CartListActivity : AppCompatActivity() {
 
         productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
+
+        checkout.setOnClickListener(){
+            val intent = Intent(this, CustomerDetailsActivity::class.java)
+            startActivity(intent)
+        }
 
         setRecyclerView()
     }

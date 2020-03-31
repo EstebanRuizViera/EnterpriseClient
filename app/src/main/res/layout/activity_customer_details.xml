@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CustomerDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppTheme">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Customer Details"
+            app:titleTextColor="?attr/textColor" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="17sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill the form or log in to continue with the booking"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/customerName"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="#F8F8F8"
+        android:hint="  Name" />
+
+    <EditText
+        android:id="@+id/customerSurname"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="#F8F8F8"
+        android:hint="  Surname" />
+
+    <EditText
+        android:id="@+id/customerEmail"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:background="#F8F8F8"
+        android:hint="  Email Address" />
+
+    <EditText
+        android:id="@+id/customerPhone"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:background="#F8F8F8"
+        android:hint="  Phone Number" />
+
+
+    <Button
+        android:id="@+id/customerLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/login_button_circle"
+        android:text="Continue"
+        android:textColor="?attr/textColor"
+        android:textSize="18sp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textColor="#A4A4A4"
+        android:textSize="18sp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/customerNext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/login_button_circle"
+        android:text="Log in"
+        android:textColor="?attr/textColor"
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
