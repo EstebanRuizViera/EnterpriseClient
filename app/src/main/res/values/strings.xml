@@ -17,7 +17,7 @@
     <string name="customer_rating">63 customer ratings</string>
     <string name="button_check_availability">Check availability</string>
     <string name="button_book_now">Book now</string>
-    <string name="button_book">Book</string>
+    <string name="button_book">Add to cart</string>
     <string name="button_edit_profile">Edit profile</string>
     <string name="toolbar_availability">Availability</string>
     <string name="toolbar_edit_profile">Edit profile</string>

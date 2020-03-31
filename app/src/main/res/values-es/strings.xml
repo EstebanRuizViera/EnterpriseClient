@@ -17,7 +17,7 @@
     <string name="customer_rating">63 opiniones de clientes</string>
     <string name="button_check_availability">Ver disponibilidad</string>
     <string name="button_book_now">Reservar</string>
-    <string name="button_book">Reservar</string>
+    <string name="button_book">Añadir al carrito</string>
     <string name="button_edit_profile">Editar perfil</string>
     <string name="toolbar_availability">Disponibilidad</string>
     <string name="toolbar_edit_profile">Editar perfil</string>
