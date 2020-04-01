@@ -18,10 +18,12 @@ import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.cart.CartListActivity
 import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
+import com.example.enterpriseclient.fragment.user.UserFragment
 import com.example.enterpriseclient.myDataBase.model.Product
 import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer.*
+import kotlinx.android.synthetic.main.header.*
 
 
 class DrawerActivity : BaseActivity() {
@@ -49,6 +51,7 @@ class DrawerActivity : BaseActivity() {
         setupDrawerContent(navigationView)
 
         setRecyclerView()
+
     }
 
     fun setRecyclerView(){
@@ -77,6 +80,10 @@ class DrawerActivity : BaseActivity() {
             }
             R.id.menuSettings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.menuBookings -> {
+                val intent = Intent(this, MyBookingsActivity::class.java)
                 startActivity(intent)
             }
 

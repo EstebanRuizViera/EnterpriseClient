@@ -36,13 +36,15 @@
     <string name="preferences_title_help">Help manual</string>
     <string name="preference_summary_feedback">Got any queries? We are happy to help!</string>
     <string name="preferences_title_generate_pdf">Generate list product</string>
-    <string name="toolnar_reservation">Product</string>
+    <string name="toolbar_reservation">Product</string>
     <string name="toolbar_main_product">Products</string>
     <string name="toolbar_main_user">Profile</string>
+    <string name="toolbar_settings">Settings</string>
     <string name="toolbar_main_preference">Preference</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="menu_drawer_profile">Profile</string>
     <string name="menu_drawer_settings">Settings</string>
+    <string name="menu_drawer_my_bookings">My bookings</string>
 
 </resources>

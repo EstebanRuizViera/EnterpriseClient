@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/toolnar_reservation"
+            app:title="@string/toolbar_reservation"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>

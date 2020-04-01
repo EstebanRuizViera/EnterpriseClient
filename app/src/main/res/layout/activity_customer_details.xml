@@ -34,49 +34,49 @@
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/customerName"
+        android:id="@+id/CustomerName"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="  Name"
         android:inputType="textPersonName"
-        android:background="#F8F8F8"
-        android:hint="  Name" />
+        android:textColor="?attr/descriptionColor" />
 
     <EditText
-        android:id="@+id/customerSurname"
+        android:id="@+id/CustomerSurname"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="  Surname"
         android:inputType="textPersonName"
-        android:background="#F8F8F8"
-        android:hint="  Surname" />
+        android:textColor="?attr/descriptionColor" />
 
     <EditText
-        android:id="@+id/customerEmail"
+        android:id="@+id/CustomerEmail"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="  Email Address"
         android:inputType="textEmailAddress"
-        android:background="#F8F8F8"
-        android:hint="  Email Address" />
+        android:textColor="?attr/descriptionColor" />
 
     <EditText
-        android:id="@+id/customerPhone"
+        android:id="@+id/CustomerPhone"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="  Phone Number"
         android:inputType="textEmailAddress"
-        android:background="#F8F8F8"
-        android:hint="  Phone Number" />
+        android:textColor="?attr/descriptionColor" />
 
 
     <Button
-        android:id="@+id/customerLogin"
-        android:layout_width="300dp"
+        android:id="@+id/customerNext"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
@@ -95,8 +95,8 @@
         android:textAlignment="center"/>
 
     <Button
-        android:id="@+id/customerNext"
-        android:layout_width="300dp"
+        android:id="@+id/customerLogin"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="32dp"

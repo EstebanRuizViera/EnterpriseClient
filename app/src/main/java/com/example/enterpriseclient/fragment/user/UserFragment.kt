@@ -34,21 +34,21 @@ class UserFragment : Fragment() {
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
-        var productsList=arrayListOf<ProductProfilePojo>()
+//        var productsList=arrayListOf<ProductProfilePojo>()
+//
+//        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
+//
+//        val layoutManagerProducts = GridLayoutManager(root.context, 1)
+//        recyclerView.setLayoutManager(layoutManagerProducts)
 
-        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
-
-        val layoutManagerProducts = GridLayoutManager(root.context, 1)
-        recyclerView.setLayoutManager(layoutManagerProducts)
-
-        var number = usersViewModel.getUserId(1)
-
-        if(number.equals("")){
-            number="1"
-        }
+//        var number = usersViewModel.getUserId(1)
+//
+//        if(number.equals("")){
+//            number="1"
+//        }
 
 
-        RequestProduct.selectAllProductsForCustomer(root.context, productsList, recyclerView, number)
+//        RequestProduct.selectAllProductsForCustomer(root.context, productsList, recyclerView, number)
 
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)

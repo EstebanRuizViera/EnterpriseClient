@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerDetailsActivity"></activity>
+        <activity android:name=".MyBookingsActivity"></activity>
+        <activity android:name=".CustomerDetailsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".cart.CartListActivity" />

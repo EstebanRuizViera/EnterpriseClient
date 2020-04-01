@@ -12,6 +12,10 @@
         android:id="@+id/menuSettings"
         android:title="@string/menu_drawer_settings"/>
 
+        <item
+            android:id="@+id/menuBookings"
+            android:title="@string/menu_drawer_my_bookings"/>
+
 
     </group>
 </menu>

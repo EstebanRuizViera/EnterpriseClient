@@ -68,20 +68,19 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ECE9E9"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="#ECE9E9"-->
+<!--            android:orientation="vertical">-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="?attr/backgroundColor"
-                />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recyclerViewProfile"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="?attr/backgroundColor" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
     </LinearLayout>

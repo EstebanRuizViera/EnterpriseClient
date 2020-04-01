@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileActivity">
+    tools:context=".MyBookingsActivity">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,18 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/toolbar_main_user"
+            app:title="My Bookings"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <FrameLayout
-        android:id="@+id/main_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProfile"
         android:layout_width="match_parent"
-        android:layout_height="680dp"
-        android:background="?attr/backgroundColor">
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundColor" />
 
 </LinearLayout>
