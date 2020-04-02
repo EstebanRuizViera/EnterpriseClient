@@ -41,7 +41,7 @@
     <!--        app:weekHeaderColor="#c6c6c6" />-->
 
 
-    <CalendarView
+    <sun.bob.mcalendarview.MCalendarView
         android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

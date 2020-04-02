@@ -7,14 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.enterpriseclient.myDataBase.dao.*
 import com.example.enterpriseclient.myDataBase.model.*
 
-@Database(entities = [User::class,Product::class,Availability::class,Distribution::class,Reservation::class], version = 1, exportSchema = false)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class ReservationDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
-    abstract fun productDao(): ProductDao
-    abstract fun availabilityDao(): AvailabilityDao
-    abstract fun distributionDao(): DistributionDao
-    abstract fun reservationDao(): ReservationDao
-
 
     companion object {
         private const val DATABASE_NAME = "reservation"

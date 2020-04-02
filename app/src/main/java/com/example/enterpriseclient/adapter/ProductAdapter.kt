@@ -1,6 +1,5 @@
 package com.example.enterpriseclient.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.*
-import com.example.enterpriseclient.myDataBase.model.Product
+import com.example.enterpriseclient.model.Product
 
 class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
@@ -35,17 +34,34 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         holder.linearHome.setOnClickListener{
             val intent = Intent(mContext, ReservationActivity::class.java)
             intent.putExtra("id", mData[position].id)
+            intent.putExtra("product", arrayOf(
+                mData[position].id.toString(),
+                mData[position].name,
+                mData[position].date,
+                mData[position].price,
+                mData[position].img
+                )
+            )
             mContext.startActivity(intent)
         }
 
         holder.bookButton.setOnClickListener{
             val intent = Intent(mContext, AvailabilityActivity::class.java)
             intent.putExtra("id", mData[position].id)
+
+            intent.putExtra("product",arrayOf(
+                mData[position].id.toString(),
+                mData[position].name,
+                mData[position].date,
+                mData[position].price,
+                mData[position].img
+            )
+            )
             mContext.startActivity(intent)
         }
 
         // Load Image from the internet and set it into Imageview using Glide
-        Glide.with(mContext).load(mData[position].image_url).apply(option)
+        Glide.with(mContext).load(mData[position].img).apply(option)
             .into(holder.imgThumbnail)
     }
 
@@ -69,5 +85,6 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
     }
 
 }
+
 
 

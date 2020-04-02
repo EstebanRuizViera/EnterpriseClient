@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestUser
 
@@ -21,7 +20,6 @@ import com.example.enterpriseclient.requestServer.RequestUser
 class LoginFragment : Fragment() {
 
     private lateinit var usersViewModel: UsersViewModel
-    private lateinit var productViewModel: ProductViewModel
 
     companion object {
         fun newInstance(): LoginFragment = LoginFragment()
@@ -35,8 +33,6 @@ class LoginFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
-
-        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
         var lg_login = root.findViewById<TextView>(R.id.lg_login)
         var lg_loginText = root.findViewById<TextView>(R.id.lg_loginText)

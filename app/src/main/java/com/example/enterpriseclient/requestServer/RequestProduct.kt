@@ -1,27 +1,27 @@
 package com.example.enterpriseclient.requestServer
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.Constants
+import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.adapter.CartAdapter
-import com.example.enterpriseclient.model.ProductPojo
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.adapter.UserAdapter
-import com.example.enterpriseclient.model.ProductProfilePojo
-import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
-import kotlinx.android.synthetic.main.activity_cart_list.*
+import com.example.enterpriseclient.model.Product
+import com.example.enterpriseclient.model.ProductProfile
+import kotlinx.android.synthetic.main.activity_drawer.*
 
 class RequestProduct {
 
@@ -56,7 +56,7 @@ class RequestProduct {
 
         fun selectAllProductsForCustomer(
             context: Context,
-            productListPojo: ArrayList<ProductProfilePojo>,
+            productList: ArrayList<ProductProfile>,
             recyclerView: RecyclerView,
             id: String
         ) {
@@ -70,8 +70,8 @@ class RequestProduct {
                     var array = it
                     for (i in 0 until array.length()) {
                         val product = array.getJSONObject(i)
-                        productListPojo.add(
-                            ProductProfilePojo(
+                        productList.add(
+                            ProductProfile(
                                 product.getString("name"),
                                 product.getString("date"),
                                 product.getString("status"),
@@ -85,7 +85,7 @@ class RequestProduct {
                     val userAdapter =
                         UserAdapter(
                             context,
-                            productListPojo
+                            productList
                         )
                     recyclerView.setAdapter(userAdapter)
                 },
@@ -98,58 +98,14 @@ class RequestProduct {
 
         }
 
-        fun prueba(
-            context: Context,
-            productListPojo: ArrayList<ProductProfilePojo>,
-            recyclerView: RecyclerView,
-            id: String
-        ) {
-
-            // new Volley newRequestQueue
-            val queue = Volley.newRequestQueue(context)
-            val url = Constants.URL_SERVER + "/allProductsForCustomer/"+id
-            val updateReq = object : JsonArrayRequest(
-                Request.Method.GET, url, null,
-                Response.Listener {
-//                    var array = it
-//                    for (i in 0 until array.length()) {
-//                        val product = array.getJSONObject(i)
-//                        productListPojo.add(
-//                            ProductProfilePojo(
-//                                product.getString("name"),
-//                                product.getString("date"),
-//                                product.getString("status"),
-//                                "120",
-//                                product.getString("img")
-//                            )
-//                        )
-//
-//                    }
-//                    //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
-//                    val productAdapter =
-//                        CartAdapter(
-//                            context,
-//                            productListPojo
-//                        )
-//                    recyclerView.setAdapter(productAdapter)
-                },
-                Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings for customer")
-                }
-            ) {}
-
-            queue.add(updateReq)
-
-        }
-
         fun selectAllProducts(
-            context: Context,
-            productPojoList: ArrayList<ProductPojo>,
-            synchronizedLocalDatabase: SynchronizedLocalDatabase
+            activity: Activity,
+            productList: ArrayList<Product>,
+            recyclerViewHome:RecyclerView
         ) {
 
             // new Volley newRequestQueue
-            val queue = Volley.newRequestQueue(context)
+            val queue = Volley.newRequestQueue(activity.applicationContext)
             val url = Constants.URL_SERVER + "/api/products"
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
@@ -157,22 +113,29 @@ class RequestProduct {
                     var array = it
                     for (i in 0 until array.length()) {
                         val product = array.getJSONObject(i)
-                        productPojoList.add(
-                            ProductPojo(
+                        productList.add(
+                            Product(
                                 product.getInt("id"),
                                 product.getString("name"),
                                 product.getString("description"),
-                                product.getString("img"),
-                                0
+                                "100",
+                                product.getString("img")
                             )
                         )
                     }
-                    synchronizedLocalDatabase.saveProduct()
+                    val productAdapter =
+                        ProductAdapter(
+                            activity,
+                            productList
+                        )
+                    recyclerViewHome.setAdapter(productAdapter)
+                    activity.swipeRefreshLayout.isRefreshing = false
+                    activity.swipeRefreshLayout.isEnabled = false
                 },
                 Response.ErrorListener {
-                    Log.println(Log.INFO, null, "Error getting your bookings")
-                    synchronizedLocalDatabase.getLocalAvailability()
-                    synchronizedLocalDatabase.getRemoteAvailability()
+                    Toast.makeText(activity,"Error getting your product",Toast.LENGTH_SHORT).show()
+                    activity.swipeRefreshLayout.isRefreshing = false
+                    activity.swipeRefreshLayout.isEnabled = false
                 }
             ) {}
 

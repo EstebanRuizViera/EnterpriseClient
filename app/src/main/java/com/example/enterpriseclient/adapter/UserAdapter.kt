@@ -9,11 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.enterpriseclient.Constants
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.model.ProductProfilePojo
+import com.example.enterpriseclient.model.ProductProfile
 
-class UserAdapter (private val mContext: Context, private val mData: List<ProductProfilePojo>) :
+class UserAdapter (private val mContext: Context, private val mData: List<ProductProfile>) :
     RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
     private var option= RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)

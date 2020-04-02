@@ -1,7 +1,7 @@
 package com.example.enterpriseclient.cart
 
 import android.content.Context
-import android.widget.Toast
+import com.example.enterpriseclient.model.CartItem
 import io.paperdb.Paper
 
 class ShoppingCart {
@@ -28,20 +28,16 @@ class ShoppingCart {
 
             val cart = ShoppingCart.getCart()
 
-
             val targetItem = cart.singleOrNull { it.product.id == cartItem.product.id }
 
             if (targetItem != null) {
 
                 if (targetItem.quantity > 0) {
-                    cart.remove(targetItem)
                     targetItem.quantity--
+                    cart.remove(targetItem)
                 }
-
             }
-
             ShoppingCart.saveCart(cart)
-
         }
 
         fun saveCart(cart: MutableList<CartItem>) {

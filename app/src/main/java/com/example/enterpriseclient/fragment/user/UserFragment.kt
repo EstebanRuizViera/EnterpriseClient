@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.*
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.model.ProductProfilePojo
+import com.example.enterpriseclient.model.ProductProfile
 import com.example.enterpriseclient.requestServer.RequestProduct
 
 
@@ -33,22 +33,6 @@ class UserFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
-
-//        var productsList=arrayListOf<ProductProfilePojo>()
-//
-//        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewProfile)
-//
-//        val layoutManagerProducts = GridLayoutManager(root.context, 1)
-//        recyclerView.setLayoutManager(layoutManagerProducts)
-
-//        var number = usersViewModel.getUserId(1)
-//
-//        if(number.equals("")){
-//            number="1"
-//        }
-
-
-//        RequestProduct.selectAllProductsForCustomer(root.context, productsList, recyclerView, number)
 
 
         var profilePencil = root.findViewById<TextView>(R.id.profile_pencil)

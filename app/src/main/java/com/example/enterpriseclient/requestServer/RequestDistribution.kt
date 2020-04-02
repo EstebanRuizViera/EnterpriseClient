@@ -7,8 +7,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.enterpriseclient.Constants
-import com.example.enterpriseclient.model.DistributionPojo
-import com.example.enterpriseclient.mySynchronized.SynchronizedLocalDatabase
+import com.example.enterpriseclient.model.Distribution
 
 class RequestDistribution {
     companion object {
@@ -17,8 +16,7 @@ class RequestDistribution {
         //------------- DISTRIBUTION --------------------
 
         fun selectAllDistribution(
-            context: Context, distributionPojos: ArrayList<DistributionPojo>,
-            synchronizedLocalDatabase: SynchronizedLocalDatabase
+            context: Context, distributions: ArrayList<Distribution>
         ) {
 
             // new Volley newRequestQueue
@@ -30,8 +28,8 @@ class RequestDistribution {
                     var array = it
                     for (i in 0 until array.length()) {
                         val distribution = array.getJSONObject(i)
-                        distributionPojos.add(
-                            DistributionPojo(
+                        distributions.add(
+                            Distribution(
                                 distribution.getInt("id"),
                                 distribution.getString("unit"),
                                 distribution.getInt("duration"),
@@ -41,11 +39,9 @@ class RequestDistribution {
                             )
                         )
                     }
-                    synchronizedLocalDatabase.saveDistribution()
                 },
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "Error getting your distributions")
-                    RequestReport.generateReportListProduct(context)
                 }
             ) {}
 

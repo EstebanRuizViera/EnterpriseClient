@@ -2,39 +2,39 @@ package com.example.enterpriseclient
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.CalendarView
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.cart.CartItem
-import com.example.enterpriseclient.cart.Product
+import com.example.enterpriseclient.adapter.AvailabilityAdapter
+import com.example.enterpriseclient.model.CartItem
+import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.model.AvailabilityPojo
+import com.example.enterpriseclient.model.Availability
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability
-import com.example.enterpriseclient.requestServer.RequestReservation
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import kotlinx.android.synthetic.main.activity_availability.*
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import sun.bob.mcalendarview.MCalendarView
+import sun.bob.mcalendarview.listeners.OnDateClickListener
+import sun.bob.mcalendarview.vo.DateData
+import java.time.LocalDate
 
 
 class AvailabilityActivity : AppCompatActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
-    private lateinit var calendarView:CalendarView
+    private lateinit var calendarView:MCalendarView
     private lateinit var recyclerView:RecyclerView
     private var idProduct:Int = 0
-    private var selectedDate:String = ""
-    private var idUser:String = ""
-    private lateinit var availabilityList:ArrayList<AvailabilityPojo>
+    private lateinit var availabilityList:ArrayList<Availability>
+
+    private lateinit var productArray: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SharePreferenceDarkMode.checkDarkMode(this)
@@ -42,34 +42,33 @@ class AvailabilityActivity : AppCompatActivity() {
         setContentView(R.layout.activity_availability)
         setSupportActionBar(toolbar)
 
-
         var bundle: Bundle? = intent.extras
         idProduct = bundle!!.getInt("id")
 
+        productArray = bundle!!.getStringArray("product")!!
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
-
 
         recyclerView = findViewById(R.id.recyclerViewAvailability) as RecyclerView
         calendarView = findViewById(R.id.calendar)
 
-
-//        addProductToCard()
         bindProduct()
         getAvailabilityForProduct()
+
+        getDateMarkForCustomer()
 
     }
 
 
 
     private fun getAvailabilityForProduct(){
-        availabilityList = arrayListOf<AvailabilityPojo>()
+        availabilityList = arrayListOf<Availability>()
 
         val layoutManagerAvailability = GridLayoutManager(this, 1)
         recyclerView.setLayoutManager(layoutManagerAvailability)
 
         if(idProduct != null) {
-            RequestAvailability.selectAvailabilityForProduct(this, availabilityList,recyclerView, idProduct.toString())
+            RequestAvailability.selectAvailabilityForProduct(this, availabilityList,recyclerView, idProduct.toString(),calendarView)
         }
     }
 
@@ -77,7 +76,14 @@ class AvailabilityActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     fun bindProduct() {
 
-        var product: Product = Product(idProduct,"prueba","descripcion","10","")
+        var product: Product =
+            Product(
+                Integer.parseInt(productArray[0]),
+                productArray[1],
+                productArray[2],
+                productArray[3],
+                productArray[4]
+            )
 
         Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
             addToCart.setOnClickListener { view ->
@@ -103,33 +109,41 @@ class AvailabilityActivity : AppCompatActivity() {
             Toast.makeText(this, "Cart size $quantity", Toast.LENGTH_SHORT).show()
         }
 
-
-        Toast.makeText(this, "${product.name} added to your cart", Toast.LENGTH_SHORT).show()
-
     }
 
-    //    private fun addProductToCard(){
-//
-//        val sdf = SimpleDateFormat("yyyy-MM-dd")
-//        selectedDate = sdf.format(Date(calendarView.date))
-//
-//        idUser = usersViewModel.getUserId(1)
-//
-//        calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-//            selectedDate = ""+year + "-" + (month + 1) + "-" + dayOfMonth
-//        }
-//
-//        addToCart.setOnClickListener{
-//            if(!idProduct.equals("")){
-//                RequestReservation.createReservation(this, 1524, selectedDate, idUser, idProduct.toString())
-//            } else {
-//                var toast=Toast.makeText(this, "This product don´t exist", Toast.LENGTH_LONG)
-//                toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
-//                toast.show()
-//            }
-//
-//        }
-//    }
+    fun getDateMarkForCustomer(){
+
+        calendarView.setOnDateClickListener(object : OnDateClickListener() {
+            @SuppressLint("NewApi")
+            override fun onDateClick(view: View, date: DateData) {
+
+                var newAvailabilityList = arrayListOf<Availability>()
+
+                for(availability in availabilityList){
+
+                    if( LocalDate.of(date.year,date.month,date.day) == LocalDate.of(
+                        Integer.parseInt(availability.dateAvailability.split("-").get(0)),
+                        Integer.parseInt(availability.dateAvailability.split("-").get(1)),
+                        Integer.parseInt(availability.dateAvailability.split("-").get(2))
+                        )
+                    ){
+                        newAvailabilityList.add(availability)
+                    }
+                }
+
+                //4º) Asigno al RecyclerView el adaptador que relaciona a cada item con su objeto a mostrar.
+                val availabilityAdapter =
+                    AvailabilityAdapter(
+                        this@AvailabilityActivity,
+                        newAvailabilityList
+                    )
+                recyclerView.adapter = availabilityAdapter
+
+
+            }
+        })
+
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

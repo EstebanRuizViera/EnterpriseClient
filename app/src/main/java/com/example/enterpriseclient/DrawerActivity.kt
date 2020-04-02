@@ -1,36 +1,31 @@
 package com.example.enterpriseclient
 
+
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.text.Layout
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.R.layout
-import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.cart.CartListActivity
+import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.fragment.user.UserFragment
-import com.example.enterpriseclient.myDataBase.model.Product
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
+import com.example.enterpriseclient.requestServer.RequestProduct
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer.*
-import kotlinx.android.synthetic.main.header.*
 
 
 class DrawerActivity : BaseActivity() {
 
-    private lateinit var productViewModel: ProductViewModel
     private var mToggle: ActionBarDrawerToggle? = null
+
+    private lateinit var cartSize:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SharePreferenceDarkMode.checkDarkMode(this)
@@ -43,8 +38,6 @@ class DrawerActivity : BaseActivity() {
 
         swipeRefreshLayout.isRefreshing = true
 
-        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-
         mToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         drawer!!.addDrawerListener(mToggle!!)
         mToggle!!.syncState()
@@ -52,25 +45,17 @@ class DrawerActivity : BaseActivity() {
         setupDrawerContent(navigationView)
 
         setRecyclerView()
-
     }
 
     fun setRecyclerView(){
 
-        var productsList = productViewModel.getAllProduct() as ArrayList<Product>
-
-        swipeRefreshLayout.isRefreshing = false
-        swipeRefreshLayout.isEnabled = false
+        var productsList = arrayListOf<Product>()
 
         val layoutManagerProducts = GridLayoutManager(this, 2)
         recyclerViewHome.setLayoutManager(layoutManagerProducts)
 
-        val productAdapter =
-            ProductAdapter(
-                this,
-                productsList
-            )
-        recyclerViewHome.setAdapter(productAdapter)
+        RequestProduct.selectAllProducts(this,productsList,recyclerViewHome)
+
     }
 
     fun selectItemDrawer(menuItem: MenuItem) {
@@ -87,6 +72,7 @@ class DrawerActivity : BaseActivity() {
                 val intent = Intent(this, MyBookingsActivity::class.java)
                 startActivity(intent)
             }
+
         }
         menuItem.isChecked = true
         title = menuItem.title
@@ -96,6 +82,7 @@ class DrawerActivity : BaseActivity() {
     private fun setupDrawerContent(navigationView: NavigationView) {
         navigationView.setNavigationItemSelectedListener { item ->
             selectItemDrawer(item)
+
             true
         }
     }
@@ -104,20 +91,22 @@ class DrawerActivity : BaseActivity() {
 
         menuInflater.inflate(R.menu.menu_action_bar,menu)
 
-//        var mMenu=menu!!.findItem(R.id.cart_menu) as MenuItem
-//        var cartSize = mMenu.actionView.findViewById<TextView>(R.id.cart_size)
-//        cartSize.text=ShoppingCart.getShoppingCartSize().toString()
+        var mMenu=menu!!.findItem(R.id.cart_menu) as MenuItem
 
+        cartSize = mMenu.actionView.findViewById<TextView>(R.id.cart_size)
+        var cart_frame = mMenu.actionView.findViewById<FrameLayout>(R.id.cart_frame)
+
+        cartSize.text=ShoppingCart.getShoppingCartSize().toString()
+
+        cart_frame.setOnClickListener{
+            val intent = Intent(this, CartListActivity::class.java)
+            startActivity(intent)
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.cart_menu ->{
-                val intent = Intent(this, CartListActivity::class.java)
-                startActivity(intent)
-            }
-        }
+
         return if (mToggle!!.onOptionsItemSelected(item)) {
             true
         } else super.onOptionsItemSelected(item)
@@ -128,4 +117,8 @@ class DrawerActivity : BaseActivity() {
         return true
     }
 
+    override fun onRestart() {
+        cartSize.text=ShoppingCart.getShoppingCartSize().toString()
+        super.onRestart()
+    }
 }

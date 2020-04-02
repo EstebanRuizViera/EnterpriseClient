@@ -3,20 +3,15 @@ package com.example.enterpriseclient.cart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.CustomerDetailsActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.adapter.CartAdapter
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.model.ProductProfilePojo
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
-import com.example.enterpriseclient.requestServer.RequestProduct
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class CartListActivity : AppCompatActivity() {
 
-    private lateinit var productViewModel: ProductViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SharePreferenceDarkMode.checkDarkMode(this)
@@ -24,10 +19,7 @@ class CartListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cart_list)
         setSupportActionBar(toolbar)
 
-        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-
-
-        checkout.setOnClickListener(){
+        checkout.setOnClickListener{
             val intent = Intent(this, CustomerDetailsActivity::class.java)
             startActivity(intent)
         }

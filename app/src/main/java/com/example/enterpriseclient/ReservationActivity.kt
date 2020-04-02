@@ -7,13 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
-import com.example.enterpriseclient.myDataBase.viewModel.ProductViewModel
 import kotlinx.android.synthetic.main.activity_reservation.*
 
 
 class ReservationActivity : AppCompatActivity() {
 
-    private lateinit var productViewModel: ProductViewModel
     private var idProduct:Int = 0
     private var option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
         .error(R.drawable.loading_shape)
@@ -27,19 +25,18 @@ class ReservationActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         idProduct = bundle!!.getInt("id")
 
-        productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-
-        getProduct()
+        //getProduct()
 
         checkAvailability.setOnClickListener(){
             val intent = Intent(this,AvailabilityActivity::class.java)
             intent.putExtra("id", idProduct)
+            intent.putExtra("product", bundle!!.getStringArray("product"))
             startActivity(intent)
         }
 
     }
 
-    private fun getProduct(){
+    /*private fun getProduct(){
 
         if(idProduct != 0) {
 
@@ -60,7 +57,7 @@ class ReservationActivity : AppCompatActivity() {
             }
 
         }
-    }
+    }*/
 
 
 

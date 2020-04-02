@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.model.AvailabilityPojo
+import com.example.enterpriseclient.model.Availability
 
 
-class AvailabilityAdapter (private val mContext: Context, private val mData: List<AvailabilityPojo>) :
+class AvailabilityAdapter (private val mContext: Context, private var mData: List<Availability>) :
     RecyclerView.Adapter<AvailabilityAdapter.MyViewHolder>() {
 
 
@@ -26,7 +26,6 @@ class AvailabilityAdapter (private val mContext: Context, private val mData: Lis
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.timestamp.text = mData[position].timeAvailability
-
     }
 
     override fun getItemCount(): Int {
@@ -38,9 +37,11 @@ class AvailabilityAdapter (private val mContext: Context, private val mData: Lis
 
         init {
             timestamp = itemView.findViewById(R.id.button_timestamp)
-
         }
+
+
     }
+
 
 }
 

@@ -12,17 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.cart.CartItem
-import com.example.enterpriseclient.cart.CartListActivity
-import com.example.enterpriseclient.cart.Product
-import com.example.enterpriseclient.cart.ShoppingCart
-import com.google.android.material.snackbar.Snackbar
-import io.reactivex.Observable
-import io.reactivex.Observable.*
-import io.reactivex.ObservableOnSubscribe
-import kotlinx.android.synthetic.main.recyclerview_cart.view.*
 
-class CartAdapter(private val mContext: Context, private val mData: List<CartItem>) :
+import com.example.enterpriseclient.cart.ShoppingCart
+import com.example.enterpriseclient.model.CartItem
+import com.example.enterpriseclient.model.Product
+
+class CartAdapter(private val mContext: Context, private val mData: MutableList<CartItem>) :
     RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
     private var option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
@@ -58,6 +53,9 @@ class CartAdapter(private val mContext: Context, private val mData: List<CartIte
                     mData[position].product.img
                 )
             )
+            mData.removeAt(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position,mData.size);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.enterpriseclient.cart
+package com.example.enterpriseclient.model
 
 import com.google.gson.annotations.SerializedName
 

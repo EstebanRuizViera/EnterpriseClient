@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enterpriseclient.model.ProductProfilePojo
+import com.example.enterpriseclient.model.ProductProfile
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestProduct
 import kotlinx.android.synthetic.main.activity_my_bookings.*
@@ -30,7 +30,7 @@ class MyBookingsActivity : AppCompatActivity() {
 
     fun getMyBookings() {
 
-        var productsList = arrayListOf<ProductProfilePojo>()
+        var productsList = arrayListOf<ProductProfile>()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewProfile)
 
