@@ -84,6 +84,7 @@
         android:text="Continue"
         android:textColor="?attr/textColor"
         android:textSize="18sp"
+        android:textAllCaps="false"
         android:layout_gravity="center"/>
 
     <TextView
@@ -101,9 +102,10 @@
         android:layout_marginTop="18dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/login_button_circle"
-        android:text="Log in"
+        android:text="Continue with account"
         android:textColor="?attr/textColor"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textAllCaps="false"
         android:layout_gravity="center"/>
 
 

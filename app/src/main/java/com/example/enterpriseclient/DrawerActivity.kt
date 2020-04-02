@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
@@ -86,7 +87,6 @@ class DrawerActivity : BaseActivity() {
                 val intent = Intent(this, MyBookingsActivity::class.java)
                 startActivity(intent)
             }
-
         }
         menuItem.isChecked = true
         title = menuItem.title
