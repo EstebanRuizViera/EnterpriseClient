@@ -45,20 +45,6 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
             mContext.startActivity(intent)
         }
 
-        holder.bookButton.setOnClickListener{
-            val intent = Intent(mContext, AvailabilityActivity::class.java)
-            intent.putExtra("id", mData[position].id)
-
-            intent.putExtra("product",arrayOf(
-                mData[position].id.toString(),
-                mData[position].name,
-                mData[position].date,
-                mData[position].price,
-                mData[position].img
-            )
-            )
-            mContext.startActivity(intent)
-        }
 
         // Load Image from the internet and set it into Imageview using Glide
         Glide.with(mContext).load(mData[position].img).apply(option)
@@ -73,13 +59,11 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
         var Name: TextView
         var imgThumbnail: ImageView
         var linearHome: LinearLayout
-        var bookButton: Button
 
         init {
             Name = itemView.findViewById(R.id.productName)
             imgThumbnail = itemView.findViewById(R.id.thumbnail)
             linearHome = itemView.findViewById(R.id.linearHome)
-            bookButton = itemView.findViewById(R.id.bookButton)
 
         }
     }

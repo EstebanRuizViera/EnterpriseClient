@@ -7,12 +7,13 @@
     android:layout_height="wrap_content"
     android:background="?attr/backgroundColor"
     android:orientation="vertical"
+    android:layout_marginTop="10dp"
     android:padding="5dp">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="190dp"
         app:cardBackgroundColor="?attr/cardBackground">
 
         <LinearLayout
@@ -38,15 +39,6 @@
                 android:textColor="?attr/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/bookButton"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/book_button_circle"
-                android:text="@string/button_book_now"
-                android:textAllCaps="false"
-                android:textColor="?attr/bookButtonColor" />
 
         </LinearLayout>
 

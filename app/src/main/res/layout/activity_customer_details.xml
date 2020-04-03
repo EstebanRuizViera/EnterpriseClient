@@ -30,7 +30,7 @@
         android:textSize="17sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fill the form or log in to continue with the booking"
+        android:text="Fill the form to continue with the booking"
         android:textStyle="bold"/>
 
     <EditText
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="  Name"
+        android:hint=" Name"
         android:inputType="textPersonName"
         android:textColor="?attr/descriptionColor" />
 
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="  Surname"
+        android:hint=" Surname"
         android:inputType="textPersonName"
         android:textColor="?attr/descriptionColor" />
 
@@ -59,54 +59,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="  Email Address"
+        android:hint=" Email Address"
         android:inputType="textEmailAddress"
         android:textColor="?attr/descriptionColor" />
 
     <EditText
         android:id="@+id/CustomerPhone"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="  Phone Number"
+        android:hint=" Phone Number"
         android:inputType="textEmailAddress"
         android:textColor="?attr/descriptionColor" />
 
 
-    <Button
-        android:id="@+id/customerNext"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/login_button_circle"
-        android:text="Continue"
-        android:textColor="?attr/textColor"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:textColor="#A4A4A4"
-        android:textSize="18sp"
-        android:textAlignment="center"/>
 
     <Button
-        android:id="@+id/customerLogin"
-        android:layout_width="330dp"
+        android:id="@+id/checkout"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/login_button_circle"
-        android:text="Continue with account"
-        android:textColor="?attr/textColor"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:layout_gravity="center"/>
+        android:background="@drawable/button_round_borders"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:text="Continue" />
+
 
 
 </LinearLayout>
