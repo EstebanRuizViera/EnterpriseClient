@@ -14,6 +14,7 @@ import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import com.example.enterpriseclient.model.Availability
+import com.example.enterpriseclient.model.Distribution
 import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import com.example.enterpriseclient.requestServer.RequestAvailability
 import com.google.android.material.snackbar.Snackbar
@@ -29,10 +30,10 @@ import java.time.LocalDate
 class AvailabilityActivity : AppCompatActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
-    private lateinit var calendarView:MCalendarView
-    private lateinit var recyclerView:RecyclerView
-    private var idProduct:Int = 0
-    private lateinit var availabilityList:ArrayList<Availability>
+    private lateinit var calendarView: MCalendarView
+    private lateinit var recyclerView: RecyclerView
+    private var idProduct: Int = 0
+    private lateinit var availabilityList: ArrayList<Availability>
 
     private lateinit var productArray: Array<String>
 
@@ -60,15 +61,20 @@ class AvailabilityActivity : AppCompatActivity() {
     }
 
 
-
-    private fun getAvailabilityForProduct(){
+    private fun getAvailabilityForProduct() {
         availabilityList = arrayListOf<Availability>()
 
         val layoutManagerAvailability = GridLayoutManager(this, 1)
         recyclerView.setLayoutManager(layoutManagerAvailability)
 
-        if(idProduct != null) {
-            RequestAvailability.selectAvailabilityForProduct(this, availabilityList,recyclerView, idProduct.toString(),calendarView)
+        if (idProduct != null) {
+            RequestAvailability.selectAvailabilityForProduct(
+                this,
+                availabilityList,
+                recyclerView,
+                idProduct.toString(),
+                calendarView
+            )
         }
     }
 
@@ -82,7 +88,8 @@ class AvailabilityActivity : AppCompatActivity() {
                 productArray[1],
                 productArray[2],
                 productArray[3],
-                productArray[4]
+                productArray[4],
+                Distribution(0,"",123,123,12,10)
             )
 
         Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
@@ -111,7 +118,7 @@ class AvailabilityActivity : AppCompatActivity() {
 
     }
 
-    fun getDateMarkForCustomer(){
+    fun getDateMarkForCustomer() {
 
         calendarView.setOnDateClickListener(object : OnDateClickListener() {
             @SuppressLint("NewApi")
@@ -119,14 +126,14 @@ class AvailabilityActivity : AppCompatActivity() {
 
                 var newAvailabilityList = arrayListOf<Availability>()
 
-                for(availability in availabilityList){
+                for (availability in availabilityList) {
 
-                    if( LocalDate.of(date.year,date.month,date.day) == LocalDate.of(
-                        Integer.parseInt(availability.dateAvailability.split("-").get(0)),
-                        Integer.parseInt(availability.dateAvailability.split("-").get(1)),
-                        Integer.parseInt(availability.dateAvailability.split("-").get(2))
+                    if (LocalDate.of(date.year, date.month, date.day) == LocalDate.of(
+                            Integer.parseInt(availability.dateAvailability.split("-").get(0)),
+                            Integer.parseInt(availability.dateAvailability.split("-").get(1)),
+                            Integer.parseInt(availability.dateAvailability.split("-").get(2))
                         )
-                    ){
+                    ) {
                         newAvailabilityList.add(availability)
                     }
                 }

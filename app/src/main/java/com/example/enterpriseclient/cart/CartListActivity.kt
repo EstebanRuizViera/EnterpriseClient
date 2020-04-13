@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.enterpriseclient.CustomerDetailsActivity
-import com.example.enterpriseclient.ProfileActivity
 import com.example.enterpriseclient.R
-import com.example.enterpriseclient.SettingsActivity
 import com.example.enterpriseclient.adapter.CartAdapter
 import com.example.enterpriseclient.fragment.settings.SharePreferenceDarkMode
 import kotlinx.android.synthetic.main.activity_cart_list.*
@@ -23,10 +21,6 @@ class CartListActivity : AppCompatActivity() {
 
         checkout.setOnClickListener{
             val intent = Intent(this, CustomerDetailsActivity::class.java)
-            startActivity(intent)
-        }
-        checkoutLogin.setOnClickListener{
-            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 

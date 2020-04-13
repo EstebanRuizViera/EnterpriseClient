@@ -1,22 +1,11 @@
 package com.example.enterpriseclient.model
 
-import com.google.gson.annotations.SerializedName
 
 data class Product(
-
-    @SerializedName("id")
-    var id: Int? = null,
-
-    @SerializedName("name")
-    var name: String? = null,
-
-    @SerializedName("description")
-    var date: String? = null,
-
-    @SerializedName("price")
-    var price: String? = null,
-
-    @SerializedName("img")
-    var img: String? = null
-
+    var id: Int,
+    var name: String,
+    var description: String,
+    var price: String,
+    var img: String,
+    var distribution: Distribution
 )

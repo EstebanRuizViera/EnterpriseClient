@@ -43,7 +43,7 @@ class MyBookingsActivity : AppCompatActivity() {
             number = "1"
         }
 
-        RequestProduct.selectAllProductsForCustomer(this, productsList, recyclerView, number)
+        RequestProduct.selectAllProductsForCustomer(this,usersViewModel, productsList, recyclerView, number)
     }
 
 

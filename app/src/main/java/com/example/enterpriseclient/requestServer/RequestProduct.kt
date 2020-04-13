@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -19,8 +20,10 @@ import com.example.enterpriseclient.DrawerActivity
 import com.example.enterpriseclient.R
 import com.example.enterpriseclient.adapter.ProductAdapter
 import com.example.enterpriseclient.adapter.UserAdapter
+import com.example.enterpriseclient.model.Distribution
 import com.example.enterpriseclient.model.Product
 import com.example.enterpriseclient.model.ProductProfile
+import com.example.enterpriseclient.myDataBase.viewModel.UsersViewModel
 import kotlinx.android.synthetic.main.activity_drawer.*
 
 class RequestProduct {
@@ -43,7 +46,7 @@ class RequestProduct {
 
                     productName.setText(it.getString("name"))
                     productDescription.setText(it.getString("description"))
-                        Glide.with(context).load(it.getString("img")).apply(option)
+                        Glide.with(context).load(Constants.URL_SERVER + it.getString("img")).apply(option)
                             .into(img)
 
                 },
@@ -56,6 +59,7 @@ class RequestProduct {
 
         fun selectAllProductsForCustomer(
             context: Context,
+            usersViewModel: UsersViewModel,
             productList: ArrayList<ProductProfile>,
             recyclerView: RecyclerView,
             id: String
@@ -63,7 +67,7 @@ class RequestProduct {
 
             // new Volley newRequestQueue
             val queue = Volley.newRequestQueue(context)
-            val url = Constants.URL_SERVER + "/allProductsForCustomer/"+id
+            val url = Constants.URL_SERVER + "/auth/allProductsForCustomer/"+id
             val updateReq = object : JsonArrayRequest(
                 Request.Method.GET, url, null,
                 Response.Listener {
@@ -76,7 +80,7 @@ class RequestProduct {
                                 product.getString("date"),
                                 product.getString("status"),
                                 "120",
-                                product.getString("img")
+                                Constants.URL_SERVER + product.getString("img")
                             )
                         )
 
@@ -92,7 +96,17 @@ class RequestProduct {
                 Response.ErrorListener {
                     Log.println(Log.INFO, null, "Error getting your bookings for customer")
                 }
-            ) {}
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers: MutableMap<String, String> =
+                        HashMap()
+                    // Basic Authentication
+                    var token = usersViewModel.getToken(1)
+                    headers["Authorization"] = "Bearer " + token
+                    return headers
+                }
+            }
 
             queue.add(updateReq)
 
@@ -119,7 +133,9 @@ class RequestProduct {
                                 product.getString("name"),
                                 product.getString("description"),
                                 "100",
-                                product.getString("img")
+                                Constants.URL_SERVER + product.getString("img"),
+                                Distribution(0,"",123,123,12,10)
+
                             )
                         )
                     }

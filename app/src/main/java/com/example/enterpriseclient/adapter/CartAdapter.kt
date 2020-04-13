@@ -15,6 +15,7 @@ import com.example.enterpriseclient.R
 
 import com.example.enterpriseclient.cart.ShoppingCart
 import com.example.enterpriseclient.model.CartItem
+import com.example.enterpriseclient.model.Distribution
 import com.example.enterpriseclient.model.Product
 
 class CartAdapter(private val mContext: Context, private val mData: MutableList<CartItem>) :
@@ -35,8 +36,8 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.cartName.text = mData[position].product.name
-        holder.cartDate.text = mData[position].product.date
-        holder.cartTime.text = mData[position].product.date
+        holder.cartDate.text = mData[position].product.description
+        holder.cartTime.text = mData[position].product.description
         holder.cartPrice.text = mData[position].product.price
 
         // Load Image from the internet and set it into Imageview using Glide
@@ -48,9 +49,10 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
                 Product(
                     mData[position].product.id,
                     mData[position].product.name,
-                    mData[position].product.date,
+                    mData[position].product.description,
                     mData[position].product.price,
-                    mData[position].product.img
+                    mData[position].product.img, Distribution(0,"",123,123,12,10)
+
                 )
             )
             mData.removeAt(position);

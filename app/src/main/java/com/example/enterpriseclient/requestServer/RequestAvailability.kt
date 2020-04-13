@@ -31,7 +31,7 @@ class RequestAvailability {
 
             val queue = Volley.newRequestQueue(context)
 
-            val url = Constants.URL_SERVER + "/select_availabilities/" + id
+            val url = Constants.URL_SERVER + "/api/select_availabilities/" + id
 
             val req = @SuppressLint("NewApi")
             object : JsonArrayRequest(
@@ -58,7 +58,7 @@ class RequestAvailability {
                                     timestamp[1],
                                     availability.getDouble("price"),
                                     availability.getDouble("quota"),
-                                    availability.getInt("id_product")
+                                    Integer.parseInt(id)
                                 )
                             )
                         }
@@ -70,7 +70,7 @@ class RequestAvailability {
                                 timestamp[1],
                                 availability.getDouble("price"),
                                 availability.getDouble("quota"),
-                                availability.getInt("id_product")
+                                Integer.parseInt(id)
                             )
                         )
                         Log.println(Log.INFO, null, "date: "+timestamp[0]+" time: "+timestamp[1])

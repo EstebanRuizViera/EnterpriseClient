@@ -37,7 +37,7 @@ class ProductAdapter (private val mContext: Context, private val mData: List<Pro
             intent.putExtra("product", arrayOf(
                 mData[position].id.toString(),
                 mData[position].name,
-                mData[position].date,
+                mData[position].description,
                 mData[position].price,
                 mData[position].img
                 )

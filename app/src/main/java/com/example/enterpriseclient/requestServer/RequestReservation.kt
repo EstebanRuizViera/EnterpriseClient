@@ -42,7 +42,7 @@ class RequestReservation {
             reservationJsonobj.put("id_products", productsJsonArray)
 
             val queue = Volley.newRequestQueue(context)
-            val url = Constants.URL_SERVER + "/createReservation"
+            val url = Constants.URL_SERVER + "/api/createReservations"
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
