@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EnterpriseClient</string>
+    <string name="app_name">PadwordBooking</string>
 
     <string name="title_home">Inicio</string>
     <string name="title_profile">Perfil</string>
@@ -46,6 +46,6 @@
     <string name="menu_drawer_profile">Perfil</string>
     <string name="menu_drawer_settings">Configuración</string>
     <string name="menu_drawer_my_bookings">Mis reservas</string>
-
+    <string name="product_price">desde</string>
 
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.enterpriseclient">
+    package="com.example.padwordbooking">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -9,24 +9,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".App"
+        android:name="com.example.padwordbooking.App"
         android:allowBackup="true"
         android:icon="@mipmap/icon_launch"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_padword_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MyBookingsActivity"></activity>
-        <activity android:name=".CustomerDetailsActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".cart.CartListActivity" />
-        <activity android:name=".AvailabilityActivity" />
-        <activity android:name=".ReservationActivity" />
+        <activity android:name="com.example.padwordbooking.MyBookingsActivity"></activity>
+        <activity android:name="com.example.padwordbooking.CustomerDetailsActivity" />
+        <activity android:name="com.example.padwordbooking.SettingsActivity" />
+        <activity android:name="com.example.padwordbooking.ProfileActivity" />
+        <activity android:name="com.example.padwordbooking.CartListActivity" />
+        <activity android:name="com.example.padwordbooking.AvailabilityActivity" />
+        <activity android:name="com.example.padwordbooking.ReservationActivity" />
         <activity
-            android:name=".DrawerActivity"
+            android:name="com.example.padwordbooking.DrawerActivity"
             android:theme="@style/PreferenceScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

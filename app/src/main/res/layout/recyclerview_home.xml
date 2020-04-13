@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         app:cardBackgroundColor="?attr/cardBackground">
 
         <LinearLayout
@@ -34,11 +34,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
                 android:text="Hall of gourmet"
                 android:textColor="?attr/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/product_price" />
 
         </LinearLayout>
 

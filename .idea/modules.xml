@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CLIENTE-EnterpriseClient.iml" filepath="$PROJECT_DIR$/CLIENTE-EnterpriseClient.iml" group="EnterpriseClient" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/EnterpriseClient.iml" filepath="$PROJECT_DIR$/.idea/EnterpriseClient.iml" group="EnterpriseClient" />
-      <module fileurl="file://$PROJECT_DIR$/app/EnterpriseClient-app.iml" filepath="$PROJECT_DIR$/app/EnterpriseClient-app.iml" group="EnterpriseClient/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PadwordBooking.iml" filepath="$PROJECT_DIR$/PadwordBooking.iml" group="PadwordBooking" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PadwordBooking/app" />
     </modules>
   </component>
 </project>

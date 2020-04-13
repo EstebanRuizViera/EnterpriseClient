@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fffffdff"
     android:orientation="vertical"
-    tools:context=".cart.CartListActivity">
+    tools:context=".CartListActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -56,10 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginEnd="20dp"
-            android:textSize="20sp"
             android:gravity="end"
+            android:text="0€"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:text="1500 €"
             tools:ignore="RtlCompat" />
 
     </LinearLayout>
