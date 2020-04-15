@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
-    android:padding="20dp">
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/border_drawer">
 
     <ImageView
         android:id="@+id/profileImage"
-        android:src="@drawable/profile"
+        android:layout_marginTop="10dp"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:src="@drawable/icon_padword" />
 
     <TextView
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alejandro Limiñana"
-        android:textColor="#121212"
-        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:fontFamily="@font/baloo"
+        android:text="Padword"
+        android:textColor="#121212"
+        android:textSize="24sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ale.limi95@gmail.com"
-        android:textColor="#121212"
-        android:clickable="true"/>
-
+        android:layout_marginLeft="5dp"
+        android:clickable="true"
+        android:text="www.padword.com"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
 
 </LinearLayout>

@@ -77,4 +77,6 @@ dependencies {
 
     //mCalendarView para el calendario
     implementation 'sun.bob:mcalendarview:1.0.0'
+
+    implementation 'com.ms-square:expandableTextView:0.1.4'
 }

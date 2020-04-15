@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hotel2" />
+        app:srcCompat="@drawable/icon_padword" />
 
     <EditText
         android:id="@+id/lg_email"
@@ -34,12 +34,12 @@
 
     <TextView
         android:id="@+id/lg_validate_email"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Este campo no puede estar vacío"
         android:textColor="@color/validationColor"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,12 +64,12 @@
 
     <TextView
         android:id="@+id/lg_validate_password"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Este campo no puede estar vacío"
         android:textColor="@color/validationColor"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"

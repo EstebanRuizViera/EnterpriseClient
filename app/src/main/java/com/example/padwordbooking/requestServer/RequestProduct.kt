@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.padwordbooking.Constants
 import com.example.padwordbooking.R
-import com.example.padwordbooking.adapter.ProductAdapter
+import com.example.padwordbooking.adapter.ProductListAdapter
 import com.example.padwordbooking.adapter.UserAdapter
 import com.example.padwordbooking.model.Availability
 import com.example.padwordbooking.model.Distribution
@@ -27,7 +27,6 @@ import com.example.padwordbooking.model.ProductProfile
 import com.example.padwordbooking.myDataBase.viewModel.UsersViewModel
 import kotlinx.android.synthetic.main.activity_drawer.*
 import org.json.JSONArray
-import org.json.JSONObject
 import kotlin.math.roundToInt
 
 class RequestProduct {
@@ -142,7 +141,7 @@ class RequestProduct {
 
         fun setRecyclerViewDrawerActicity(activity: Activity, productList: ArrayList<Product>, recyclerViewHome:RecyclerView){
             val productAdapter =
-                ProductAdapter(
+                ProductListAdapter(
                     activity,
                     productList
                 )

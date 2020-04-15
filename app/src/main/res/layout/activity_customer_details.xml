@@ -79,7 +79,7 @@
 
 
     <Button
-        android:id="@+id/checkout"
+        android:id="@+id/continueButton"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_round_borders"
