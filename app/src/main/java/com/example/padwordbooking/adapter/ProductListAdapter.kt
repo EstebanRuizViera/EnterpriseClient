@@ -12,8 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.padwordbooking.*
 import com.example.padwordbooking.model.Product
 
-class ProductAdapter (private val mContext: Context, private val mData: List<Product>) :
-    RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
+class ProductListAdapter (private val mContext: Context, private val mData: List<Product>) :
+    RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
     private var option= RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
         .error(R.drawable.loading_shape)
