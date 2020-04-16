@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/click_cart"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
@@ -40,6 +40,15 @@
                     android:textColor="?attr/textColor"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/remove_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:gravity="end"
+                    android:drawableRight="@drawable/ic_close" />
 
             </LinearLayout>
 
@@ -75,13 +84,13 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/remove_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
-            android:src="@drawable/ic_close" />
+<!--        <ImageView-->
+<!--            android:id="@+id/remove_item"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scrollbarAlwaysDrawHorizontalTrack="false"-->
+<!--            android:scrollbarAlwaysDrawVerticalTrack="false"-->
+<!--            android:src="@drawable/ic_close" />-->
 
     </LinearLayout>
 </LinearLayout>

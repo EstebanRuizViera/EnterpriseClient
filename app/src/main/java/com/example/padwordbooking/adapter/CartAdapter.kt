@@ -71,7 +71,7 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
         var cartPrice: TextView
         var thumbnail: ImageView
 
-        var removeItem: ImageView
+        var removeItem: TextView
 
         @SuppressLint("CheckResult")
         fun bindProduct(product: Product) {
