@@ -20,6 +20,7 @@ import com.example.padwordbooking.Constants
 import com.example.padwordbooking.R
 import com.example.padwordbooking.adapter.ProductListAdapter
 import com.example.padwordbooking.adapter.UserAdapter
+import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.model.Availability
 import com.example.padwordbooking.model.Distribution
 import com.example.padwordbooking.model.Product
@@ -160,20 +161,30 @@ class RequestProduct {
                 val product = arrayProduct.getJSONObject(i)
                 val availabilities = product.getJSONArray("availabilities")
 
+                var price: Int = 150
+
                 var temporalArrayAvailabilities = arrayListOf<Availability>()
+
                 for (j in 0 until availabilities.length()) {
 
-                    val availability = availabilities.getJSONObject(j)
-                    var timestamp = availability.getString("timestamp").split(" ")
+                    val products = ShoppingCart.getReservation()
+                    val targetItem = products.singleOrNull { it.availabilities[0].id == availabilities.getJSONObject(j).getInt("id")}
 
-                    temporalArrayAvailabilities.add( Availability(
-                        availability.getInt("id"),
-                        timestamp[0],
-                        timestamp[1],
-                        availability.getDouble("price"),
-                        availability.getDouble("quota"),
-                        product.getInt("id")
-                    ))
+                    if(targetItem == null){
+                        val availability = availabilities.getJSONObject(j)
+                        var timestamp = availability.getString("timestamp").split(" ")
+
+
+                        temporalArrayAvailabilities.add( Availability(
+                            availability.getInt("id"),
+                            timestamp[0],
+                            timestamp[1],
+                            availability.getDouble("price"),
+                            availability.getDouble("quota"),
+                            product.getInt("id")
+                        ))
+                    }
+                    price = availabilities.getJSONObject(j).getInt("price")
                 }
                 arrayAvailability = temporalArrayAvailabilities
                 var distribution:Distribution
@@ -190,7 +201,7 @@ class RequestProduct {
                     distribution = Distribution(0,"",123,"","",10)
                 }
 
-                var price = temporalArrayAvailabilities[0].price.roundToInt()
+
                 productsList.add(
                     Product(
                         product.getInt("id"),

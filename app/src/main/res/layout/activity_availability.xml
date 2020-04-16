@@ -25,22 +25,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <!--    <com.events.calendar.views.EventsCalendar-->
-    <!--        android:id="@+id/eventsCalendar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#000000"-->
-    <!--        android:overScrollMode="never"-->
-    <!--        app:eventDotColor="#ff0000"-->
-    <!--        app:isBoldTextOnSelectionEnabled="true"-->
-    <!--        app:monthTitleColor="#ffffff"-->
-    <!--        app:primaryTextColor="#c4c4c4"-->
-    <!--        app:secondaryTextColor="#666666"-->
-    <!--        app:selectedTextColor="#000000"-->
-    <!--        app:selectionColor="#ffe600"-->
-    <!--        app:weekHeaderColor="#c6c6c6" />-->
-
-
     <sun.bob.mcalendarview.MCalendarView
         android:id="@+id/calendar"
         android:layout_width="match_parent"
@@ -53,22 +37,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center"
-        android:background="?attr/backgroundColor">
-
-        <Button
-            android:id="@+id/addToCart"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_button_circle"
-            android:gravity="center"
-            android:text="@string/button_book" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:background="?attr/backgroundColor">
 
@@ -79,5 +48,28 @@
             android:background="?attr/backgroundColor"/>
 
     </LinearLayout>
+
+<!--    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_width="match_parent">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_horizontal|center"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:background="?attr/backgroundColor">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/addToCart"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/login_button_circle"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/button_book" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    </ScrollView>-->
 
 </LinearLayout>

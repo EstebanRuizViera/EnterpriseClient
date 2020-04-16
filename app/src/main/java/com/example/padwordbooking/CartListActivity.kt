@@ -56,7 +56,8 @@ class CartListActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        var intent = Intent(this, DrawerActivity::class.java)
+        startActivity(intent)
         return true
     }
 }

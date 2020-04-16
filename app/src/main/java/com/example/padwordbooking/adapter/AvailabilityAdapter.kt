@@ -1,11 +1,14 @@
 package com.example.padwordbooking.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.example.padwordbooking.CartListActivity
+import com.example.padwordbooking.DrawerActivity
 import com.example.padwordbooking.R
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.model.Availability
@@ -40,6 +43,9 @@ class AvailabilityAdapter (private val mContext: Context, private var mData: Lis
                 "${product.name} added to your cart",
                 Snackbar.LENGTH_LONG
             ).show()
+
+            var intent = Intent(mContext, DrawerActivity::class.java)
+            mContext.startActivity(intent)
 
         }
     }

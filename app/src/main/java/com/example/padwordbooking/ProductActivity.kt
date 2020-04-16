@@ -8,6 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Product
 import kotlinx.android.synthetic.main.activity_product.*
+import java.lang.IndexOutOfBoundsException
 import kotlin.math.roundToInt
 
 
@@ -43,22 +44,19 @@ class ProductActivity : AppCompatActivity() {
 
     private fun getProduct(){
 
-        if(idProduct != 0) {
-
-            if(product.id!=0){
+            try{
                 productReservationName.text = product.name
                 productReservationDescription.text =product.description
                 reservationPrice.text = ""+product.availabilities[0].price.roundToInt()+"€"
                 Glide.with(this).load(product.img).apply(option)
                     .into(thumbnailProduct)
-            }else{
-                productReservationName.text = "Product not found"
-                productReservationDescription.text ="Try again later"
-                Glide.with(this).load("").apply(option)
+            }catch (ex:IndexOutOfBoundsException){
+                productReservationName.text = product.name
+                productReservationDescription.text =product.description
+                reservationPrice.text = ""+150+"€"
+                Glide.with(this).load(product.img).apply(option)
                     .into(thumbnailProduct)
             }
-
-        }
     }
 
 

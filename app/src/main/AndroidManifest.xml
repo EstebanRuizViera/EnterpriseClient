@@ -24,6 +24,7 @@
         <activity android:name="com.example.padwordbooking.CartListActivity" />
         <activity android:name="com.example.padwordbooking.AvailabilityActivity" />
         <activity android:name="com.example.padwordbooking.ProductActivity" />
+        <activity android:name="com.example.padwordbooking.SummaryActivity" />
         <activity
             android:name="com.example.padwordbooking.DrawerActivity"
             android:theme="@style/PreferenceScreen">

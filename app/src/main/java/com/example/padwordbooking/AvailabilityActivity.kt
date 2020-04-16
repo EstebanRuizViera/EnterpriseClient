@@ -95,28 +95,28 @@ class AvailabilityActivity : AppCompatActivity() {
     }
 
 
-    @SuppressLint("CheckResult")
-    fun bindProduct() {
-
-        Observable.create(ObservableOnSubscribe<MutableList<Product>> {
-            addToCart.setOnClickListener { view ->
-
-                val item = product
-
-                ShoppingCart.addItem(item)
-                //notify users
-                Snackbar.make(
-                    view,
-                    "${product.name} added to your cart",
-                    Snackbar.LENGTH_LONG
-                ).show()
-
-                it.onNext(ShoppingCart.getReservation())
-
-            }
-        })
-
-    }
+//    @SuppressLint("CheckResult")
+//    fun bindProduct() {
+//
+//        Observable.create(ObservableOnSubscribe<MutableList<Product>> {
+//            addToCart.setOnClickListener { view ->
+//
+//                val item = product
+//
+//                ShoppingCart.addItem(item)
+//                //notify users
+//                Snackbar.make(
+//                    view,
+//                    "${product.name} added to your cart",
+//                    Snackbar.LENGTH_LONG
+//                ).show()
+//
+//                it.onNext(ShoppingCart.getReservation())
+//
+//            }
+//        })
+//
+//    }
 
     fun getDateMarkForCustomer() {
 

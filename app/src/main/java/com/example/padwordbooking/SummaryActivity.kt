@@ -12,6 +12,8 @@ class SummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_summary)
 
         setSupportActionBar(toolbar)
+
+
     }
 
 
