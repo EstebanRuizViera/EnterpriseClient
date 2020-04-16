@@ -42,7 +42,6 @@ class EditFragment : Fragment() {
         var editName = root.findViewById<EditText>(R.id.editName)
         var editEmail = root.findViewById<EditText>(R.id.editEmail)
         var editBtn = root.findViewById<Button>(R.id.editBtn)
-        var editValidateEmail = root.findViewById<TextView>(R.id.editValidateEmail)
 
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)

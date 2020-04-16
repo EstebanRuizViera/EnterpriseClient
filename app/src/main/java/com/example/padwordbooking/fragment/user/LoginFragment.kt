@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
         var lg_validate_password = root.findViewById<TextView>(R.id.lg_validate_password)
 
 
-        var check = true
+        var check :Boolean
         lg_login.setOnClickListener() {
 
             if(lg_email.text.toString().equals("")){

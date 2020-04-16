@@ -1,62 +1,47 @@
 package com.example.padwordbooking.cart
 
-import android.content.Context
-import com.example.padwordbooking.model.CartItem
+import android.util.Log
+import com.example.padwordbooking.model.Customer
+import com.example.padwordbooking.model.Product
 import io.paperdb.Paper
 
 class ShoppingCart {
 
     companion object {
 
-        fun addItem(cartItem: CartItem) {
-            val cart = ShoppingCart.getCart()
-
-            val targetItem = cart.singleOrNull { it.product.id == cartItem.product.id }
-
-            if (targetItem == null) {
-                cartItem.quantity++
-                cart.add(cartItem)
-            } else {
-
-                targetItem.quantity++
-            }
-            ShoppingCart.saveCart(cart)
-
+        fun addItem(productItem: Product) {
+            val products = getReservation()
+            products.add(productItem)
+            saveReservation(products)
         }
 
-        fun removeItem(cartItem: CartItem, context: Context) {
+        fun removeItem(productItem: Product) {
 
-            val cart = ShoppingCart.getCart()
+            val products = getReservation()
 
-            val targetItem = cart.singleOrNull { it.product.id == cartItem.product.id }
-
+            val targetItem = products.singleOrNull { it.availabilities[0].id == productItem.availabilities[0].id }
             if (targetItem != null) {
-
-                if (targetItem.quantity > 0) {
-                    targetItem.quantity--
-                    cart.remove(targetItem)
-                }
+                products.remove(targetItem)
             }
-            ShoppingCart.saveCart(cart)
+            saveReservation(products)
         }
 
-        fun saveCart(cart: MutableList<CartItem>) {
-            Paper.book().write("cart", cart)
+        fun saveReservation(cart: MutableList<Product>) {
+            Paper.book().write("product", cart)
         }
 
-        fun getCart(): MutableList<CartItem> {
-            return Paper.book().read("cart", mutableListOf())
+        fun saveCustomer(customer: Customer) {
+            Paper.book().write("customer", customer)
         }
 
-        fun getShoppingCartSize(): Int {
-
-            var cartSize = 0
-            ShoppingCart.getCart().forEach {
-                cartSize += it.quantity;
-            }
-
-            return cartSize
+        fun getReservation(): MutableList<Product> {
+            return Paper.book().read("product", mutableListOf())
         }
+
+        fun getCustomer(): Customer {
+            return Paper.book().read("customer")
+        }
+
     }
 
 }

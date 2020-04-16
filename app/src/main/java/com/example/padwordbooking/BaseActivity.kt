@@ -19,7 +19,7 @@ open class BaseActivity : AppCompatActivity() {
         if(dLocale==Locale("") )
             return
 
-        Locale.setDefault(dLocale)
+        Locale.setDefault(dLocale!!)
         val configuration = Configuration()
         configuration.setLocale(dLocale)
         wrapper.applyOverrideConfiguration(configuration)

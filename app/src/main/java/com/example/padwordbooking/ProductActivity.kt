@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Product
-import com.ms.square.android.expandabletextview.ExpandableTextView
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlin.math.roundToInt
 
@@ -29,15 +28,14 @@ class ProductActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         idProduct = bundle!!.getInt("id")
 
-        product = bundle!!.getSerializable("product")!! as Product
+        product = bundle.getSerializable("product")!! as Product
 
         getProduct()
-
 
         checkAvailability.setOnClickListener(){
             val intent = Intent(this,AvailabilityActivity::class.java)
             intent.putExtra("id", idProduct)
-            intent.putExtra("product", bundle!!.getSerializable("product"))
+            intent.putExtra("product", bundle.getSerializable("product"))
             startActivity(intent)
         }
 
@@ -47,7 +45,7 @@ class ProductActivity : AppCompatActivity() {
 
         if(idProduct != 0) {
 
-            if(product != null){
+            if(product.id!=0){
                 productReservationName.text = product.name
                 productReservationDescription.text =product.description
                 reservationPrice.text = ""+product.availabilities[0].price.roundToInt()+"€"

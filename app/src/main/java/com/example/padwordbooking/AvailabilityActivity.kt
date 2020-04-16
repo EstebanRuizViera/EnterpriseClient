@@ -2,15 +2,12 @@ package com.example.padwordbooking
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.padwordbooking.adapter.AvailabilityAdapter
-import com.example.padwordbooking.model.CartItem
 import com.example.padwordbooking.model.Product
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
@@ -45,7 +42,7 @@ class AvailabilityActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         idProduct = bundle!!.getInt("id")
 
-        product = bundle!!.getSerializable("product")!! as Product
+        product = bundle.getSerializable("product")!! as Product
 
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
@@ -101,10 +98,10 @@ class AvailabilityActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     fun bindProduct() {
 
-        Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
+        Observable.create(ObservableOnSubscribe<MutableList<Product>> {
             addToCart.setOnClickListener { view ->
 
-                val item = CartItem(product)
+                val item = product
 
                 ShoppingCart.addItem(item)
                 //notify users
@@ -114,16 +111,10 @@ class AvailabilityActivity : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
 
-                it.onNext(ShoppingCart.getCart())
+                it.onNext(ShoppingCart.getReservation())
 
             }
-        }).subscribe { cart ->
-            var quantity = 0
-            cart.forEach { cartItem ->
-                quantity += cartItem.quantity
-            }
-            Toast.makeText(this, "Cart size $quantity", Toast.LENGTH_SHORT).show()
-        }
+        })
 
     }
 

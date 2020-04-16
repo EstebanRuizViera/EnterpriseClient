@@ -27,8 +27,6 @@ import org.json.JSONObject
 
 class RequestUser {
     companion object {
-
-
         //------------------- User, login and register -----------------------
 
         @JvmStatic
@@ -90,7 +88,6 @@ class RequestUser {
             val url = Constants.URL_SERVER + "/api/user"
             val req = object : JsonArrayRequest(Request.Method.POST, url, jsonArray,
                 Response.Listener {
-                    Log.println(Log.INFO, null, "ERROR " + it.toString())
                     usersViewModel.updateUser(
                         User(
                             1,

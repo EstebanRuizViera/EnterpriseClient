@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.padwordbooking.adapter.CartAdapter
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
-import com.example.padwordbooking.model.CartItem
+import com.example.padwordbooking.model.Product
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class CartListActivity : AppCompatActivity() {
@@ -30,7 +30,7 @@ class CartListActivity : AppCompatActivity() {
     private fun setRecyclerView(){
 
         var productsList =
-            ShoppingCart.getCart()
+            ShoppingCart.getReservation()
 
         val layoutManagerProducts = GridLayoutManager(this, 1)
         recyclerViewCart.setLayoutManager(layoutManagerProducts)
@@ -46,10 +46,10 @@ class CartListActivity : AppCompatActivity() {
 
     }
 
-    fun calculatePrice(productsList:MutableList<CartItem>){
+    fun calculatePrice(productsList:MutableList<Product>){
         var totalPrice = 0.0
-        for(cartItem in productsList){
-            totalPrice += cartItem.product.availabilities[0].price
+        for(productItem in productsList){
+            totalPrice += productItem.availabilities[0].price
         }
 
         total_price.text = ""+ totalPrice+"€"

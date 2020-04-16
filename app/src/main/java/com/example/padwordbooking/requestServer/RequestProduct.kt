@@ -154,7 +154,7 @@ class RequestProduct {
         }
 
         fun getAvailabilitiesForProduct(productsList:ArrayList<Product>,arrayProduct:JSONArray){
-            var arrayAvailability = arrayListOf<Availability>()
+            var arrayAvailability:ArrayList<Availability>
 
             for (i in 0 until arrayProduct.length()) {
                 val product = arrayProduct.getJSONObject(i)

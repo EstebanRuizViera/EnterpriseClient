@@ -46,7 +46,7 @@ class RegisterFragment : Fragment() {
         var rg_validate_email = root.findViewById<TextView>(R.id.rg_validate_email)
         var rg_validate_password = root.findViewById<TextView>(R.id.rg_validate_password)
 
-        var check = true
+        var check:Boolean
 
         rg_register.setOnClickListener(){
             if(rg_name.text.toString().equals("")){
@@ -70,7 +70,6 @@ class RegisterFragment : Fragment() {
                 rg_validate_password.visibility=View.INVISIBLE
                 check = true
             }
-            rg_password
 
             if(check) {
                 RequestUser.registerUser(activity as ProfileActivity,root.context,rg_name,rg_email,rg_password)

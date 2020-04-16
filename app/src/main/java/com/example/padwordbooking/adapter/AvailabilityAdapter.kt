@@ -1,18 +1,14 @@
 package com.example.padwordbooking.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.example.padwordbooking.DrawerActivity
 import com.example.padwordbooking.R
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.model.Availability
-import com.example.padwordbooking.model.CartItem
 import com.example.padwordbooking.model.Product
 import com.google.android.material.snackbar.Snackbar
 
@@ -33,14 +29,11 @@ class AvailabilityAdapter (private val mContext: Context, private var mData: Lis
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.timestamp.text = mData[position].timeAvailability
-        var mProduct = product
 
         holder.timestamp.setOnClickListener{ view ->
-            mProduct.availabilities = arrayListOf(mData[position])
+            product.availabilities = arrayListOf(mData[position])
 
-            val item = CartItem(mProduct)
-
-            ShoppingCart.addItem(item)
+            ShoppingCart.addItem(product)
             //notify users
             Snackbar.make(
                 view,

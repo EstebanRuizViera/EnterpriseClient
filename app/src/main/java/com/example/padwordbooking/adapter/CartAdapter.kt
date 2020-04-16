@@ -15,11 +15,10 @@ import com.example.padwordbooking.R
 
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.model.Availability
-import com.example.padwordbooking.model.CartItem
 import com.example.padwordbooking.model.Distribution
 import com.example.padwordbooking.model.Product
 
-class CartAdapter(private val mContext: Context, private val mData: MutableList<CartItem>) :
+class CartAdapter(private val mContext: Context, private val mData: MutableList<Product>) :
     RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
     private var option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
@@ -36,24 +35,23 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.cartName.text = mData[position].product.name
-        holder.cartDate.text = mData[position].product.availabilities[0].dateAvailability
-        holder.cartTime.text = mData[position].product.availabilities[0].timeAvailability
-        holder.cartPrice.text = mData[position].product.availabilities[0].price.toString()+"€"
+        holder.cartName.text = mData[position].name
+        holder.cartDate.text = mData[position].availabilities[0].dateAvailability
+        holder.cartTime.text = mData[position].availabilities[0].timeAvailability
+        holder.cartPrice.text = mData[position].availabilities[0].price.toString()+"€"
 
         // Load Image from the internet and set it into Imageview using Glide
-        Glide.with(mContext).load(mData[position].product.img).apply(option)
+        Glide.with(mContext).load(mData[position].img).apply(option)
             .into(holder.thumbnail)
 
         holder.removeItem.setOnClickListener {
             holder.bindProduct(
-                Product(
-                    mData[position].product.id,
-                    mData[position].product.name,
-                    mData[position].product.description,
-                    mData[position].product.price,
-                    mData[position].product.img, Distribution(0,"",123,"","",10),
-                    arrayListOf<Availability>()
+                Product(mData[position].id,
+                    mData[position].name,
+                    mData[position].description,
+                    mData[position].price,
+                    mData[position].img, Distribution(0,"",123,"","",10),
+                    mData[position].availabilities
                 )
             )
             mData.removeAt(position);
@@ -77,8 +75,7 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
 
         @SuppressLint("CheckResult")
         fun bindProduct(product: Product) {
-            val item = CartItem(product)
-            ShoppingCart.removeItem(item, itemView.context)
+            ShoppingCart.removeItem(product)
             Toast.makeText(
                 itemView.context,
                 "${product.name} delete to your cart",

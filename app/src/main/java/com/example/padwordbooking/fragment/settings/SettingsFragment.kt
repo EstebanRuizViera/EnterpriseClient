@@ -60,7 +60,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         sharedpref = SharePreferenceDarkMode(activity as Activity)
 
         if (sharedpref.loadNightModeState() == true) {
-            switchPreference!!.isChecked = true
+            switchPreference.isChecked = true
         }
 
         switchPreference.setOnPreferenceChangeListener(object :
@@ -118,10 +118,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 val builder = AlertDialog.Builder(context!!)
                 builder.setTitle("Log out")
                 builder.setMessage("Do you want to logout?")
-                builder.setPositiveButton("yes", {
-                    dialog: DialogInterface?, which: Int ->
+                builder.setPositiveButton("yes") { dialog: DialogInterface?, which: Int ->
                     RequestUser.logout(context!!,usersViewModel)
-                })
+                }
 
                 builder.setNegativeButton("no", {dialog: DialogInterface?, which: Int -> })
                 builder.show()

@@ -36,7 +36,7 @@ class App : Application() {
     }
 
     fun setLanguage(){
-        var change = ""
+        val change:String
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val language = sharedPreferences.getString("language", "bak")
         if (language == "Spanish") {
