@@ -35,48 +35,89 @@
 
     <EditText
         android:id="@+id/CustomerName"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint=" Name"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:textColor="?attr/descriptionColor" />
+
+    <TextView
+        android:id="@+id/sm_validate_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="This field can not be empty"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/CustomerSurname"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint=" Surname"
+        android:hint="Surname"
         android:inputType="textPersonName"
         android:textColor="?attr/descriptionColor" />
 
+    <TextView
+        android:id="@+id/sm_validate_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="This field can not be empty"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
+
     <EditText
         android:id="@+id/CustomerEmail"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint=" Email Address"
+        android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:textColor="?attr/descriptionColor" />
+
+    <TextView
+        android:id="@+id/sm_validate_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="This field can not be empty"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/CustomerPhone"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint=" Phone Number"
+        android:hint="Phone Number"
         android:inputType="textEmailAddress"
         android:textColor="?attr/descriptionColor" />
 
 
+    <TextView
+        android:id="@+id/sm_validate_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="60dp"
+        android:text="This field can not be empty"
+        android:textColor="@color/validationColor"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/continueButton"

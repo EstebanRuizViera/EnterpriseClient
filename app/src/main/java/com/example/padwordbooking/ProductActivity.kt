@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Product
+import com.ms.square.android.expandabletextview.ExpandableTextView
 import kotlinx.android.synthetic.main.activity_product.*
 import java.lang.IndexOutOfBoundsException
 import kotlin.math.roundToInt
@@ -33,8 +34,9 @@ class ProductActivity : AppCompatActivity() {
 
         getProduct()
 
+
         checkAvailability.setOnClickListener(){
-            val intent = Intent(this,AvailabilityActivity::class.java)
+            val intent = Intent(this, AvailabilityActivity::class.java)
             intent.putExtra("id", idProduct)
             intent.putExtra("product", bundle.getSerializable("product"))
             startActivity(intent)
@@ -46,13 +48,13 @@ class ProductActivity : AppCompatActivity() {
 
             try{
                 productReservationName.text = product.name
-                productReservationDescription.text =product.description
+                expand_text_view.text =product.description
                 reservationPrice.text = ""+product.availabilities[0].price.roundToInt()+"€"
                 Glide.with(this).load(product.img).apply(option)
                     .into(thumbnailProduct)
             }catch (ex:IndexOutOfBoundsException){
                 productReservationName.text = product.name
-                productReservationDescription.text =product.description
+                expand_text_view.text =product.description
                 reservationPrice.text = ""+150+"€"
                 Glide.with(this).load(product.img).apply(option)
                     .into(thumbnailProduct)

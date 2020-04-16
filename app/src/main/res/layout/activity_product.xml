@@ -95,16 +95,36 @@
             android:text="@string/customer_rating"
             android:textColor="?attr/descriptionColor" />
 
-        <TextView
-            android:id="@+id/productReservationDescription"
+
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="8dp"
-            android:justificationMode="inter_word"
-            android:text=""
-            android:textColor="?attr/descriptionColor"
-            android:textSize="15sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            expandableTextView:maxCollapsedLines="5"
+            expandableTextView:animDuration="200">
+
+            <TextView
+                android:id="@id/expandable_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="16sp"
+                android:justificationMode="inter_word"
+                android:textColor="?attr/descriptionColor" />
+
+            <ImageButton
+                android:id="@id/expand_collapse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_gravity="right|bottom"
+                android:background="@android:color/transparent"/>
+
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
 
         <Button
             android:id="@+id/checkAvailability"
