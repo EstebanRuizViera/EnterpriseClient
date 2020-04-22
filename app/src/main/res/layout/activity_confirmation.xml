@@ -7,18 +7,33 @@
     android:orientation="vertical"
     tools:context=".ConfirmationActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppTheme"
+        android:background="?attr/appBarColor">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="@string/toolbar_confirmation"
+            app:titleTextColor="?attr/textColor" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <ImageView
         android:id="@+id/thumbnail_confirmation"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="70dp"
         android:src="@drawable/confirmation" />
 
     <TextView
         android:id="@+id/order_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:textColor="#75B5D1"
         android:gravity="center"
         android:textStyle="bold"
@@ -46,17 +61,38 @@
         android:textSize="18sp"
         android:text="Thank you for your trustring"/>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center">
+
     <TextView
-        android:id="@+id/print_pdf"
+        android:id="@+id/print_pdf_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:textColor="?attr/descriptionColor"
-        android:text="To print your booking click here "
-        android:drawableEnd="@drawable/ic_pdf"/>
+        android:contextClickable="true"
+        android:text="To print your booking " />
+
+        <TextView
+            android:id="@+id/print_pdf_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#75B5D1"
+            android:contextClickable="true"
+            android:text="click here "
+            android:drawableEnd="@drawable/ic_pdf"/>
+
+    </LinearLayout>
 
 
     <Button
@@ -70,7 +106,7 @@
         android:background="@drawable/border_button"
         android:padding="10dp"
         android:textStyle="bold"
-        android:textColor="#75B5D1"
+        android:textColor="@color/textButtonColor"
         android:text="Return home" />
 
 

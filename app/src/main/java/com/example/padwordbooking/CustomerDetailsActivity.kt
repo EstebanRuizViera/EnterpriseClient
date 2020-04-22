@@ -46,6 +46,7 @@ class CustomerDetailsActivity : AppCompatActivity() {
             if(check==0) {
                 ShoppingCart.saveCustomer(
                     Customer(
+                        "1",
                         customer_name.text.toString(),
                         customer_surname.text.toString(),
                         customer_email.text.toString(),
@@ -53,6 +54,7 @@ class CustomerDetailsActivity : AppCompatActivity() {
                     )
                 )
                 val intent = Intent(this, SummaryActivity::class.java)
+                intent.putExtra("guest",intent.getBooleanExtra("guest",true))
                 startActivity(intent)
             }
         }

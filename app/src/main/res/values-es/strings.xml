@@ -13,9 +13,6 @@
     <string name="button_book_now">Reservar</string>
     <string name="button_book">Añadir al carrito</string>
     <string name="button_edit_profile">Editar perfil</string>
-    <string name="toolbar_availability">Disponibilidad</string>
-    <string name="toolbar_edit_profile">Editar perfil</string>
-    <string name="toolbar_product">Producto</string>
     <string name="preferences_title_dark_mode">Modo nocturno</string>
     <string name="preferences_summary_dark_mode">Cambia el tema de la aplicación</string>
     <string name="preferences_title_language">Idioma</string>
@@ -30,11 +27,20 @@
     <string name="preferences_title_help">Manual de ayuda</string>
     <string name="preference_summary_feedback">¿Tienes alguna pregunta? Estamos encantados de ayudar</string>
     <string name="preferences_title_generate_pdf">Generar lista de productos</string>
-    <string name="toolbar_reservation">Producto</string>
+
     <string name="toolbar_main_product">Padword</string>
     <string name="toolbar_main_user">Perfil</string>
     <string name="toolbar_settings">Ajustes</string>
+    <string name="toolbar_shopping_cart">Cesta</string>
+    <string name="toolbar_availability">Disponibilidad</string>
+    <string name="toolbar_edit_profile">Editar perfil</string>
+    <string name="toolbar_product">Producto</string>
+    <string name="toolbar_my_bookings">Mis reservas</string>
+    <string name="toolbar_customer_details">Detalles cliente</string>
+    <string name="toolbar_checkout">Realizar pedido</string>
+    <string name="toolbar_confirmation">Confirmación pedido</string>
     <string name="toolbar_main_preference">Preferencias</string>
+
     <string name="open">Abrir</string>
     <string name="close">Cerrar</string>
     <string name="menu_drawer_profile">Perfil</string>

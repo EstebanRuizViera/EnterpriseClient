@@ -12,15 +12,16 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:titleTextColor="?attr/textColor"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/toolbar_availability" />
+            app:title="@string/toolbar_availability"
+            app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

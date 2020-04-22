@@ -27,19 +27,21 @@ class RequestReservation {
         @JvmStatic
         fun createReservation(
             context: Context,
-            total: Double
+            total: Double,
+            checkGuest:Boolean
         ) {
 
             val reservationJsonobj = JSONObject()
             val productsJsonArray = JSONArray()
 
-            getDataReservation(reservationJsonobj,productsJsonArray,total)
+            getDataReservation(reservationJsonobj,productsJsonArray,total,checkGuest)
 
             val queue = Volley.newRequestQueue(context)
             val url = Constants.URL_SERVER + "/api/create_reservations"
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
+                    RequestReport.generateReportListProduct(context)
                     Log.println(Log.INFO, null, "create reservation succesfull")
                     val intent = Intent(context, ConfirmationActivity::class.java)
                     context.startActivity(intent)
@@ -54,7 +56,7 @@ class RequestReservation {
             queue.add(req)
         }
 
-        fun getDataReservation(reservationJsonobj:JSONObject,productsJsonArray:JSONArray,total: Double){
+        fun getDataReservation(reservationJsonobj:JSONObject,productsJsonArray:JSONArray,total: Double,checkGuest:Boolean){
 
             val currentDate: String =
                 SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
@@ -64,7 +66,12 @@ class RequestReservation {
             reservationJsonobj.put("total", total.toString())
             reservationJsonobj.put("status", "pendiente")
             reservationJsonobj.put("date", currentDate)
-            reservationJsonobj.put("id_customer", 1)
+            if(checkGuest){
+                reservationJsonobj.put("id_customer", 1)
+            }else{
+                reservationJsonobj.put("id_customer", ShoppingCart.getCustomer().id)
+            }
+
 
             for(product in products){
                 productsJsonArray.put(product.id)

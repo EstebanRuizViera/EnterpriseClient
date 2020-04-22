@@ -1,5 +1,6 @@
 package com.example.padwordbooking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_summary.*
 class SummaryActivity : AppCompatActivity() {
 
     private var totalPrice = 0.0
+    private var checkGuest = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,8 @@ class SummaryActivity : AppCompatActivity() {
 
         setInfoDetails()
         setProductList()
+
+        checkGuest= intent.getBooleanExtra("guest",true)
 
         placeOrder.setOnClickListener {
             createReservation()
@@ -57,7 +61,7 @@ class SummaryActivity : AppCompatActivity() {
     }
 
     fun createReservation(){
-        RequestReservation.createReservation(this,totalPrice)
+        RequestReservation.createReservation(this,totalPrice,checkGuest)
     }
 
     override fun onSupportNavigateUp(): Boolean {

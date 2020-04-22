@@ -23,6 +23,7 @@ class CartListActivity : AppCompatActivity() {
 
         checkout.setOnClickListener{
             val intent = Intent(this, CustomerDetailsActivity::class.java)
+            intent.putExtra("guest",true)
             startActivity(intent)
         }
 

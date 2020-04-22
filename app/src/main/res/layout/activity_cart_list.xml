@@ -16,14 +16,15 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:background="?attr/appBarColor">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:navigationIcon="@drawable/ic_arrow_back"
-                app:title="Shopping Cart"
+                app:title="@string/toolbar_shopping_cart"
                 app:titleTextColor="?attr/textColor" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -32,7 +33,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#75B5D1"
+            android:background="#ebebeb"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -53,7 +54,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCart"
             android:layout_width="match_parent"
-            android:layout_height="440dp"
+            android:layout_height="460dp"
             android:layout_margin="2dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
@@ -100,7 +101,7 @@
             android:background="@drawable/border_button"
             android:padding="10dp"
             android:textStyle="bold"
-            android:textColor="#75B5D1"
+            android:textColor="@color/textButtonColorBlue"
             android:text="Checkout as a guest" />
 
 
@@ -115,7 +116,7 @@
             android:layout_marginBottom="25dp"
             android:background="@drawable/button_round_borders"
             android:padding="10dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/textButtonColor"
             android:textStyle="bold"
             android:text="Sign in for faster checkout" />
 

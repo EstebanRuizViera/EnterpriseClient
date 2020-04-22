@@ -10,14 +10,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Customer Details"
+            app:title="@string/toolbar_customer_details"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -120,18 +121,17 @@
         android:visibility="invisible" />
 
 
-
     <Button
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_round_borders"
+        android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:textColor="@color/textButtonColor"
+        android:background="@drawable/button_round_borders"
         android:padding="10dp"
-        android:layout_gravity="center"
         android:text="Continue" />
-
 
 
 </LinearLayout>

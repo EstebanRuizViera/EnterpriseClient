@@ -11,14 +11,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Summary Order"
+            app:title="@string/toolbar_checkout"
             app:titleTextColor="?attr/textColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -156,6 +157,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/button_round_borders"
+        android:textColor="@color/textButtonColor"
         android:padding="10dp"
         android:text="Place order" />
 
