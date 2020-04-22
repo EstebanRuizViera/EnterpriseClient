@@ -7,10 +7,13 @@ import com.example.padwordbooking.adapter.ProductListAdapter
 import com.example.padwordbooking.adapter.SummaryAdapter
 import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.model.Product
+import com.example.padwordbooking.requestServer.RequestReservation
 import kotlinx.android.synthetic.main.activity_product.toolbar
 import kotlinx.android.synthetic.main.activity_summary.*
 
 class SummaryActivity : AppCompatActivity() {
+
+    private var totalPrice = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +23,10 @@ class SummaryActivity : AppCompatActivity() {
 
         setInfoDetails()
         setProductList()
+
+        placeOrder.setOnClickListener {
+            createReservation()
+        }
     }
 
     fun setInfoDetails(){
@@ -42,12 +49,15 @@ class SummaryActivity : AppCompatActivity() {
         recyclerViewSummary.layoutManager = layoutManagerProducts
         recyclerViewSummary.adapter = productAdapter
 
-        var totalPrice = 0.0
         for(productItem in products){
             totalPrice += productItem.availabilities[0].price
         }
         summary_products.text = ""+ totalPrice+"€"
         summary_total.text = ""+ totalPrice+"€"
+    }
+
+    fun createReservation(){
+        RequestReservation.createReservation(this,totalPrice)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ConfirmationActivity">
+
+    <ImageView
+        android:id="@+id/thumbnail_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/confirmation" />
+
+    <TextView
+        android:id="@+id/order_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:textColor="#75B5D1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="Order Confirmation"/>
+
+    <TextView
+        android:id="@+id/booking_created"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textColor="?attr/textColor"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="You sucessfully created your booking"/>
+
+    <TextView
+        android:id="@+id/thanks_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:textColor="?attr/textColor"
+        android:textSize="18sp"
+        android:text="Thank you for your trustring"/>
+
+    <TextView
+        android:id="@+id/print_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:textColor="?attr/descriptionColor"
+        android:text="To print your booking click here "
+        android:drawableEnd="@drawable/ic_pdf"/>
+
+
+    <Button
+        android:id="@+id/return_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/border_button"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="#75B5D1"
+        android:text="Return home" />
+
+
+</LinearLayout>

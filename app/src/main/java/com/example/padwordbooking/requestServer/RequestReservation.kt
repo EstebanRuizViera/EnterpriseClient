@@ -9,10 +9,14 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.padwordbooking.ConfirmationActivity
 import com.example.padwordbooking.Constants
 import com.example.padwordbooking.DrawerActivity
+import com.example.padwordbooking.cart.ShoppingCart
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RequestReservation {
     companion object {
@@ -23,30 +27,21 @@ class RequestReservation {
         @JvmStatic
         fun createReservation(
             context: Context,
-            total: Int,
-            date: String,
-            id_customer: String,
-            id_product: String
+            total: Double
         ) {
 
             val reservationJsonobj = JSONObject()
             val productsJsonArray = JSONArray()
 
-            reservationJsonobj.put("total", total.toString())
-            reservationJsonobj.put("status", "pendiente")
-            reservationJsonobj.put("date", date)
-            reservationJsonobj.put("id_customer", id_customer)
-
-            productsJsonArray.put(id_product)
-
-            reservationJsonobj.put("id_products", productsJsonArray)
+            getDataReservation(reservationJsonobj,productsJsonArray,total)
 
             val queue = Volley.newRequestQueue(context)
-            val url = Constants.URL_SERVER + "/api/createReservations"
+            val url = Constants.URL_SERVER + "/api/create_reservations"
             val req = object : JsonObjectRequest(
                 Request.Method.POST, url, reservationJsonobj,
                 Response.Listener {
-                    val intent = Intent(context, DrawerActivity::class.java)
+                    Log.println(Log.INFO, null, "create reservation succesfull")
+                    val intent = Intent(context, ConfirmationActivity::class.java)
                     context.startActivity(intent)
                 },
                 Response.ErrorListener {
@@ -57,6 +52,24 @@ class RequestReservation {
                 }) {}
 
             queue.add(req)
+        }
+
+        fun getDataReservation(reservationJsonobj:JSONObject,productsJsonArray:JSONArray,total: Double){
+
+            val currentDate: String =
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+            var products= ShoppingCart.getProducts()
+
+            reservationJsonobj.put("total", total.toString())
+            reservationJsonobj.put("status", "pendiente")
+            reservationJsonobj.put("date", currentDate)
+            reservationJsonobj.put("id_customer", 1)
+
+            for(product in products){
+                productsJsonArray.put(product.id)
+            }
+            reservationJsonobj.put("id_products", productsJsonArray)
         }
 
     }

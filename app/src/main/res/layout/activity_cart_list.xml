@@ -53,7 +53,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCart"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="440dp"
             android:layout_margin="2dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
@@ -99,6 +99,8 @@
             android:layout_marginRight="15dp"
             android:background="@drawable/border_button"
             android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="#75B5D1"
             android:text="Checkout as a guest" />
 
 
@@ -113,6 +115,8 @@
             android:layout_marginBottom="25dp"
             android:background="@drawable/button_round_borders"
             android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:text="Sign in for faster checkout" />
 
     </LinearLayout>

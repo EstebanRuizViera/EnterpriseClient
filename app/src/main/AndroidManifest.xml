@@ -17,16 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.padwordbooking.MyBookingsActivity"/>
-        <activity android:name="com.example.padwordbooking.CustomerDetailsActivity" />
-        <activity android:name="com.example.padwordbooking.SettingsActivity" />
-        <activity android:name="com.example.padwordbooking.ProfileActivity" />
-        <activity android:name="com.example.padwordbooking.CartListActivity" />
-        <activity android:name="com.example.padwordbooking.AvailabilityActivity" />
-        <activity android:name="com.example.padwordbooking.ProductActivity" />
-        <activity android:name="com.example.padwordbooking.SummaryActivity" />
+        <activity android:name=".ConfirmationActivity"></activity>
+        <activity android:name=".MyBookingsActivity" />
+        <activity android:name=".CustomerDetailsActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CartListActivity" />
+        <activity android:name=".AvailabilityActivity" />
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".SummaryActivity" />
         <activity
-            android:name="com.example.padwordbooking.DrawerActivity"
+            android:name=".DrawerActivity"
             android:theme="@style/PreferenceScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
