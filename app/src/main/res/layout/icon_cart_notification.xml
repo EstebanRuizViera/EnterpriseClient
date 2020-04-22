@@ -19,6 +19,7 @@
         android:background="@drawable/badge"
         android:text="12"
         android:textSize="9sp"
+        android:textStyle="bold"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:layout_gravity="center"

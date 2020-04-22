@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     tools:context=".CustomerDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -130,6 +131,7 @@
         android:layout_marginRight="20dp"
         android:textColor="@color/textButtonColor"
         android:background="@drawable/button_round_borders"
+        android:textStyle="bold"
         android:padding="10dp"
         android:text="Continue" />
 

@@ -14,7 +14,7 @@
         <item name="colorControlNormal">#ffffff</item>
         <item name="colorPrimaryDark">#0775A5</item>
         <item name="colorAccent">#D81B60</item>
-        <item name="backgroundColor">#fcfcfc</item>
+        <item name="backgroundColor">#ffffff</item>
         <item name="cardBackground">#ffffff</item>
         <item name="textColor">#000000</item>
         <item name="buttonColor">#D8D8D8</item>

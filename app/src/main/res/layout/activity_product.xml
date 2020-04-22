@@ -138,6 +138,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:padding="10dp"
+            android:textStyle="bold"
             android:textColor="@color/textButtonColor"
             android:layout_gravity="center"
             android:text="Check availability" />
