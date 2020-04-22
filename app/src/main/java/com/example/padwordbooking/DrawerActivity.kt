@@ -80,7 +80,7 @@ class DrawerActivity : BaseActivity() {
         cartSize = mMenu.actionView.findViewById<TextView>(R.id.cart_size)
         var cart_frame = mMenu.actionView.findViewById<FrameLayout>(R.id.cart_frame)
 
-        cartSize.text=ShoppingCart.getReservation().size.toString()
+        cartSize.text=ShoppingCart.getProducts().size.toString()
 
         cart_frame.setOnClickListener{
             val intent = Intent(this, CartListActivity::class.java)
@@ -102,7 +102,7 @@ class DrawerActivity : BaseActivity() {
     }
 
     override fun onRestart() {
-        cartSize.text=ShoppingCart.getReservation().size.toString()
+        cartSize.text=ShoppingCart.getProducts().size.toString()
         super.onRestart()
     }
 }

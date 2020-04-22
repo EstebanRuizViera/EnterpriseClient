@@ -1,10 +1,16 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <!-- Light/Day Mode theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>   <!-- Cambia el color del hamburguer menu. -->
+        <item name="android:statusBarColor">#ebebeb</item>  <!--  Cambia el color la barra encima del toolbar. -->
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>  <!-- Cambia el color de los iconos (wifi, bateria) de la barra encima del toolbar. -->
+        <item name="android:navigationBarColor">#ebebeb</item>  <!--Cambia el color de la navigationbar (la barra con los botones de ir para atras, home y segundo plano)-->
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="colorPrimary">#0775A5</item>
+        <item name="appBarColor">@color/appBarColor</item>
         <item name="colorControlNormal">#ffffff</item>
         <item name="colorPrimaryDark">#0775A5</item>
         <item name="colorAccent">#D81B60</item>
@@ -30,7 +36,7 @@
         <item name="textColor">#ffffff</item>
         <item name="buttonColor">#D8D8D8</item>
         <item name="bookButtonColor">#000000</item>
-        <item name="descriptionColor">#ffffff</item>
+        <item name="descriptionColor">#808080</item>
         <item name="profileColor">#EDEDED</item>
         <item name="android:textColorSecondary">@color/summaryColor</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
@@ -65,5 +71,13 @@
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
+
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">   <!-- Cambia el color del hamburguer menu. -->
+        <item name="spinBars">true</item>
+        <item name="color">#000000</item>
+    </style>
+
 
 </resources>

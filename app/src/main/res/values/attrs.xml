@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ds">
+        <attr name="appBarColor" format="color" />
         <attr name="backgroundColor" format="color" />
         <attr name="cardBackground" format="color" />
         <attr name="textColor" format="color" />

@@ -1,6 +1,7 @@
 package com.example.padwordbooking.adapter
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.padwordbooking.CartListActivity
 import com.example.padwordbooking.R
 
 import com.example.padwordbooking.cart.ShoppingCart
@@ -18,7 +20,7 @@ import com.example.padwordbooking.model.Availability
 import com.example.padwordbooking.model.Distribution
 import com.example.padwordbooking.model.Product
 
-class CartAdapter(private val mContext: Context, private val mData: MutableList<Product>) :
+class CartAdapter(private val mActivity: Activity, private val mData: MutableList<Product>) :
     RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
     private var option = RequestOptions().centerCrop().placeholder(R.drawable.loading_shape)
@@ -26,7 +28,7 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View
-        val inflater = LayoutInflater.from(mContext)
+        val inflater = LayoutInflater.from(mActivity)
         view = inflater.inflate(R.layout.recyclerview_cart, parent, false)
 
         return MyViewHolder(
@@ -35,13 +37,16 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        var activityCartList = mActivity as CartListActivity
+
         holder.cartName.text = mData[position].name
         holder.cartDate.text = mData[position].availabilities[0].dateAvailability
         holder.cartTime.text = mData[position].availabilities[0].timeAvailability
         holder.cartPrice.text = mData[position].availabilities[0].price.toString()+"€"
 
         // Load Image from the internet and set it into Imageview using Glide
-        Glide.with(mContext).load(mData[position].img).apply(option)
+        Glide.with(mActivity).load(mData[position].img).apply(option)
             .into(holder.thumbnail)
 
         holder.removeItem.setOnClickListener {
@@ -54,9 +59,12 @@ class CartAdapter(private val mContext: Context, private val mData: MutableList<
                     mData[position].availabilities
                 )
             )
-            mData.removeAt(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position,mData.size);
+            mData.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position,mData.size)
+
+            activityCartList.calculatePrice(mData)
+            activityCartList.findViewById<TextView>(R.id.number_item).text = ""+activityCartList.resources.getString(R.string.carlist_number_item) +" "+mData.size.toString()
         }
     }
 

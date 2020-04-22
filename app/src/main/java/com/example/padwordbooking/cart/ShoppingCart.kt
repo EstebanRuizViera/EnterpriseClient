@@ -1,6 +1,5 @@
 package com.example.padwordbooking.cart
 
-import android.util.Log
 import com.example.padwordbooking.model.Customer
 import com.example.padwordbooking.model.Product
 import io.paperdb.Paper
@@ -10,14 +9,14 @@ class ShoppingCart {
     companion object {
 
         fun addItem(productItem: Product) {
-            val products = getReservation()
+            val products = getProducts()
             products.add(productItem)
             saveReservation(products)
         }
 
         fun removeItem(productItem: Product) {
 
-            val products = getReservation()
+            val products = getProducts()
 
             val targetItem = products.singleOrNull { it.availabilities[0].id == productItem.availabilities[0].id }
             if (targetItem != null) {
@@ -34,7 +33,7 @@ class ShoppingCart {
             Paper.book().write("customer", customer)
         }
 
-        fun getReservation(): MutableList<Product> {
+        fun getProducts(): MutableList<Product> {
             return Paper.book().read("product", mutableListOf())
         }
 

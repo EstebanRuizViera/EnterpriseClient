@@ -29,7 +29,7 @@ class ProductListAdapter (private val mContext: Context, private val mData: List
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.productName.text = mData[position].name
-        holder.productPrice.text = mContext.getString(R.string.product_price)+" "+mData[position].price+"€"
+        holder.productPrice.text = mContext.getString(R.string.recycler_product_price)+" "+mData[position].price+"€"
 
         holder.linearHome.setOnClickListener{
             val intent = Intent(mContext, ProductActivity::class.java)

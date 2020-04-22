@@ -47,25 +47,28 @@ class EditFragment : Fragment() {
         usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
         editBtn.setOnClickListener() {
-            var newModification = 0
+            var newModification = 2
             if (editName.text.toString().equals("")) {
                 editName.setText(usersViewModel.getUser(1)!!.get(0).name)
-                newModification++
+                newModification--
             }
             if (editEmail.text.toString().equals("")) {
                 editEmail.setText(usersViewModel.getUser(1)!!.get(0).email)
-                newModification++
+                newModification--
             }
 
-            if (newModification != 2) {
+            if (newModification != 0) {
                 RequestUser.updateUser(
                     activity as ProfileActivity,
                     usersViewModel,
                     editName,
                     editEmail,
-
                     usersViewModel.getUser(1)!!
                 )
+            }else{
+                val fragment = UserFragment.newInstance()
+                val mActivity = activity as ProfileActivity
+                mActivity.openFragment(fragment)
             }
 
         }

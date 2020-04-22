@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#0775A5</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="white">#ffffff</color>
+    <color name="appBarColor">#ffffff</color>
     <color name="blue_login_register">#75B5D1</color>
     <color name="underlineActive">#FD7155</color>
     <color name="book_color_circle">#D8D8D8</color>

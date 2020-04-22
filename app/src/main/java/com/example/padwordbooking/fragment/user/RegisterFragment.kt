@@ -46,32 +46,32 @@ class RegisterFragment : Fragment() {
         var rg_validate_email = root.findViewById<TextView>(R.id.rg_validate_email)
         var rg_validate_password = root.findViewById<TextView>(R.id.rg_validate_password)
 
-        var check:Boolean
+
 
         rg_register.setOnClickListener(){
+
+            var check = 3
+
             if(rg_name.text.toString().equals("")){
                 rg_validate_name.visibility=View.VISIBLE
-                check = false
             }else{
                 rg_validate_name.visibility=View.INVISIBLE
-                check = true
+                check --
             }
             if(rg_email.text.toString().equals("")){
                 rg_validate_email.visibility=View.VISIBLE
-                check = false
             }else{
                 rg_validate_email.visibility=View.INVISIBLE
-                check = true
+                check --
             }
             if(rg_password.text.toString().equals("")){
                 rg_validate_password.visibility=View.VISIBLE
-                check = false
             }else{
                 rg_validate_password.visibility=View.INVISIBLE
-                check = true
+                check --
             }
 
-            if(check) {
+            if(check == 0) {
                 RequestUser.registerUser(activity as ProfileActivity,root.context,rg_name,rg_email,rg_password)
             }
         }

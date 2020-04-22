@@ -12,7 +12,5 @@
         android:background="?android:attr/selectableItemBackground">
     </Button>
 
-    <View style="@style/Divider.Horizontal"/>
-
 
 </LinearLayout>

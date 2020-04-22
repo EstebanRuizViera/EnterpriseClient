@@ -44,25 +44,25 @@ class LoginFragment : Fragment() {
         var lg_validate_password = root.findViewById<TextView>(R.id.lg_validate_password)
 
 
-        var check :Boolean
+
         lg_login.setOnClickListener() {
+
+            var check =2
 
             if(lg_email.text.toString().equals("")){
                 lg_validate_email.visibility=View.VISIBLE
-                check = false
             }else{
                 lg_validate_email.visibility=View.INVISIBLE
-                check = true
+                check--
             }
             if(lg_password.text.toString().equals("")){
                 lg_validate_password.visibility=View.VISIBLE
-                check = false
             }else{
                 lg_validate_password.visibility=View.INVISIBLE
-                check = true
+                check--
             }
 
-            if(check) {
+            if(check==0) {
                 RequestUser.login(activity as ProfileActivity, root.context, lg_email, lg_password, usersViewModel)
             }
         }

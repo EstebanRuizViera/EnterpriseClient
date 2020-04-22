@@ -1,8 +1,10 @@
 package com.example.padwordbooking
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.padwordbooking.adapter.CartAdapter
 import com.example.padwordbooking.cart.ShoppingCart
@@ -24,13 +26,26 @@ class CartListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        checkoutLogin.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setView(R.layout.alert_dialog)
+            builder.setTitle("Log in")
+            builder.setPositiveButton("Continue", { dialog: DialogInterface?, which: Int ->
+            })
+            builder.setNeutralButton("Log in", { dialog: DialogInterface?, which: Int ->
+            })
+
+            builder.setNegativeButton("Cancel", { dialog: DialogInterface?, which: Int -> })
+            builder.show()
+        }
+
         setRecyclerView()
     }
 
     private fun setRecyclerView(){
 
         var productsList =
-            ShoppingCart.getReservation()
+            ShoppingCart.getProducts()
 
         val layoutManagerProducts = GridLayoutManager(this, 1)
         recyclerViewCart.setLayoutManager(layoutManagerProducts)
@@ -43,7 +58,7 @@ class CartListActivity : AppCompatActivity() {
             )
         recyclerViewCart.setAdapter(cartAdapter)
         calculatePrice(productsList)
-
+        number_item.text = ""+ resources.getString(R.string.carlist_number_item)+" "+productsList.size.toString()
     }
 
     fun calculatePrice(productsList:MutableList<Product>){

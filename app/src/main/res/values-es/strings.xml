@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name">Padword Booking</string>
 
-    <string name="title_home">Inicio</string>
-    <string name="title_profile">Perfil</string>
-    <string name="title_settings">Ajustes</string>
-    <string name="tab_1">Inicio</string>
-    <string name="tab_3">Perfil</string>
-    <string name="tab_2">Ajustes</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Contraseña</string>
     <string name="hint_name">Nombre</string>
@@ -37,7 +31,7 @@
     <string name="preference_summary_feedback">¿Tienes alguna pregunta? Estamos encantados de ayudar</string>
     <string name="preferences_title_generate_pdf">Generar lista de productos</string>
     <string name="toolbar_reservation">Producto</string>
-    <string name="toolbar_main_product">Productos</string>
+    <string name="toolbar_main_product">Padword</string>
     <string name="toolbar_main_user">Perfil</string>
     <string name="toolbar_settings">Ajustes</string>
     <string name="toolbar_main_preference">Preferencias</string>
@@ -46,6 +40,14 @@
     <string name="menu_drawer_profile">Perfil</string>
     <string name="menu_drawer_settings">Configuración</string>
     <string name="menu_drawer_my_bookings">Mis reservas</string>
-    <string name="product_price">desde</string>
+    <string name="recycler_product_price">desde</string>
+
+    <string name="carlist_number_item">Artículos en tu carrito:</string>
+
+    <string name="summary_name">Nombre :</string>
+    <string name="summary_phone">Telefono :</string>
+    <string name="summary_email">Correo :</string>
+
+    <string name="recycler_summary_price">Precio :</string>
 
 </resources>

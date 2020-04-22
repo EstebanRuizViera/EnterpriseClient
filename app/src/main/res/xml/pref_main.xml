@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="@string/preferences_title_general">
+    <PreferenceCategory
+        android:title="@string/preferences_title_general">
         <SwitchPreference
             android:icon="@drawable/moon"
             android:defaultValue="false"
@@ -22,7 +23,8 @@
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="@string/preferences_title_account">
+    <PreferenceCategory
+        android:title="@string/preferences_title_account">
 
         <Preference
             android:icon="@drawable/trash"
@@ -39,7 +41,8 @@
 
 
 
-    <PreferenceCategory android:title="@string/preferences_title_about">
+    <PreferenceCategory
+        android:title="@string/preferences_title_about">
 
         <Preference
             android:layout_width="wrap_content"

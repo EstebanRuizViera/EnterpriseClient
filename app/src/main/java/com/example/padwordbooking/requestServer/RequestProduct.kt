@@ -167,7 +167,7 @@ class RequestProduct {
 
                 for (j in 0 until availabilities.length()) {
 
-                    val products = ShoppingCart.getReservation()
+                    val products = ShoppingCart.getProducts()
                     val targetItem = products.singleOrNull { it.availabilities[0].id == availabilities.getJSONObject(j).getInt("id")}
 
                     if(targetItem == null){
