@@ -48,7 +48,7 @@
     <string name="menu_drawer_my_bookings">Mis reservas</string>
     <string name="recycler_product_price">desde</string>
 
-    <string name="carlist_number_item">Artículos en tu carrito:</string>
+    <string name="carlist_number_item">Productos en tu carrito:</string>
 
     <string name="summary_name">Nombre :</string>
     <string name="summary_phone">Telefono :</string>

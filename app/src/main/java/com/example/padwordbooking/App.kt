@@ -28,7 +28,7 @@ class App : Application() {
 
     private fun setFirthUserLocalDatabase() {
         if (usersViewModel.getUserIdLocal(1) == 0) {
-            usersViewModel.saveUser(User(1, "", "You are not logged in", "Login", "Register"))
+            usersViewModel.saveUser(User(1, "0", "You are not logged in", "Login", "Register"))
             Log.println(Log.INFO, null, "Guardado ")
         } else {
             Log.println(Log.INFO, null, "No guardado ")

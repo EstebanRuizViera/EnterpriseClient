@@ -253,7 +253,7 @@ class RequestUser {
 
         @JvmStatic
         fun logout(context: Context, usersViewModel: UsersViewModel) {
-            usersViewModel.updateUser(User(1, "", "You are not logged in", "Login", "Register"))
+            usersViewModel.updateUser(User(1, "0", "You are not logged in", "Login", "Register"))
             var toast = Toast.makeText(context, "Logged out", Toast.LENGTH_LONG)
             toast.setGravity(Gravity.CENTER or Gravity.BOTTOM, 0, 1000)
             toast.show()

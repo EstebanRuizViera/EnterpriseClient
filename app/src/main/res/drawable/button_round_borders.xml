@@ -6,8 +6,6 @@
             <solid android:color="@color/buttonColor" />
             <corners
                 android:radius="5dp"/>
-
-
         </shape>
     </item>
 </selector>

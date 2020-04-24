@@ -2,6 +2,7 @@ package com.example.padwordbooking
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +22,8 @@ import sun.bob.mcalendarview.MCalendarView
 import sun.bob.mcalendarview.listeners.OnDateClickListener
 import sun.bob.mcalendarview.vo.DateData
 import java.time.LocalDate
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AvailabilityActivity : AppCompatActivity() {
@@ -75,8 +78,9 @@ class AvailabilityActivity : AppCompatActivity() {
             )
             calendarView.markDate(date.year,date.month,date.day)
 
-            if(LocalDate.of(date.year,date.month,date.day) == LocalDate.now()) {
-
+            val currentTime = Calendar.getInstance().getTime()
+            Log.println(Log.INFO,"INFORMACIÓN",""+currentTime+" "+Date(date.year,date.month,date.day))
+            if(Date(date.year,date.month,date.day) == currentTime) {
                 listTime.add(availability)
             }
         }
@@ -128,14 +132,14 @@ class AvailabilityActivity : AppCompatActivity() {
 
                 for (availability in availabilityList) {
 
-                    if (LocalDate.of(date.year, date.month, date.day) == LocalDate.of(
-                            Integer.parseInt(availability.dateAvailability.split("-").get(0)),
-                            Integer.parseInt(availability.dateAvailability.split("-").get(1)),
-                            Integer.parseInt(availability.dateAvailability.split("-").get(2))
-                        )
-                    ) {
-                        listTime.add(availability)
-                    }
+//                    if (LocalDate.of(date.year, date.month, date.day) == LocalDate.of(
+//                            Integer.parseInt(availability.dateAvailability.split("-").get(0)),
+//                            Integer.parseInt(availability.dateAvailability.split("-").get(1)),
+//                            Integer.parseInt(availability.dateAvailability.split("-").get(2))
+//                        )
+//                    ) {
+//                        listTime.add(availability)
+//                    }
                 }
                 if(listTime.size!=0){
                     val availabilityAdapter =
@@ -146,8 +150,6 @@ class AvailabilityActivity : AppCompatActivity() {
                         )
                     recyclerView.adapter = availabilityAdapter
                 }
-
-
 
             }
         })

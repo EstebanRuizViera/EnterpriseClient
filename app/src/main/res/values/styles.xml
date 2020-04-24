@@ -76,7 +76,7 @@
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">   <!-- Cambia el color del hamburguer menu. -->
         <item name="spinBars">true</item>
-        <item name="color">#000000</item>
+        <item name="color">#1DA1F2</item>
     </style>
 
 

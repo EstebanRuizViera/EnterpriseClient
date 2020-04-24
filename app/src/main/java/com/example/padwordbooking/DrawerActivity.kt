@@ -23,23 +23,23 @@ class DrawerActivity : BaseActivity() {
     private lateinit var cartSize:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        SharePreferenceDarkMode.checkDarkMode(this)
+            SharePreferenceDarkMode.checkDarkMode(this)
 
-        super.onCreate(savedInstanceState)
-        setContentView(layout.activity_drawer)
-        setSupportActionBar(toolbar)
+            super.onCreate(savedInstanceState)
+            setContentView(layout.activity_drawer)
+            setSupportActionBar(toolbar)
 
-        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary))
+            swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary))
 
-        swipeRefreshLayout.isRefreshing = true
+            swipeRefreshLayout.isRefreshing = true
 
-        mToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
-        drawer!!.addDrawerListener(mToggle!!)
-        mToggle!!.syncState()
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setupDrawerContent(navigationView)
+            mToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
+            drawer!!.addDrawerListener(mToggle!!)
+            mToggle!!.syncState()
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            setupDrawerContent(navigationView)
 
-        RequestProduct.selectAllProducts(this,recyclerViewHome)
+            RequestProduct.selectAllProducts(this, recyclerViewHome)
     }
 
     fun selectItemDrawer(menuItem: MenuItem) {
