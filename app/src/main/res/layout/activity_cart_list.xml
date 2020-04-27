@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="?attr/backgroundColor"
         android:orientation="vertical"
         tools:context=".CartListActivity">
 
@@ -16,7 +17,6 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppTheme"
             android:background="?attr/appBarColor">
 
             <androidx.appcompat.widget.Toolbar
@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#F4F6F7"
+            android:background="?attr/highlight"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -45,6 +45,7 @@
                 android:padding="5dp"
                 android:text="@string/carlist_number_item"
                 android:textAllCaps="true"
+                android:textColor="?attr/descriptionColor"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -55,7 +56,8 @@
             android:id="@+id/recyclerViewCart"
             android:layout_width="match_parent"
             android:layout_height="460dp"
-            android:layout_margin="2dp"
+            android:layout_marginLeft="2dp"
+            android:background="?attr/backgroundColor"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
@@ -64,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:background="?attr/backgroundColor"
             android:orientation="horizontal"
             tools:ignore="RtlCompat">
 
@@ -73,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
                 android:text="Total"
+                android:textColor="?attr/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -84,6 +88,7 @@
                 android:layout_marginEnd="20dp"
                 android:gravity="end"
                 android:text="0€"
+                android:textColor="?attr/textColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />

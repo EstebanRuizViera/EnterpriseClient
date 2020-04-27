@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".AvailabilityActivity"
     android:orientation="vertical"
-    app:navigationIcon="@drawable/ic_arrow_back"
-    android:background="?attr/backgroundColor">
+    app:navigationIcon="@drawable/ic_arrow_back">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme"
         android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar

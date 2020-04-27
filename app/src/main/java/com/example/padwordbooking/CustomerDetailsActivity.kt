@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.padwordbooking.cart.ShoppingCart
+import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Customer
 import kotlinx.android.synthetic.main.activity_customer_details.*
 
 class CustomerDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SharePreferenceDarkMode.checkDarkMode(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_details)
 

@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="?attr/backgroundColor"
     tools:context=".CustomerDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme"
         android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
@@ -33,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fill the form to continue with the booking"
+        android:textColor="?attr/textColor"
         android:textStyle="bold"/>
 
     <EditText
@@ -44,8 +44,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
+        android:textColorHint="?attr/descriptionColor"
         android:inputType="textPersonName"
-        android:textColor="?attr/descriptionColor" />
+        android:textColor="?attr/textColor" />
 
     <TextView
         android:id="@+id/sm_validate_name"
@@ -65,8 +66,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Surname"
+        android:textColorHint="?attr/descriptionColor"
         android:inputType="textPersonName"
-        android:textColor="?attr/descriptionColor" />
+        android:textColor="?attr/textColor" />
 
     <TextView
         android:id="@+id/sm_validate_surname"
@@ -86,8 +88,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email Address"
+        android:textColorHint="?attr/descriptionColor"
         android:inputType="textEmailAddress"
-        android:textColor="?attr/descriptionColor" />
+        android:textColor="?attr/textColor" />
 
     <TextView
         android:id="@+id/sm_validate_email"
@@ -107,8 +110,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Phone Number"
+        android:textColorHint="?attr/descriptionColor"
         android:inputType="textEmailAddress"
-        android:textColor="?attr/descriptionColor" />
+        android:textColor="?attr/textColor" />
 
 
     <TextView

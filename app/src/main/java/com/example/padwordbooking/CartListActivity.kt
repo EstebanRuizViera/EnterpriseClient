@@ -26,6 +26,7 @@ class CartListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SharePreferenceDarkMode.checkDarkMode(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_list)
         setSupportActionBar(toolbar)

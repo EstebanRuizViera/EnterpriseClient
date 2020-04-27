@@ -4,12 +4,26 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="appBarColor">#ffffff</color>
+    <color name="appBarColorDark">#000000</color>
     <color name="blue_login_register">#75B5D1</color>
     <color name="underlineActive">#FD7155</color>
     <color name="book_color_circle">#D8D8D8</color>
-    <color name="backgroundColor">#fcfcfc</color>
-    <color name="cardBackground">#ffffff</color>
-    <color name="textColor">#000000</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+
+    <color name="background">#ffffff</color>
+    <color name="BackgroundDark">#000000</color>
+
+    <color name="text">#000000</color>
+    <color name="textDark">#ffffff</color>
+
+    <color name="highlight">#F4F6F7</color>
+    <color name="highlightDark">#15181c</color>
+
+
     <color name="BookButtonColor">#ffffff</color>
     <color name="summaryColor">#A4A4A4</color>
     <color name="ratingBarColor">#F4D03F</color>

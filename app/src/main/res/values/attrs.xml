@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="ds">
         <attr name="appBarColor" format="color" />
+        <attr name="cartColor" format="color" />
         <attr name="backgroundColor" format="color" />
         <attr name="cardBackground" format="color" />
         <attr name="textColor" format="color" />
@@ -9,6 +10,8 @@
         <attr name="bookButtonColor" format="color" />
         <attr name="descriptionColor" format="color" />
         <attr name="profileColor" format="color" />
+        <attr name="highlight" format="color" />
+
 
 
     </declare-styleable>

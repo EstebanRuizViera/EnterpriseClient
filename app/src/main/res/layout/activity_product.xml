@@ -13,8 +13,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme"
-        android:background="@color/appBarColor">
+        android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -65,11 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="?attr/backgroundColor"
                 android:isIndicator="true"
                 android:numStars="5"
                 android:progressTint="@color/ratingBarColor"
-                android:rating="4.5"
+                android:rating="3"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
                 android:stepSize="0.5"

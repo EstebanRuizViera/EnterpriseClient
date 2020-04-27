@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.padwordbooking.adapter.ProductListAdapter
 import com.example.padwordbooking.adapter.SummaryAdapter
 import com.example.padwordbooking.cart.ShoppingCart
+import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Product
 import com.example.padwordbooking.requestServer.RequestReservation
 import kotlinx.android.synthetic.main.activity_product.toolbar
@@ -18,6 +19,8 @@ class SummaryActivity : AppCompatActivity() {
     private var checkGuest = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SharePreferenceDarkMode.checkDarkMode(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary)
 

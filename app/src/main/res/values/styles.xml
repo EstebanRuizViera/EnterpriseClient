@@ -5,18 +5,18 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>   <!-- Cambia el color del hamburguer menu. -->
-        <item name="android:statusBarColor">#ebebeb</item>  <!--  Cambia el color la barra encima del toolbar. -->
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>  <!-- Cambia el color de los iconos (wifi, bateria) de la barra encima del toolbar. -->
-        <item name="android:navigationBarColor">#ebebeb</item>  <!--Cambia el color de la navigationbar (la barra con los botones de ir para atras, home y segundo plano)-->
-        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="colorPrimary">#0775A5</item>
         <item name="appBarColor">@color/appBarColor</item>
-        <item name="colorControlNormal">#ffffff</item>
         <item name="colorPrimaryDark">#0775A5</item>
         <item name="colorAccent">#D81B60</item>
-        <item name="backgroundColor">#ffffff</item>
+
+
+        <item name="backgroundColor">@color/background</item>
         <item name="cardBackground">#ffffff</item>
-        <item name="textColor">#000000</item>
+        <item name="textColor">@color/text</item>
+        <item name="cartColor">@color/black</item>
+        <item name="highlight">@color/highlight</item>
+
         <item name="buttonColor">#D8D8D8</item>
         <item name="bookButtonColor">#000000</item>
         <item name="descriptionColor">#808080</item>
@@ -28,12 +28,19 @@
 
     <style name="darkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="colorPrimary">#0775A5</item>
+        <item name="appBarColor">@color/appBarColorDark</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#D81B60</item>
-        <item name="backgroundColor">#303030</item>
+
+
+        <item name="backgroundColor">@color/BackgroundDark</item>
         <item name="cardBackground">#424242</item>
-        <item name="textColor">#ffffff</item>
+        <item name="textColor">@color/textDark</item>
+        <item name="cartColor">@color/white</item>
+        <item name="highlight">@color/highlightDark</item>
+
         <item name="buttonColor">#D8D8D8</item>
         <item name="bookButtonColor">#000000</item>
         <item name="descriptionColor">#808080</item>
@@ -78,6 +85,8 @@
         <item name="spinBars">true</item>
         <item name="color">#1DA1F2</item>
     </style>
+
+
 
 
 </resources>

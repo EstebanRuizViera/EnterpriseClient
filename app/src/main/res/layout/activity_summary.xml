@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="?attr/backgroundColor"
     tools:context=".SummaryActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme"
         android:background="?attr/appBarColor">
 
         <androidx.appcompat.widget.Toolbar
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text="Customer information"
-        android:textColor="#000"
+        android:textColor="?attr/textColor"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -49,6 +48,7 @@
             android:id="@+id/summary_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textColor"
             android:text="Adolfo Suarez Baraja" />
 
         <TextView
@@ -56,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:textColor="?attr/textColor"
             android:text="adolfosuarez@gmail.com" />
 
         <TextView
@@ -63,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:textColor="?attr/textColor"
             android:text="666533752" />
 
     </LinearLayout>
@@ -73,7 +75,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text="Product details"
-        android:textColor="#000"
+        android:textColor="?attr/textColor"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -90,7 +92,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text="Order summary"
-        android:textColor="#000"
+        android:textColor="?attr/textColor"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -111,6 +113,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textColor"
                 android:text="Products" />
 
             <TextView
@@ -118,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:textColor="?attr/textColor"
                 android:text="59,50€" />
 
         </LinearLayout>
@@ -132,8 +136,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="Total"
-                android:textColor="#000"
                 android:textSize="18sp"
+                android:textColor="?attr/textColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -142,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="59,50€"
-                android:textColor="#000"
+                android:textColor="?attr/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

@@ -9,21 +9,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.padwordbooking.adapter.AvailabilityAdapter
-import com.example.padwordbooking.model.Product
-import com.example.padwordbooking.cart.ShoppingCart
 import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import com.example.padwordbooking.model.Availability
+import com.example.padwordbooking.model.Product
 import com.example.padwordbooking.myDataBase.viewModel.UsersViewModel
-import com.google.android.material.snackbar.Snackbar
-import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
 import kotlinx.android.synthetic.main.activity_availability.*
 import sun.bob.mcalendarview.MCalendarView
 import sun.bob.mcalendarview.listeners.OnDateClickListener
 import sun.bob.mcalendarview.vo.DateData
-import java.time.LocalDate
+import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class AvailabilityActivity : AppCompatActivity() {
@@ -79,8 +74,18 @@ class AvailabilityActivity : AppCompatActivity() {
             calendarView.markDate(date.year,date.month,date.day)
 
             val currentTime = Calendar.getInstance().getTime()
-            Log.println(Log.INFO,"INFORMACIÓN",""+currentTime+" "+Date(date.year,date.month,date.day))
-            if(Date(date.year,date.month,date.day) == currentTime) {
+            var sdf = SimpleDateFormat("yyyy-MM-dd")
+
+            var selectDate:String
+
+            if(date.month<10){
+                selectDate = ""+date.year+"-0"+date.month+"-"+date.day
+            }else{
+                selectDate = ""+date.year+"-"+date.month+"-"+date.day
+            }
+            Log.println(Log.INFO,"INFORMACIÓN",""+selectDate+" "+sdf.format(currentTime))
+
+            if(selectDate == sdf.format(currentTime)) {
                 listTime.add(availability)
             }
         }
@@ -99,29 +104,6 @@ class AvailabilityActivity : AppCompatActivity() {
     }
 
 
-//    @SuppressLint("CheckResult")
-//    fun bindProduct() {
-//
-//        Observable.create(ObservableOnSubscribe<MutableList<Product>> {
-//            addToCart.setOnClickListener { view ->
-//
-//                val item = product
-//
-//                ShoppingCart.addItem(item)
-//                //notify users
-//                Snackbar.make(
-//                    view,
-//                    "${product.name} added to your cart",
-//                    Snackbar.LENGTH_LONG
-//                ).show()
-//
-//                it.onNext(ShoppingCart.getReservation())
-//
-//            }
-//        })
-//
-//    }
-
     fun getDateMarkForCustomer() {
 
         calendarView.setOnDateClickListener(object : OnDateClickListener() {
@@ -131,15 +113,17 @@ class AvailabilityActivity : AppCompatActivity() {
                 var listTime = arrayListOf<Availability>()
 
                 for (availability in availabilityList) {
+                    var selectDate:String
+                    if(date.month<10){
+                        selectDate = ""+date.year+"-0"+date.month+"-"+date.day
+                    }else{
+                        selectDate = ""+date.year+"-"+date.month+"-"+date.day
+                    }
 
-//                    if (LocalDate.of(date.year, date.month, date.day) == LocalDate.of(
-//                            Integer.parseInt(availability.dateAvailability.split("-").get(0)),
-//                            Integer.parseInt(availability.dateAvailability.split("-").get(1)),
-//                            Integer.parseInt(availability.dateAvailability.split("-").get(2))
-//                        )
-//                    ) {
-//                        listTime.add(availability)
-//                    }
+                    Log.println(Log.INFO,"INFORMACIÓN",""+selectDate+" "+availability.dateAvailability)
+                    if( selectDate == availability.dateAvailability) {
+                        listTime.add(availability)
+                    }
                 }
                 if(listTime.size!=0){
                     val availabilityAdapter =

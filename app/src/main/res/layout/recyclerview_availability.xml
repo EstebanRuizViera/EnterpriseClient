@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/button_timestamp"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="11:00"
-
-        android:background="?android:attr/selectableItemBackground">
-    </Button>
+        android:text=""
+        android:textColor="?attr/textColor"
+        android:background="#ffffff"/>
 
 
 </LinearLayout>

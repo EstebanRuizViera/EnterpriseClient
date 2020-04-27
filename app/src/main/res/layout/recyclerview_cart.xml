@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/backgroundColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -83,14 +84,6 @@
 
 
         </LinearLayout>
-
-<!--        <ImageView-->
-<!--            android:id="@+id/remove_item"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:scrollbarAlwaysDrawHorizontalTrack="false"-->
-<!--            android:scrollbarAlwaysDrawVerticalTrack="false"-->
-<!--            android:src="@drawable/ic_close" />-->
 
     </LinearLayout>
 </LinearLayout>

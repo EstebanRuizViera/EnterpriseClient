@@ -5,7 +5,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="?attr/backgroundColor"
     tools:context=".DrawerActivity">
 
     <LinearLayout
@@ -16,7 +16,6 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppTheme"
             android:background="?attr/appBarColor">
 
             <androidx.appcompat.widget.Toolbar
@@ -25,7 +24,6 @@
                 android:layout_height="match_parent"
                 app:title="@string/toolbar_main_product"
                 app:titleTextColor="?attr/textColor" />
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -39,7 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?attr/backgroundColor" />
-
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
@@ -49,13 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffffff"
+        android:background="?attr/backgroundColor"
         app:headerLayout="@layout/header"
-        app:itemIconTint="#121212"
-        app:itemTextColor="#121212"
+        app:itemIconTint="?attr/textColor"
+        app:itemTextColor="?attr/textColor"
         app:menu="@menu/drawermenu">
-
-
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

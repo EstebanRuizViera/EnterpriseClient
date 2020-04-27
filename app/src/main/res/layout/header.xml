@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="?attr/backgroundColor"
     android:divider="@drawable/border_drawer"
     android:showDividers="end">
 
@@ -23,7 +24,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/baloo"
         android:text="Padword"
-        android:textColor="#121212"
+        android:textColor="?attr/textColor"
         android:textSize="24sp" />
 
     <TextView
@@ -32,10 +33,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="25dp"
         android:text="www.padword.com"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="14sp" />
-
-
 
 </LinearLayout>
 

@@ -4,11 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.padwordbooking.fragment.settings.SharePreferenceDarkMode
 import kotlinx.android.synthetic.main.activity_confirmation.*
 
 class ConfirmationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SharePreferenceDarkMode.checkDarkMode(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirmation)
 

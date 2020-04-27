@@ -15,7 +15,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="208dp"
-        app:cardBackgroundColor="?attr/cardBackground">
+        app:cardBackgroundColor="?attr/backgroundColor">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="5dp"
+                android:textColor="?attr/textColor"
                 android:text="@string/recycler_product_price" />
 
         </LinearLayout>
